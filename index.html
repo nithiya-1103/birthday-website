@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<!-- Persistent Music -->
+<!-- Hidden music player -->
 <iframe src="player.html" style="display:none;" id="musicFrame"></iframe>
 
 <!-- Fireworks Canvas -->
@@ -19,7 +19,7 @@
 <!-- Floating Hearts -->
 <div class="letters"></div>
 
-<!-- HOME SECTION -->
+<!-- Home Section -->
 <section class="section" id="home">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
@@ -27,11 +27,11 @@
   <button onclick="showSection('story')">Begin ❤️</button>
 </section>
 
-<!-- STORY SECTION -->
-<section class="section" id="story">
+<!-- Story Section (hidden initially) -->
+<section class="section" id="story" style="display:none;">
   <h2>Our Story</h2>
   <p>Every smile, every moment, every memory became my favorite chapter with you.</p>
-  <button onclick="window.location.href='story.html'">Next 💕</button>
+  <button onclick="navigateTo('story.html')">Next 💕</button>
 </section>
 
 </body>

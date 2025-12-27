@@ -1,7 +1,6 @@
 /* ---------------- SECTION NAVIGATION ---------------- */
-function showSection(id){
-  document.querySelectorAll('.section').forEach(s=>s.style.display='none');
-  document.getElementById(id).style.display='flex';
+function navigateTo(page){
+  window.location.href = page;
 }
 
 /* ---------------- FLOATING HEARTS ---------------- */
@@ -45,7 +44,8 @@ if(canvas){
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
-  let fireworks = [], particles = [];
+  let fireworks = [];
+  let particles = [];
 
   function random(min,max){ return Math.random()*(max-min)+min; }
 
@@ -72,9 +72,7 @@ if(canvas){
     ctx.fillStyle = "rgba(255,240,243,0.1)";
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
-    if(Math.random()<0.05){ 
-      fireworks.push(new Firework(random(0,canvas.width),canvas.height,random(canvas.height/2,canvas.height/3))); 
-    }
+    if(Math.random()<0.05){ fireworks.push(new Firework(random(0,canvas.width),canvas.height,random(canvas.height/2,canvas.height/3))); }
 
     for(let f of fireworks){ f.update(); f.draw(); }
     fireworks = fireworks.filter(f=>!f.exploded);
