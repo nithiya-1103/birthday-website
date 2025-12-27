@@ -51,22 +51,15 @@ body {
   letter-spacing: 2px;
 }
 
-.subtitle {
-  font-family: 'Poppins', sans-serif;
+/* Subtitle & hints now use cursive for romance */
+.subtitle, .hint, .story-text {
+  font-family: 'Dancing Script', cursive;
   font-size: 1.5rem;
   font-weight: 400;
   color: #ffe6ea;
   letter-spacing: 1px;
   margin-top: 10px;
   text-shadow: 0 0 10px rgba(255,182,193,0.7);
-}
-
-.hint {
-  font-family: 'Poppins', sans-serif;
-  font-size: 1.1rem;
-  font-style: italic;
-  color: #ffd1dc;
-  margin-top: 10px;
 }
 
 /* Buttons */
@@ -108,6 +101,17 @@ button:hover {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
   margin-top: 20px;
+}
+
+/* Optional gallery captions in cursive */
+.gallery img::after {
+  content: attr(alt);
+  display: block;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1rem;
+  color: #ffe6ea;
+  margin-top: 5px;
+  text-align: center;
 }
 
 .gallery img {
