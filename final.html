@@ -10,14 +10,15 @@
 </head>
 <body>
 
-<canvas id="fireworks"></canvas>
-<audio id="bgMusic" loop><source src="music/love.mp3" type="audio/mpeg"></audio>
+<iframe src="player.html" style="display:none;" id="musicFrame"></iframe>
 <div class="letters"></div>
 
 <section class="hero">
   <h1 class="title">Happy Birthday ❤️</h1>
   <div id="timer"></div>
+
   <button onclick="revealLove()">Tap Gently 💖</button>
+
   <div class="love-reveal" id="loveReveal">
     <span>I</span>
     <span>LOVE</span>

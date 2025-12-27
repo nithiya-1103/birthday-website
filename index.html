@@ -10,15 +10,28 @@
 </head>
 <body>
 
+<!-- Persistent Music -->
+<iframe src="player.html" style="display:none;" id="musicFrame"></iframe>
+
+<!-- Fireworks Canvas -->
 <canvas id="fireworks"></canvas>
-<audio id="bgMusic" loop><source src="music/love.mp3" type="audio/mpeg"></audio>
+
+<!-- Floating Hearts -->
 <div class="letters"></div>
 
+<!-- HOME SECTION -->
 <section class="section" id="home">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
   <p class="hint">🎧 Tap to start the music</p>
-  <button onclick="navigateTo('story.html')">Begin ❤️</button>
+  <button onclick="showSection('story')">Begin ❤️</button>
+</section>
+
+<!-- STORY SECTION -->
+<section class="section" id="story">
+  <h2>Our Story</h2>
+  <p>Every smile, every moment, every memory became my favorite chapter with you.</p>
+  <button onclick="window.location.href='story.html'">Next 💕</button>
 </section>
 
 </body>

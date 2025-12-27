@@ -3,29 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gallery</title>
+<title>Captured Moments</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
 <body>
 
-<canvas id="fireworks"></canvas>
-<audio id="bgMusic" loop><source src="music/love.mp3" type="audio/mpeg"></audio>
+<iframe src="player.html" style="display:none;" id="musicFrame"></iframe>
 <div class="letters"></div>
 
-<section class="glass">
-  <h2>Captured Moments</h2>
-  <div class="gallery">
-    <img src="images/img1.jpg">
-    <img src="images/img2.jpg">
-    <img src="images/img3.jpg">
-    <video src="videos/video1.mp4" controls></video>
-    <video src="videos/video2.mp4" controls></video>
-  </div>
-  <button onclick="navigateTo('final.html')">Final ❤️</button>
-</section>
+<h2 class="center">Captured Moments</h2>
+
+<div class="gallery">
+  <!-- Images -->
+  <img src="images/img1.jpg" alt="Memory 1">
+  <img src="images/img2.jpg" alt="Memory 2">
+  <img src="images/img3.jpg" alt="Memory 3">
+
+  <!-- Videos -->
+  <video controls width="200">
+    <source src="videos/video1.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <video controls width="200">
+    <source src="videos/video2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
+
+<div class="center">
+  <button onclick="window.location.href='final.html'">Final ❤️</button>
+</div>
 
 </body>
 </html>
-

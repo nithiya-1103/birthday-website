@@ -4,27 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Our Story</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
-
 <body>
-<audio id="bgMusic" loop>
-  <source src="music/love.mp3" type="audio/mpeg">
-</audio>
 
+<iframe src="music.html" style="display:none;" id="musicFrame"></iframe>
 <div class="letters"></div>
 
-<section class="glass">
+<section class="section" id="story">
   <h2>Our Story</h2>
-  <p>
-    Every smile, every moment, every memory  
-    became my favorite chapter with you.
-  </p>
-
-  <button onclick="navigateTo('gallery.html')">Next 💕</button>
+  <p>Every smile, every moment, every memory became my favorite chapter with you.</p>
+  <button onclick="go('gallery.html')">Next 💕</button>
 </section>
+
 </body>
 </html>
