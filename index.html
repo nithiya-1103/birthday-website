@@ -3,31 +3,50 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&family=Dancing+Script&display=swap" rel="stylesheet">
-
-<!-- CSS & JS -->
+<title>Our Special Journey ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
-
 <body>
 
-<!-- Background Music -->
-<iframe src="music.html" style="display:none;" id="musicFrame"></iframe>
+<!-- MUSIC: plays once -->
+<audio id="bgMusic" loop></audio>
 
-<!-- Floating hearts container -->
 <div class="letters"></div>
 
-<!-- Hero Section -->
-<section class="hero">
+<!-- SECTIONS -->
+<section class="section active" id="home">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
-  <p class="hint">🎧 Music will play after you tap</p>
+  <button onclick="startExperience('story')">Begin ❤️</button>
+</section>
 
-  <button onclick="startExperience()">Begin ❤️</button>
+<section class="section" id="story">
+  <h2>Our Story</h2>
+  <p>Every smile, every moment, every memory became my favorite chapter with you.</p>
+  <button onclick="showSection('gallery')">Next 💕</button>
+</section>
+
+<section class="section" id="gallery">
+  <h2>Captured Memories</h2>
+  <div class="gallery">
+    <img src="images/img1.jpg">
+    <img src="images/img2.jpg">
+    <img src="images/img3.jpg">
+  </div>
+  <button onclick="showSection('final')">Final ❤️</button>
+</section>
+
+<section class="section" id="final">
+  <h1 class="title">Happy Birthday ❤️</h1>
+  <div id="timer"></div>
+  <button onclick="revealLove()">Tap Gently 💖</button>
+  <div class="love-reveal" id="loveReveal">
+    <span>I</span>
+    <span>LOVE</span>
+    <span>YOU</span>
+  </div>
 </section>
 
 </body>
