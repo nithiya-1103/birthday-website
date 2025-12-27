@@ -3,23 +3,63 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>Our Special Journey ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
 <body>
 
-<!-- Single hidden music iframe -->
-<iframe src="music.html" style="display:none;"></iframe>
+<!-- MUSIC: plays once and never stops -->
+<audio id="bgMusic" autoplay loop>
+  <source src="music/love.mp3" type="audio/mpeg">
+</audio>
 
+<!-- Floating hearts -->
 <div class="letters"></div>
 
-<section class="hero">
+<!-- INDEX SECTION -->
+<section class="hero section active" id="section-index">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
   <p class="hint">🎧 Music is already playing</p>
-  <button onclick="navigateTo('story.html')">Begin ❤️</button>
+  <button onclick="showSection('section-story')">Begin ❤️</button>
+</section>
+
+<!-- STORY SECTION -->
+<section class="glass section" id="section-story">
+  <h2>Our Story</h2>
+  <p>
+    Every smile, every moment, every memory<br>
+    became my favorite chapter with you.
+  </p>
+  <button onclick="showSection('section-gallery')">Next 💕</button>
+</section>
+
+<!-- GALLERY SECTION -->
+<section class="glass section" id="section-gallery">
+  <h2 class="center">Captured Memories</h2>
+  <div class="gallery">
+    <img src="images/img1.jpg" alt="Memory 1">
+    <img src="images/img2.jpg" alt="Memory 2">
+    <img src="images/img3.jpg" alt="Memory 3">
+    <img src="images/img4.jpg" alt="Memory 4">
+  </div>
+  <div class="center">
+    <button onclick="showSection('section-final')">Go to Final ❤️</button>
+  </div>
+</section>
+
+<!-- FINAL SECTION -->
+<section class="hero section" id="section-final">
+  <h1 class="title">Happy Birthday ❤️</h1>
+  <div id="timer"></div>
+  <button onclick="revealLove()">Tap Gently 💖</button>
+  <div class="love-reveal" id="loveReveal">
+    <span>I</span>
+    <span>LOVE</span>
+    <span>YOU</span>
+  </div>
 </section>
 
 </body>

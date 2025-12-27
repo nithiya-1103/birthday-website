@@ -1,6 +1,14 @@
+/* Section navigation with fade */
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>{
+    s.classList.remove('active','fade-in');
+    if(s.id===id) s.classList.add('active','fade-in');
+  });
+}
+
 /* Floating hearts */
-const symbols = ["❤️","💖","💕","💘"];
-const container = document.querySelector(".letters");
+const symbols=["❤️","💖","💕","💘"];
+const container=document.querySelector(".letters");
 
 if(container){
   setInterval(()=>{
@@ -19,7 +27,7 @@ setInterval(()=>{
   const t=document.getElementById("timer");
   if(!t) return;
   const d=birthday-Date.now();
-  if(d<=0){t.innerHTML="🎉 Today is your day 🎉"; return;}
+  if(d<=0){ t.innerHTML="🎉 Today is your day 🎉"; return;}
   const pad=n=>n.toString().padStart(2,"0");
   t.innerHTML=
     Math.floor(d/86400000)+"d "+
@@ -29,7 +37,7 @@ setInterval(()=>{
 },1000);
 
 /* Reveal love message */
-function revealLove(){ const love=document.getElementById("loveReveal"); if(love) love.style.display="block"; }
-
-/* Navigation */
-function navigateTo(page){ window.location.href=page; }
+function revealLove(){ 
+  const love=document.getElementById("loveReveal"); 
+  if(love) love.style.display="block"; 
+}
