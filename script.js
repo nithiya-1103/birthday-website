@@ -1,35 +1,19 @@
 const audio = document.getElementById("bgMusic");
 
-/* Start music ONLY after click */
-function startMusicOnce() {
-  if (!localStorage.getItem("musicStarted")) {
-    audio.volume = 0.7;
-    audio.play().then(() => {
-      localStorage.setItem("musicStarted", "true");
-    }).catch(() => {});
-  }
-}
-
-/* Resume on next pages */
-window.addEventListener("load", () => {
-  if (localStorage.getItem("musicStarted")) {
-    audio.volume = 0.7;
-    audio.play().catch(() => {});
-  }
-});
-
+/* ---------------- AUDIO ---------------- */
 function startExperience() {
-  startMusicOnce();
-  setTimeout(() => {
-    window.location.href = "story.html";
-  }, 300);
+  audio.volume = 0.7;
+  audio.play().catch(() => {});
+  showSection('story');
 }
 
-function navigateTo(page) {
-  window.location.href = page;
+/* ---------------- SECTION NAVIGATION ---------------- */
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
 }
 
-/* Floating hearts */
+/* ---------------- FLOATING HEARTS ---------------- */
 const symbols = ["❤️","💖","💕","💘"];
 const container = document.querySelector(".letters");
 
@@ -44,25 +28,26 @@ if (container) {
   }, 600);
 }
 
-/* Countdown */
+/* ---------------- COUNTDOWN ---------------- */
 const birthday = new Date("2025-03-20").getTime();
 setInterval(() => {
   const t = document.getElementById("timer");
   if (!t) return;
 
-  const d = birthday - Date.now();
-  if (d <= 0) {
+  const diff = birthday - Date.now();
+  if (diff <= 0) {
     t.innerHTML = "🎉 Today is your day 🎉";
     return;
   }
 
   t.innerHTML =
-    Math.floor(d / 86400000) + "d " +
-    Math.floor((d % 86400000) / 3600000) + "h " +
-    Math.floor((d % 3600000) / 60000) + "m " +
-    Math.floor((d % 60000) / 1000) + "s";
+    Math.floor(diff / 86400000) + "d " +
+    Math.floor((diff % 86400000) / 3600000) + "h " +
+    Math.floor((diff % 3600000) / 60000) + "m " +
+    Math.floor((diff % 60000) / 1000) + "s";
 }, 1000);
 
+/* ---------------- LOVE REVEAL ---------------- */
 function revealLove() {
   document.getElementById("loveReveal").style.display = "block";
 }
