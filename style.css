@@ -4,6 +4,7 @@
   --light-pink: #ffc1cc;
   --cream: #fff0f3;
   --heart-red: #ff1e56;
+  --white-accent: #fff5f7;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -11,7 +12,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, var(--primary-red), var(--soft-pink), var(--light-pink));
-  color: var(--cream);
+  color: var(--white-accent);
   overflow: hidden;
   position: relative;
 }
@@ -42,16 +43,18 @@ body {
 .title { 
   font-family:'Playfair Display', serif; 
   font-size:3rem; 
-  text-shadow: 0 0 15px var(--heart-red), 0 0 25px var(--soft-pink);
+  text-shadow: 0 0 20px var(--heart-red), 0 0 30px var(--soft-pink);
+  color: var(--white-accent);
   margin-bottom:15px; 
 }
 
 .subtitle, .hint { 
   font-size:1.2rem; 
   margin-bottom:20px; 
-  color: var(--cream);
+  color: var(--white-accent);
 }
 
+/* Buttons */
 button {
   margin-top:30px;
   padding:14px 40px;
@@ -60,11 +63,15 @@ button {
   background: linear-gradient(45deg, var(--heart-red), var(--soft-pink));
   color:white;
   font-size:1rem;
+  font-weight:600;
   cursor:pointer;
+  box-shadow: 0 5px 15px rgba(255,0,80,0.4);
   transition:0.3s;
 }
-
-button:hover { transform:scale(1.1); }
+button:hover { 
+  transform:scale(1.1); 
+  box-shadow: 0 10px 25px rgba(255,0,80,0.6);
+}
 
 /* Gallery */
 .gallery {
@@ -76,7 +83,7 @@ button:hover { transform:scale(1.1); }
   transition:0.4s; 
   border: 3px solid var(--heart-red);
 }
-.gallery img:hover { transform:scale(1.1); }
+.gallery img:hover { transform:scale(1.1); filter: brightness(1.1); }
 
 /* Floating hearts */
 .letters span {
@@ -107,7 +114,14 @@ button:hover { transform:scale(1.1); }
   font-size:4rem;
   margin:0 10px;
   color: var(--heart-red);
+  text-shadow: 0 0 15px var(--soft-pink), 0 0 30px var(--primary-red);
 }
 
 /* Countdown */
-#timer { margin-top:20px; font-size:1.4rem; font-weight:500; }
+#timer { 
+  margin-top:20px; 
+  font-size:1.4rem; 
+  font-weight:600; 
+  color: var(--white-accent);
+  text-shadow: 0 0 10px var(--heart-red);
+}
