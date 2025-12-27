@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5faff;
+    color: #333;
+}
+
+.hero {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+h2 {
+    color: #0077b6;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.countdown #timer {
+    font-size: 24px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.about, .gifts {
+    text-align: center;
+}
+
+.wishes {
+    display: grid;
+    gap: 15px;
+}
+
+.wish-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, textarea {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: #0077b6;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #023e8a;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #e0f2ff;
+}
