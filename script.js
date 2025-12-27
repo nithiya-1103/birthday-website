@@ -1,37 +1,50 @@
-function go(id){
-  document.querySelectorAll('.section').forEach(s=>{
-    s.classList.remove('active');
-  });
-  document.getElementById(id).classList.add('active');
+const audio = document.getElementById("bgMusic");
+
+/* Play music after first click (required by browsers) */
+function startExperience(nextSection){
+  if(!audio.src){
+    audio.src = "music/love.mp3";
+    audio.volume = 0.7;
+    audio.play().catch(()=>{}); // ignore autoplay errors
+  }
+  showSection(nextSection);
+}
+
+/* Show section */
+function showSection(id){
+  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
 }
 
 /* Floating hearts */
-const letters=document.querySelector('.letters');
-const symbols=["❤️","💖","💕","💘"];
+const symbols = ["❤️","💖","💕","💘"];
+const container = document.querySelector(".letters");
 
 setInterval(()=>{
   const s=document.createElement("span");
-  s.innerText=symbols[Math.floor(Math.random()*symbols.length)];
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=6+Math.random()*4+"s";
-  letters.appendChild(s);
+  s.innerText = symbols[Math.floor(Math.random()*symbols.length)];
+  s.style.left = Math.random()*100+"vw";
+  s.style.animationDuration = 6 + Math.random()*4 + "s";
+  container.appendChild(s);
   setTimeout(()=>s.remove(),9000);
 },600);
 
 /* Countdown */
-const birthday=new Date("2025-03-20").getTime();
+const birthday = new Date("2025-03-20").getTime();
 setInterval(()=>{
   const t=document.getElementById("timer");
   if(!t) return;
   const d=birthday-Date.now();
-  if(d<=0){ t.innerHTML="🎉 Today is your day 🎉"; return;}
+  if(d<=0){t.innerHTML="🎉 Today is your day 🎉"; return;}
+  const pad=n=>n.toString().padStart(2,"0");
   t.innerHTML=
     Math.floor(d/86400000)+"d "+
-    Math.floor((d%86400000)/3600000)+"h "+
-    Math.floor((d%3600000)/60000)+"m "+
-    Math.floor((d%60000)/1000)+"s";
+    pad(Math.floor((d%86400000)/3600000))+"h "+
+    pad(Math.floor((d%3600000)/60000))+"m "+
+    pad(Math.floor((d%60000)/1000))+"s";
 },1000);
 
+/* Reveal love */
 function revealLove(){
   document.getElementById("loveReveal").style.display="block";
 }
