@@ -13,7 +13,7 @@ if (container) {
   }, 600);
 }
 
-/* Countdown timer (optional) */
+/* Countdown timer */
 const birthday = new Date("2025-03-20").getTime();
 setInterval(() => {
   const t = document.getElementById("timer");
@@ -33,7 +33,13 @@ setInterval(() => {
     pad(Math.floor((d % 60000) / 1000)) + "s";
 }, 1000);
 
-/* Navigation between pages */
+/* Reveal Love */
+function revealLove() {
+  const love = document.getElementById("loveReveal");
+  if (love) love.style.display = "block";
+}
+
+/* Navigation */
 function navigateTo(page) {
   window.location.href = page;
 }

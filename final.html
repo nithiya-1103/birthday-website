@@ -4,23 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday ❤️</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
-
 <body>
-<audio id="bgMusic" loop>
-  <source src="music/love.mp3" type="audio/mpeg">
-</audio>
+
+<iframe src="music.html" style="display:none;"></iframe>
 
 <div class="letters"></div>
 
 <section class="hero">
   <h1 class="title">Happy Birthday ❤️</h1>
   <div id="timer"></div>
-
   <button onclick="revealLove()">Tap Gently 💖</button>
 
   <div class="love-reveal" id="loveReveal">
@@ -29,5 +25,6 @@
     <span>YOU</span>
   </div>
 </section>
+
 </body>
 </html>
