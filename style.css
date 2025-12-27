@@ -1,14 +1,21 @@
+:root {
+  --rose-dark: #b11226;
+  --rose: #e63946;
+  --pink-soft: #f8cdda;
+  --white-soft: #fff5f7;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 body {
   min-height: 100vh;
-  background: linear-gradient(135deg, #ff416c, #ff4b2b, #ff9a9e);
-  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--rose-dark), var(--rose), var(--pink-soft));
+  color: var(--white-soft);
   overflow-x: hidden;
 }
 
@@ -26,46 +33,49 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 20px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  text-shadow: 0 0 20px rgba(255,182,193,0.7);
 }
 
 .subtitle {
-  font-size: 1.2rem;
   margin-top: 10px;
+  font-size: 1.2rem;
 }
 
-.glow {
-  font-size: 3rem;
-  text-shadow: 0 0 20px #ffb6c1, 0 0 40px #ff1e56;
-  animation: glowPulse 2s infinite alternate;
-}
-
-@keyframes glowPulse {
-  from { text-shadow: 0 0 10px #ffb6c1; }
-  to { text-shadow: 0 0 30px #ff1e56; }
+.hint {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  opacity: 0.85;
 }
 
 button {
-  margin-top: 25px;
-  padding: 14px 35px;
-  font-size: 1.1rem;
+  margin-top: 30px;
+  padding: 14px 40px;
+  font-size: 1rem;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(45deg, #ff1e56, #ff4d6d);
+  background: linear-gradient(45deg, var(--rose), #ff6b81);
   color: white;
   cursor: pointer;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 button:hover {
-  transform: scale(1.15);
+  transform: scale(1.08);
 }
 
 .glass {
-  background: rgba(255,182,193,0.25);
+  background: rgba(255,255,255,0.2);
   backdrop-filter: blur(12px);
-  padding: 40px;
   border-radius: 25px;
+  padding: 40px;
   width: 85%;
+  max-width: 800px;
   margin: 100px auto;
   text-align: center;
 }
@@ -80,11 +90,11 @@ button:hover {
 .gallery img {
   width: 100%;
   border-radius: 20px;
-  transition: 0.5s;
+  transition: 0.4s;
 }
 
 .gallery img:hover {
-  transform: scale(1.15) rotate(2deg);
+  transform: scale(1.12);
 }
 
 .center {
@@ -92,15 +102,15 @@ button:hover {
 }
 
 #timer {
-  font-size: 1.7rem;
   margin: 20px 0;
+  font-size: 1.4rem;
 }
 
-/* FLOATING LOVE LETTERS */
+/* Floating hearts */
 .letters span {
   position: fixed;
   bottom: -50px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   animation: floatUp linear infinite;
 }
 
@@ -109,17 +119,23 @@ button:hover {
   to { transform: translateY(-120vh); opacity: 0; }
 }
 
-/* I LOVE YOU ANIMATION */
-.love-animate {
+/* Love reveal */
+.love-reveal span {
+  font-family: 'Playfair Display', serif;
   font-size: 4rem;
-  margin-top: 30px;
+  margin: 0 10px;
   opacity: 0;
-  transform: scale(0);
-  transition: 1s;
-  text-shadow: 0 0 30px pink;
+  transform: translateY(40px);
+  animation: reveal 0.8s forwards;
 }
 
-.love-animate.show {
-  opacity: 1;
-  transform: scale(1.2);
+.love-reveal span:nth-child(1) { animation-delay: 0.2s; }
+.love-reveal span:nth-child(2) { animation-delay: 0.6s; }
+.love-reveal span:nth-child(3) { animation-delay: 1s; }
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

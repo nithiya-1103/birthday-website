@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <body>
 <audio id="bgMusic" loop>
   <source src="music/love.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-window.addEventListener("message", e => {
-  if (e.data === "playMusic") {
-    document.getElementById("bgMusic").play();
+let started = false;
+
+window.addEventListener("message", (e) => {
+  if (e.data === "playMusic" && !started) {
+    const audio = document.getElementById("bgMusic");
+    audio.volume = 0.7;
+    audio.play();
+    started = true;
   }
 });
 </script>

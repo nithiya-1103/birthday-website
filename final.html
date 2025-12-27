@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
-<body>
 
+<body>
 <iframe src="music.html" id="musicFrame"></iframe>
 <div class="letters"></div>
 
 <section class="hero">
-  <h1 class="glow">Happy Birthday My Love 🎉</h1>
+  <h1 class="title">Happy Birthday</h1>
   <div id="timer"></div>
 
-  <button onclick="showLove()">Tap My Heart ❤️</button>
+  <button onclick="revealLove()">Tap Gently ❤️</button>
 
-  <!-- I LOVE YOU ANIMATION -->
-  <div id="loveAnimation" class="love-animate">I LOVE YOU ❤️</div>
+  <div class="love-reveal" id="loveReveal">
+    <span>I</span>
+    <span>LOVE</span>
+    <span>YOU</span>
+  </div>
 </section>
-
 </body>
 </html>
-
-
