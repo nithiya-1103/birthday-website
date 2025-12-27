@@ -11,14 +11,17 @@
 </head>
 
 <body>
-<iframe src="music.html" id="musicFrame"></iframe>
+<audio id="bgMusic" loop>
+  <source src="music/love.mp3" type="audio/mpeg">
+</audio>
+
 <div class="letters"></div>
 
 <section class="hero">
-  <h1 class="title">Happy Birthday</h1>
+  <h1 class="title">Happy Birthday ❤️</h1>
   <div id="timer"></div>
 
-  <button onclick="revealLove()">Tap Gently ❤️</button>
+  <button onclick="revealLove()">Tap Gently 💖</button>
 
   <div class="love-reveal" id="loveReveal">
     <span>I</span>

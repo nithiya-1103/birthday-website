@@ -3,26 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A narrative-driven interactive birthday experience.">
-<title>Begin Experience ❤️</title>
+<title>For You ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
 
 <body>
-<iframe src="music.html" id="musicFrame" onload="musicReady=true"></iframe>
+<audio id="bgMusic" loop>
+  <source src="music/love.mp3" type="audio/mpeg">
+</audio>
+
 <div class="letters"></div>
 
 <section class="hero">
-  <h1 class="title">For Someone Special</h1>
-  <p class="subtitle">A small digital journey, made with love</p>
-  <p class="hint">🎧 Audio will play after you begin</p>
+  <h1 class="title">A Special Journey</h1>
+  <p class="subtitle">Made with love, just for you</p>
+  <p class="hint">🎧 Music will play after you tap</p>
 
-  <button aria-label="Begin experience" onclick="startExperience()">
-    Begin Experience
-  </button>
+  <button onclick="startExperience()">Begin ❤️</button>
 </section>
 </body>
 </html>

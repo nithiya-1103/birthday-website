@@ -1,8 +1,7 @@
 :root {
-  --rose-dark: #b11226;
-  --rose: #e63946;
-  --pink-soft: #f8cdda;
-  --white-soft: #fff5f7;
+  --red: #e63946;
+  --pink: #ff8fab;
+  --soft: #fff0f3;
 }
 
 * {
@@ -14,16 +13,9 @@
 body {
   min-height: 100vh;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--rose-dark), var(--rose), var(--pink-soft));
-  color: var(--white-soft);
+  background: linear-gradient(135deg, #b11226, var(--red), var(--pink));
+  color: var(--soft);
   overflow-x: hidden;
-}
-
-#musicFrame {
-  width: 0;
-  height: 0;
-  border: none;
-  position: fixed;
 }
 
 .hero {
@@ -33,40 +25,32 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
 }
 
 .title {
   font-family: 'Playfair Display', serif;
   font-size: 3rem;
-  text-shadow: 0 0 20px rgba(255,182,193,0.7);
+  text-shadow: 0 0 20px rgba(255,182,193,0.8);
 }
 
-.subtitle {
+.subtitle, .hint {
   margin-top: 10px;
-  font-size: 1.2rem;
-}
-
-.hint {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  opacity: 0.85;
 }
 
 button {
   margin-top: 30px;
   padding: 14px 40px;
-  font-size: 1rem;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(45deg, var(--rose), #ff6b81);
+  background: linear-gradient(45deg, var(--red), #ff6b81);
   color: white;
+  font-size: 1rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
 .glass {
@@ -76,7 +60,7 @@ button:hover {
   padding: 40px;
   width: 85%;
   max-width: 800px;
-  margin: 100px auto;
+  margin: 120px auto;
   text-align: center;
 }
 
@@ -94,48 +78,46 @@ button:hover {
 }
 
 .gallery img:hover {
-  transform: scale(1.12);
+  transform: scale(1.1);
 }
 
 .center {
   text-align: center;
 }
 
-#timer {
-  margin: 20px 0;
-  font-size: 1.4rem;
-}
-
-/* Floating hearts */
 .letters span {
   position: fixed;
-  bottom: -50px;
-  font-size: 1.8rem;
+  bottom: -40px;
+  font-size: 1.6rem;
   animation: floatUp linear infinite;
 }
 
 @keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-120vh); opacity: 0; }
+  to {
+    transform: translateY(-120vh);
+    opacity: 0;
+  }
 }
 
-/* Love reveal */
+.love-reveal {
+  display: none;
+}
+
 .love-reveal span {
   font-family: 'Playfair Display', serif;
   font-size: 4rem;
   margin: 0 10px;
   opacity: 0;
-  transform: translateY(40px);
   animation: reveal 0.8s forwards;
 }
 
-.love-reveal span:nth-child(1) { animation-delay: 0.2s; }
-.love-reveal span:nth-child(2) { animation-delay: 0.6s; }
-.love-reveal span:nth-child(3) { animation-delay: 1s; }
+.love-reveal span:nth-child(1) { animation-delay: 0.2s }
+.love-reveal span:nth-child(2) { animation-delay: 0.6s }
+.love-reveal span:nth-child(3) { animation-delay: 1s }
 
 @keyframes reveal {
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(-10px);
   }
 }

@@ -1,15 +1,28 @@
-let musicReady = false;
+const audio = document.getElementById("bgMusic");
 
-/* Start experience */
+/* Start music ONLY after click */
+function startMusicOnce() {
+  if (!localStorage.getItem("musicStarted")) {
+    audio.volume = 0.7;
+    audio.play().then(() => {
+      localStorage.setItem("musicStarted", "true");
+    }).catch(() => {});
+  }
+}
+
+/* Resume on next pages */
+window.addEventListener("load", () => {
+  if (localStorage.getItem("musicStarted")) {
+    audio.volume = 0.7;
+    audio.play().catch(() => {});
+  }
+});
+
 function startExperience() {
-  if (!musicReady) return;
-
-  const frame = document.getElementById("musicFrame");
-  frame.contentWindow.postMessage("playMusic", "*");
-
+  startMusicOnce();
   setTimeout(() => {
     window.location.href = "story.html";
-  }, 400);
+  }, 300);
 }
 
 function navigateTo(page) {
@@ -27,31 +40,29 @@ if (container) {
     s.style.left = Math.random() * 100 + "vw";
     s.style.animationDuration = 6 + Math.random() * 4 + "s";
     container.appendChild(s);
-    setTimeout(() => s.remove(), 10000);
-  }, 500);
+    setTimeout(() => s.remove(), 9000);
+  }, 600);
 }
 
 /* Countdown */
 const birthday = new Date("2025-03-20").getTime();
-
 setInterval(() => {
-  const timer = document.getElementById("timer");
-  if (!timer) return;
+  const t = document.getElementById("timer");
+  if (!t) return;
 
-  const diff = birthday - Date.now();
-  if (diff <= 0) {
-    timer.innerHTML = "🎉 Today is your day 🎉";
+  const d = birthday - Date.now();
+  if (d <= 0) {
+    t.innerHTML = "🎉 Today is your day 🎉";
     return;
   }
 
-  timer.innerHTML =
-    Math.floor(diff / 86400000) + "d " +
-    Math.floor((diff % 86400000) / 3600000) + "h " +
-    Math.floor((diff % 3600000) / 60000) + "m " +
-    Math.floor((diff % 60000) / 1000) + "s";
+  t.innerHTML =
+    Math.floor(d / 86400000) + "d " +
+    Math.floor((d % 86400000) / 3600000) + "h " +
+    Math.floor((d % 3600000) / 60000) + "m " +
+    Math.floor((d % 60000) / 1000) + "s";
 }, 1000);
 
-/* Love reveal */
 function revealLove() {
   document.getElementById("loveReveal").style.display = "block";
 }
