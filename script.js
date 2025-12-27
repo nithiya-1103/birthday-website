@@ -1,57 +1,46 @@
-// Countdown Timer
-const birthday = new Date("2025-03-20").getTime(); // CHANGE DATE
+const music = document.getElementById("bgMusic");
+const banner = document.getElementById("soundBanner");
 
+window.onload = () => {
+  if (music) {
+    music.play().catch(() => {
+      if (banner) banner.style.display = "block";
+    });
+  }
+};
+
+function enableSound() {
+  music.play();
+  banner.style.display = "none";
+}
+
+function go(page) {
+  window.location.href = page;
+}
+
+// Countdown
+const birthday = new Date("2025-03-20").getTime();
 setInterval(() => {
-    const now = new Date().getTime();
-    const diff = birthday - now;
+  const t = document.getElementById("timer");
+  if (!t) return;
 
-    if (diff < 0) {
-        document.getElementById("timer").innerHTML = "🎂 Happy Birthday My Love 🎉";
-        return;
-    }
+  const now = new Date().getTime();
+  const d = birthday - now;
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const minutes = Math.floor((diff / (1000 * 60)) % 60);
-    const seconds = Math.floor((diff / 1000) % 60);
+  if (d < 0) {
+    t.innerHTML = "🎂 Happy Birthday My Love 🎉";
+    return;
+  }
 
-    document.getElementById("timer").innerHTML =
-        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  const days = Math.floor(d / 86400000);
+  const hours = Math.floor((d % 86400000) / 3600000);
+  const mins = Math.floor((d % 3600000) / 60000);
+  const secs = Math.floor((d % 60000) / 1000);
+
+  t.innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
 }, 1000);
 
-// Play Music
-function playMusic() {
-    document.getElementById("bgMusic").play();
-    document.getElementById("musicPopup").style.display = "none";
-}
-
-// Surprise Message
 function showLove() {
-    document.getElementById("loveMessage").innerText =
-        "I fell for you slowly, then all at once 💖";
+  document.getElementById("loveMessage").innerText =
+    "I choose you. Always. Forever. 💖";
 }
-
-// Floating Hearts
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.innerHTML = "💖";
-    heart.style.position = "fixed";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.bottom = "0";
-    heart.style.fontSize = "24px";
-    heart.style.animation = "float 4s linear";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 4000);
-}, 600);
-
-// Heart Animation
-const style = document.createElement("style");
-style.innerHTML = `
-@keyframes float {
-    to {
-        transform: translateY(-100vh);
-        opacity: 0;
-    }
-}`;
-document.head.appendChild(style);
