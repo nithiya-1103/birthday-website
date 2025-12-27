@@ -4,64 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interactive Birthday ❤️</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
-
 <body>
 
-<!-- FIREWORKS CANVAS -->
 <canvas id="fireworks"></canvas>
-
-<!-- MUSIC -->
-<audio id="bgMusic" loop>
-  <source src="music/love.mp3" type="audio/mpeg">
-</audio>
-
-<!-- FLOATING HEARTS -->
+<audio id="bgMusic" loop><source src="music/love.mp3" type="audio/mpeg"></audio>
 <div class="letters"></div>
 
-<!-- HOME SECTION -->
 <section class="section" id="home">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
   <p class="hint">🎧 Tap to start the music</p>
-  <button onclick="startExperience()">Begin ❤️</button>
-</section>
-
-<!-- STORY SECTION -->
-<section class="section" id="story">
-  <h2>Our Story</h2>
-  <p>Every smile, every moment, every memory became my favorite chapter with you.</p>
-  <button onclick="showSection('gallery')">Next 💕</button>
-</section>
-
-<!-- GALLERY SECTION -->
-<section class="section" id="gallery">
-  <h2>Captured Moments</h2>
-  <div class="gallery">
-    <img src="images/img1.jpg" alt="Memory 1">
-    <img src="images/img2.jpg" alt="Memory 2">
-    <img src="images/img3.jpg" alt="Memory 3">
-  </div>
-  <button onclick="showSection('final')">Final ❤️</button>
-</section>
-
-<!-- FINAL SECTION -->
-<section class="section" id="final">
-  <h1 class="title">Happy Birthday ❤️</h1>
-  <div id="timer"></div>
-  <button onclick="revealLove()">Tap Gently 💖</button>
-  <div class="love-reveal" id="loveReveal">
-    <span>I</span>
-    <span>LOVE</span>
-    <span>YOU</span>
-  </div>
+  <button onclick="navigateTo('story.html')">Begin ❤️</button>
 </section>
 
 </body>
 </html>
-
-

@@ -3,30 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Memories</title>
-
+<title>Gallery</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
-
 <body>
-<audio id="bgMusic" loop>
-  <source src="music/love.mp3" type="audio/mpeg">
-</audio>
 
+<canvas id="fireworks"></canvas>
+<audio id="bgMusic" loop><source src="music/love.mp3" type="audio/mpeg"></audio>
 <div class="letters"></div>
 
-<h2 class="center">Captured Moments</h2>
-
-<div class="gallery">
-  <img src="images/img1.jpg">
-  <img src="images/img2.jpg">
-  <img src="images/img3.jpg">
-</div>
-
-<div class="center">
+<section class="glass">
+  <h2>Captured Moments</h2>
+  <div class="gallery">
+    <img src="images/img1.jpg">
+    <img src="images/img2.jpg">
+    <img src="images/img3.jpg">
+    <video src="videos/video1.mp4" controls></video>
+    <video src="videos/video2.mp4" controls></video>
+  </div>
   <button onclick="navigateTo('final.html')">Final ❤️</button>
-</div>
+</section>
+
 </body>
 </html>
+
