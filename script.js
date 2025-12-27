@@ -44,7 +44,7 @@ setInterval(()=>{
 /* ---------------- LOVE REVEAL ---------------- */
 function revealLove(){
   const loveDiv = document.getElementById("loveReveal");
-  loveDiv.classList.add("show");  // Add class to trigger fade-in
+  loveDiv.classList.add("show");
 }
 
 /* ---------------- FIREWORKS ---------------- */
@@ -81,10 +81,13 @@ class Particle{
 }
 
 function animate(){
-  ctx.fillStyle="rgba(0,0,0,0.1)";
+  // Love-themed background for fireworks (no black)
+  ctx.fillStyle = "rgba(255,240,243,0.1)";
   ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  if(Math.random()<0.05){ fireworks.push(new Firework(random(0,canvas.width),canvas.height,random(canvas.height/2,canvas.height/3))); }
+  if(Math.random()<0.05){ 
+    fireworks.push(new Firework(random(0,canvas.width),canvas.height,random(canvas.height/2,canvas.height/3))); 
+  }
 
   for(let f of fireworks){ f.update(); f.draw(); }
   fireworks = fireworks.filter(f=>!f.exploded);
