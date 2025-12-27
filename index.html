@@ -12,7 +12,7 @@
 
 <body>
 
-<!-- AUDIO -->
+<!-- MUSIC -->
 <audio id="bgMusic" loop>
   <source src="music/love.mp3" type="audio/mpeg">
 </audio>
@@ -24,22 +24,19 @@
 <section class="section" id="home">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
-  <p class="hint">🎧 Music will play after you tap</p>
+  <p class="hint">🎧 Tap to start the music</p>
   <button onclick="startExperience()">Begin ❤️</button>
 </section>
 
 <!-- STORY SECTION -->
-<section class="section" id="story" style="display:none;">
+<section class="section" id="story">
   <h2>Our Story</h2>
-  <p>
-    Every smile, every moment, every memory  
-    became my favorite chapter with you.
-  </p>
+  <p>Every smile, every moment, every memory became my favorite chapter with you.</p>
   <button onclick="showSection('gallery')">Next 💕</button>
 </section>
 
 <!-- GALLERY SECTION -->
-<section class="section" id="gallery" style="display:none;">
+<section class="section" id="gallery">
   <h2>Captured Moments</h2>
   <div class="gallery">
     <img src="images/img1.jpg" alt="Memory 1">
@@ -50,7 +47,7 @@
 </section>
 
 <!-- FINAL SECTION -->
-<section class="section" id="final" style="display:none;">
+<section class="section" id="final">
   <h1 class="title">Happy Birthday ❤️</h1>
   <div id="timer"></div>
   <button onclick="revealLove()">Tap Gently 💖</button>
@@ -63,3 +60,4 @@
 
 </body>
 </html>
+
