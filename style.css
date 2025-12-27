@@ -1,12 +1,13 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
 body {
-  background: linear-gradient(120deg, #ff9a9e, #fad0c4);
   min-height: 100vh;
+  background: linear-gradient(135deg, #ff416c, #ff4b2b, #ff9a9e);
   color: #fff;
   overflow-x: hidden;
 }
@@ -15,6 +16,7 @@ body {
   width: 0;
   height: 0;
   border: none;
+  position: fixed;
 }
 
 .hero {
@@ -26,68 +28,98 @@ body {
   text-align: center;
 }
 
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
 .glow {
   font-size: 3rem;
-  text-shadow: 0 0 15px pink;
+  text-shadow: 0 0 20px #ffb6c1, 0 0 40px #ff1e56;
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { text-shadow: 0 0 10px #ffb6c1; }
+  to { text-shadow: 0 0 30px #ff1e56; }
 }
 
 button {
-  padding: 12px 25px;
-  background: #ff4d6d;
+  margin-top: 25px;
+  padding: 14px 35px;
+  font-size: 1.1rem;
   border: none;
   border-radius: 30px;
+  background: linear-gradient(45deg, #ff1e56, #ff4d6d);
   color: white;
-  font-size: 1rem;
   cursor: pointer;
-  margin-top: 20px;
-  transition: 0.3s;
+  transition: 0.4s;
 }
 
 button:hover {
-  transform: scale(1.1);
-  background: #ff1e56;
+  transform: scale(1.15);
 }
 
 .glass {
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(10px);
+  background: rgba(255,182,193,0.25);
+  backdrop-filter: blur(12px);
   padding: 40px;
-  border-radius: 20px;
-  width: 80%;
+  border-radius: 25px;
+  width: 85%;
   margin: 100px auto;
   text-align: center;
 }
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap: 20px;
-  padding: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 25px;
+  padding: 40px;
 }
 
 .gallery img {
   width: 100%;
-  border-radius: 15px;
-  transition: 0.4s;
+  border-radius: 20px;
+  transition: 0.5s;
 }
 
 .gallery img:hover {
-  transform: scale(1.1);
+  transform: scale(1.15) rotate(2deg);
 }
 
 .center {
   text-align: center;
 }
 
-input, textarea {
-  width: 80%;
-  padding: 12px;
-  margin: 10px;
-  border-radius: 10px;
-  border: none;
+#timer {
+  font-size: 1.7rem;
+  margin: 20px 0;
 }
 
-#timer {
-  font-size: 1.5rem;
-  margin-top: 20px;
+/* FLOATING LOVE LETTERS */
+.letters span {
+  position: fixed;
+  bottom: -50px;
+  font-size: 2rem;
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* I LOVE YOU ANIMATION */
+.love-animate {
+  font-size: 4rem;
+  margin-top: 30px;
+  opacity: 0;
+  transform: scale(0);
+  transition: 1s;
+  text-shadow: 0 0 30px pink;
+}
+
+.love-animate.show {
+  opacity: 1;
+  transform: scale(1.2);
 }

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <body>
-<audio id="bgm" autoplay loop>
+<audio id="bgMusic" loop>
   <source src="music/love.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-const audio = document.getElementById("bgm");
-audio.volume = 0.6;
-audio.play().catch(()=>{});
+window.addEventListener("message", e => {
+  if (e.data === "playMusic") {
+    document.getElementById("bgMusic").play();
+  }
+});
 </script>
 </body>
 </html>
