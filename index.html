@@ -2,50 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Happy Birthday My Doctor ❤️</title>
+    <title>Happy Birthday My Love ❤️</title>
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 <body>
 
+<!-- Music Popup -->
+<div id="musicPopup" class="popup">
+    <p>🎶 Play our song?</p>
+    <button onclick="playMusic()">Play ❤️</button>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="music/love-song.mp3" type="audio/mpeg">
+</audio>
+
 <header class="hero">
-    <h1>🎉 Happy Birthday Dr. ❤️</h1>
-    <p>To my favorite MBBS student & future lifesaver</p>
+    <h1>Happy Birthday My Love ❤️</h1>
+    <p>You are my favorite feeling, always 💕</p>
 </header>
 
 <section class="countdown">
-    <h2>⏳ Countdown to Your Birthday</h2>
+    <h2>⏳ Countdown to Your Special Day</h2>
     <div id="timer"></div>
 </section>
 
-<section class="about">
-    <h2>🩺 About Him</h2>
+<section class="love-note">
+    <h2>💌 A Note From My Heart</h2>
     <p>
-        You are not just an MBBS student, but a person with dedication,
-        kindness, and endless passion for healing lives.
-        Watching you chase your dream of becoming a doctor makes me
-        incredibly proud every single day 💙
+        Every moment with you feels magical.
+        You make my world brighter just by being in it.
+        Loving you is my favorite thing to do ❤️
     </p>
 </section>
 
-<section class="wishes">
-    <h2>💌 Birthday Wishes</h2>
-    <div class="wish-card">“Happy Birthday to the future doctor who heals hearts too!”</div>
-    <div class="wish-card">“Your hard work will save lives someday. Proud of you!”</div>
-</section>
-
-<section class="gifts">
-    <h2>🎁 Gift Ideas</h2>
-    <ul>
-        <li>🩺 Premium Stethoscope</li>
-        <li>📘 Medical Reference Books</li>
-        <li>📒 Personalized Planner</li>
-        <li>☕ Coffee Mug – “Future Doctor”</li>
-    </ul>
-</section>
-
 <section class="gallery">
-    <h2>📸 Our Memories</h2>
+    <h2>📸 Our Beautiful Memories</h2>
     <div class="gallery-grid">
         <img src="images/photo1.jpg">
         <img src="images/photo2.jpg">
@@ -53,17 +46,21 @@
     </div>
 </section>
 
-<section class="contact">
-    <h2>📬 Send a Message</h2>
-    <form>
-        <input type="text" placeholder="Your Name" required>
-        <textarea placeholder="Your Birthday Message" required></textarea>
-        <button type="submit">Send ❤️</button>
-    </form>
+<section class="surprise">
+    <h2>🎁 A Surprise For You</h2>
+    <button onclick="showLove()">Click Me 💖</button>
+    <p id="loveMessage"></p>
+</section>
+
+<section class="wishes">
+    <h2>💞 Birthday Wishes</h2>
+    <div class="wish-card">You are my today and all my tomorrows ❤️</div>
+    <div class="wish-card">Every heartbeat of mine whispers your name 💕</div>
+    <div class="wish-card">Happy Birthday to the love of my life 💘</div>
 </section>
 
 <footer>
-    <p>Made with ❤️ for my favorite Doctor</p>
+    <p>Made with endless love 💖</p>
 </footer>
 
 </body>
