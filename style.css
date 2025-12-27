@@ -2,7 +2,6 @@
   --primary-red: #e63946;
   --soft-pink: #ff8fab;
   --light-pink: #ffc1cc;
-  --cream: #fff0f3;
   --heart-red: #ff1e56;
   --white-accent: #fff5f7;
 }
@@ -12,9 +11,9 @@
 body {
   font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, var(--primary-red), var(--soft-pink), var(--light-pink));
-  color: var(--white-accent);
   overflow: hidden;
   position: relative;
+  color: var(--heart-red);
 }
 
 /* FIREWORKS CANVAS */
@@ -40,18 +39,21 @@ body {
   position: relative;
 }
 
+/* Titles */
 .title { 
   font-family:'Playfair Display', serif; 
   font-size:3rem; 
-  text-shadow: 0 0 20px var(--heart-red), 0 0 30px var(--soft-pink);
-  color: var(--white-accent);
+  color: var(--heart-red);
+  text-shadow: 0 0 10px var(--soft-pink), 0 0 25px var(--primary-red);
   margin-bottom:15px; 
 }
 
+/* Subtitles / hints */
 .subtitle, .hint { 
   font-size:1.2rem; 
   margin-bottom:20px; 
-  color: var(--white-accent);
+  color: var(--heart-red);
+  text-shadow: 0 0 5px var(--soft-pink);
 }
 
 /* Buttons */
@@ -114,14 +116,14 @@ button:hover {
   font-size:4rem;
   margin:0 10px;
   color: var(--heart-red);
-  text-shadow: 0 0 15px var(--soft-pink), 0 0 30px var(--primary-red);
+  text-shadow: 0 0 20px var(--soft-pink), 0 0 40px var(--primary-red);
 }
 
-/* Countdown */
+/* Countdown Timer */
 #timer { 
   margin-top:20px; 
   font-size:1.4rem; 
   font-weight:600; 
-  color: var(--white-accent);
-  text-shadow: 0 0 10px var(--heart-red);
+  color: var(--heart-red);
+  text-shadow: 0 0 10px var(--soft-pink);
 }
