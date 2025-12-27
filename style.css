@@ -1,60 +1,23 @@
-:root {
-  --red: #e63946;
-  --pink: #ff8fab;
-  --soft: #fff0f3;
-}
-
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Body with animated gradient */
 body {
-  min-height: 100vh;
+  margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #b11226, var(--red), var(--pink));
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
+  background: linear-gradient(135deg,#b11226,var(--red),var(--pink));
   color: var(--soft);
   overflow-x: hidden;
-  position: relative;
+  line-height: 1.6;
 }
 
-@keyframes gradientShift {
-  0% {background-position:0% 50%;}
-  50% {background-position:100% 50%;}
-  100% {background-position:0% 50%;}
-}
-
-/* Hero Section */
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-/* Title */
 .title {
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   font-weight: 700;
   text-shadow: 0 0 25px rgba(255,182,193,0.9);
   letter-spacing: 2px;
-  margin-bottom: 15px;
 }
 
-/* Subtitle and hint in cursive */
-.subtitle, .hint {
-  font-family: 'Dancing Script', cursive;
-  font-size: 1.6rem;
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
   font-weight: 400;
   color: #ffe6ea;
   letter-spacing: 1px;
@@ -62,59 +25,28 @@ body {
   text-shadow: 0 0 10px rgba(255,182,193,0.7);
 }
 
-/* Button */
+.hint {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #ffd1dc;
+  margin-top: 10px;
+}
+
 button {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   letter-spacing: 1px;
   margin-top: 30px;
-  padding: 16px 45px;
+  padding: 14px 40px;
   border: none;
-  border-radius: 40px;
+  border-radius: 30px;
   background: linear-gradient(45deg, var(--red), #ff6b81);
   color: white;
   cursor: pointer;
   transition: 0.3s;
-  text-shadow: 0 0 8px rgba(255,255,255,0.9);
-  position: relative;
-  z-index: 2;
-}
-
-button::after {
-  content: "⬇️";
-  display: block;
-  font-size: 1.2rem;
-  margin-top: 8px;
-  animation: bounce 1s infinite alternate;
-}
-
-@keyframes bounce {
-  0% {transform: translateY(0);}
-  100% {transform: translateY(8px);}
-}
-
-button:hover {
-  transform: scale(1.1);
-}
-
-/* Floating hearts & petals */
-.letters span {
-  position: fixed;
-  bottom: -40px;
-  font-size: 1.5rem;
-  animation: floatUp linear infinite;
-  opacity: 0.8;
-}
-
-@keyframes floatUp {
-  0% {transform: translateY(0) rotate(0deg);}
-  100% {transform: translateY(-120vh) rotate(360deg); opacity: 0;}
-}
-
-/* Love Reveal (if needed) */
-.love-reveal {
-  display: none;
+  text-shadow: 0 0 5px rgba(255,255,255,0.8);
 }
 
 .love-reveal span {
