@@ -4,25 +4,25 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script defer src="script.js"></script>
 </head>
-
 <body>
-<audio id="bgMusic" loop>
-  <source src="music/love.mp3" type="audio/mpeg">
-</audio>
 
+<!-- Hidden iframe to play music continuously -->
+<iframe src="music.html" style="display:none;"></iframe>
+
+<!-- Floating hearts container -->
 <div class="letters"></div>
 
+<!-- Hero Section -->
 <section class="hero">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
-  <p class="hint">🎧 Music will play after you tap</p>
-
-  <button onclick="startExperience()">Begin ❤️</button>
+  <p class="hint">🎧 Music is already playing</p>
+  <button onclick="navigateTo('story.html')">Begin ❤️</button>
 </section>
+
 </body>
 </html>

@@ -51,38 +51,7 @@ button {
 
 button:hover {
   transform: scale(1.1);
-}
-
-.glass {
-  background: rgba(255,255,255,0.2);
-  backdrop-filter: blur(12px);
-  border-radius: 25px;
-  padding: 40px;
-  width: 85%;
-  max-width: 800px;
-  margin: 120px auto;
-  text-align: center;
-}
-
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 25px;
-  padding: 40px;
-}
-
-.gallery img {
-  width: 100%;
-  border-radius: 20px;
-  transition: 0.4s;
-}
-
-.gallery img:hover {
-  transform: scale(1.1);
-}
-
-.center {
-  text-align: center;
+  box-shadow: 0 10px 20px rgba(255, 100, 140, 0.4);
 }
 
 .letters span {
@@ -93,10 +62,8 @@ button:hover {
 }
 
 @keyframes floatUp {
-  to {
-    transform: translateY(-120vh);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
 }
 
 .love-reveal {
