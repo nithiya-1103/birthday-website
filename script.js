@@ -69,50 +69,68 @@ function revealLove(){
   document.getElementById("loveReveal").style.display = "block";
 }
 
+
 /* =========================
    MEMORY WALL SLIDESHOW
 ========================= */
 
 const memoryGrid = document.getElementById("memoryGrid");
-const memoryCards = Array.from(memoryGrid.children);
+const allCards = Array.from(memoryGrid.children);
 
-let memIndex = 0;
-const VISIBLE_COUNT = 8;
+const imageCards = allCards.filter(c => c.querySelector("img"));
+const videoCards = allCards.filter(c => c.querySelector("video"));
+
+let imgIndex = 0;
+let vidIndex = 0;
 let memoryTimer = null;
 
-/* Shuffle memories once */
+const VISIBLE_COUNT = 8;
+
+/* Shuffle helper */
 function shuffle(arr){
   for(let i = arr.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
 }
-shuffle(memoryCards);
 
-/* Start slideshow safely */
+shuffle(imageCards);
+shuffle(videoCards);
+
 function startMemorySlideshow(){
   if(memoryTimer) return;
   updateMemoryWall();
   memoryTimer = setInterval(updateMemoryWall, 6000);
 }
 
-/* Update grid */
 function updateMemoryWall(){
   memoryGrid.innerHTML = "";
 
-  for(let i = 0; i < VISIBLE_COUNT; i++){
-    const card = memoryCards[(memIndex + i) % memoryCards.length];
+  let placed = 0;
 
-    // Reset & autoplay videos
-    const video = card.querySelector("video");
-    if(video){
-      video.currentTime = 0;
-      video.muted = true;
-      video.play().catch(()=>{});
+  while(placed < VISIBLE_COUNT){
+    /* 2 IMAGES */
+    for(let i = 0; i < 2 && placed < VISIBLE_COUNT; i++){
+      const imgCard = imageCards[imgIndex % imageCards.length];
+      memoryGrid.appendChild(imgCard);
+      imgIndex++;
+      placed++;
     }
 
-    memoryGrid.appendChild(card);
-  }
+    /* 1 VIDEO */
+    if(placed < VISIBLE_COUNT && videoCards.length){
+      const vidCard = videoCards[vidIndex % videoCards.length];
+      const video = vidCard.querySelector("video");
 
-  memIndex = (memIndex + VISIBLE_COUNT) % memoryCards.length;
+      if(video){
+        video.currentTime = 0;
+        video.muted = true;
+        video.play().catch(()=>{});
+      }
+
+      memoryGrid.appendChild(vidCard);
+      vidIndex++;
+      placed++;
+    }
+  }
 }
