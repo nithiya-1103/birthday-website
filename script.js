@@ -1,41 +1,49 @@
 const audio = document.getElementById("bgMusic");
 
-/* Play music after first click (required by browsers) */
+/* =========================
+   START EXPERIENCE
+========================= */
 function startExperience(nextSection){
   if(!audio.src){
     audio.src = "music/love.mp3";
     audio.volume = 0.7;
-    audio.play().catch(()=>{}); // ignore autoplay errors
+    audio.play().catch(()=>{});
   }
   showSection(nextSection);
 }
 
-/* Show section */
+/* =========================
+   SECTION CONTROL
+========================= */
 function showSection(id){
-  document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
 
-  // Start slideshow only when gallery opens
   if(id === "gallery"){
-    startSlideshow();
+    startMemorySlideshow();
   }
 }
 
-/* Floating hearts */
+/* =========================
+   FLOATING HEARTS
+========================= */
 const symbols = ["❤️","💖","💕","💘"];
 const container = document.querySelector(".letters");
 
 setInterval(()=>{
   const s = document.createElement("span");
   s.innerText = symbols[Math.floor(Math.random()*symbols.length)];
-  s.style.left = Math.random()*100 + "vw";
+  s.style.left = Math.random() * 100 + "vw";
   s.style.animationDuration = 6 + Math.random()*4 + "s";
   container.appendChild(s);
-  setTimeout(()=>s.remove(),9000);
-},600);
+  setTimeout(()=>s.remove(), 9000);
+}, 600);
 
-/* Countdown */
+/* =========================
+   COUNTDOWN TIMER
+========================= */
 const birthday = new Date("2025-03-20").getTime();
+
 setInterval(()=>{
   const t = document.getElementById("timer");
   if(!t) return;
@@ -48,51 +56,63 @@ setInterval(()=>{
 
   const pad = n => n.toString().padStart(2,"0");
   t.innerHTML =
-    Math.floor(d / 86400000) + "d " +
-    pad(Math.floor((d % 86400000) / 3600000)) + "h " +
-    pad(Math.floor((d % 3600000) / 60000)) + "m " +
-    pad(Math.floor((d % 60000) / 1000)) + "s";
-},1000);
+    Math.floor(d/86400000) + "d " +
+    pad(Math.floor((d%86400000)/3600000)) + "h " +
+    pad(Math.floor((d%3600000)/60000)) + "m " +
+    pad(Math.floor((d%60000)/1000)) + "s";
+}, 1000);
 
-/* Reveal love */
+/* =========================
+   LOVE REVEAL
+========================= */
 function revealLove(){
   document.getElementById("loveReveal").style.display = "block";
 }
 
 /* =========================
-   MEMORY SLIDESHOW
+   MEMORY WALL SLIDESHOW
 ========================= */
 
-let slideIndex = 0;
-let slideshowTimer = null;
+const memoryGrid = document.getElementById("memoryGrid");
+const memoryCards = Array.from(memoryGrid.children);
 
-function startSlideshow(){
-  const slides = document.querySelectorAll(".slide");
-  if(!slides.length) return;
+let memIndex = 0;
+const VISIBLE_COUNT = 8;
+let memoryTimer = null;
 
-  // Prevent multiple timers
-  if(slideshowTimer) clearTimeout(slideshowTimer);
+/* Shuffle memories once */
+function shuffle(arr){
+  for(let i = arr.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+shuffle(memoryCards);
 
-  slides.forEach(slide => slide.style.display = "none");
+/* Start slideshow safely */
+function startMemorySlideshow(){
+  if(memoryTimer) return;
+  updateMemoryWall();
+  memoryTimer = setInterval(updateMemoryWall, 6000);
+}
 
-  slideIndex++;
-  if(slideIndex > slides.length) slideIndex = 1;
+/* Update grid */
+function updateMemoryWall(){
+  memoryGrid.innerHTML = "";
 
-  const currentSlide = slides[slideIndex - 1];
-  currentSlide.style.display = "block";
+  for(let i = 0; i < VISIBLE_COUNT; i++){
+    const card = memoryCards[(memIndex + i) % memoryCards.length];
 
-  // Pause all videos
-  slides.forEach(slide => {
-    const v = slide.querySelector("video");
-    if(v) v.pause();
-  });
+    // Reset & autoplay videos
+    const video = card.querySelector("video");
+    if(video){
+      video.currentTime = 0;
+      video.muted = true;
+      video.play().catch(()=>{});
+    }
 
-  // Play video if current slide has one
-  const video = currentSlide.querySelector("video");
-  if(video){
-    video.currentTime = 0;
-    video.play().catch(()=>{});
+    memoryGrid.appendChild(card);
   }
 
-  slideshowTimer = setTimeout(startSlideshow, 4000); // 4 seconds per memory
+  memIndex = (memIndex + VISIBLE_COUNT) % memoryCards.length;
 }
