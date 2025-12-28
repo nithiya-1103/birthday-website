@@ -185,3 +185,35 @@ button:hover {
   color: #fff0f3;
   text-shadow: 0 0 20px rgba(255,182,193,0.9);
 }
+/* Slideshow */
+.slideshow {
+  max-width: 850px;
+  margin: 40px auto;
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(255,182,193,0.4);
+}
+
+.slide {
+  display: none;
+  width: 100%;
+}
+
+.slide img,
+.slide video {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+/* Fade animation */
+.fade {
+  animation: fadeEffect 1.2s ease;
+}
+
+@keyframes fadeEffect {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
