@@ -3,7 +3,7 @@ const memoryGrid = document.getElementById("memoryGrid");
 const allCards = Array.from(memoryGrid.children);
 
 let memoryTimer = null;
-const VISIBLE_COUNT = 16; // 16 cards for desktop
+let VISIBLE_COUNT = 16; // default desktop
 
 /* Start music once */
 function startExperience(nextSection){
@@ -101,3 +101,21 @@ function updateMemoryWall(){
     memoryGrid.appendChild(card);
   }
 }
+
+/* Responsive: adjust VISIBLE_COUNT based on screen */
+function updateVisibleCount(){
+  if(window.innerWidth <= 600){
+    VISIBLE_COUNT = 16; // 1x16 mobile
+  } else if(window.innerWidth <= 1024){
+    VISIBLE_COUNT = 16; // 2x8 tablet
+  } else {
+    VISIBLE_COUNT = 16; // 4x4 desktop
+  }
+}
+
+window.addEventListener("resize", ()=>{
+  updateVisibleCount();
+  updateMemoryWall();
+});
+
+updateVisibleCount();
