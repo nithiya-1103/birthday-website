@@ -1,8 +1,11 @@
 const audio = document.getElementById("bgMusic");
+const memoryGrid = document.getElementById("memoryGrid");
+const allCards = Array.from(memoryGrid.children);
 
-/* =========================
-   START EXPERIENCE
-========================= */
+let memoryTimer = null;
+const VISIBLE_COUNT = 16; // 16 cards for desktop
+
+/* Start music once */
 function startExperience(nextSection){
   if(!audio.src){
     audio.src = "music/love.mp3";
@@ -12,9 +15,7 @@ function startExperience(nextSection){
   showSection(nextSection);
 }
 
-/* =========================
-   SECTION CONTROL
-========================= */
+/* Section control */
 function showSection(id){
   document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
   document.getElementById(id).classList.add("active");
@@ -24,12 +25,9 @@ function showSection(id){
   }
 }
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* Floating hearts */
 const symbols = ["❤️","💖","💕","💘"];
 const container = document.querySelector(".letters");
-
 setInterval(()=>{
   const s = document.createElement("span");
   s.innerText = symbols[Math.floor(Math.random()*symbols.length)];
@@ -39,11 +37,8 @@ setInterval(()=>{
   setTimeout(()=>s.remove(), 9000);
 }, 600);
 
-/* =========================
-   COUNTDOWN TIMER
-========================= */
+/* Countdown timer */
 const birthday = new Date("2025-03-20").getTime();
-
 setInterval(()=>{
   const t = document.getElementById("timer");
   if(!t) return;
@@ -62,31 +57,15 @@ setInterval(()=>{
     pad(Math.floor((d%60000)/1000)) + "s";
 }, 1000);
 
-/* =========================
-   LOVE REVEAL
-========================= */
+/* Love reveal */
 function revealLove(){
   document.getElementById("loveReveal").style.display = "block";
 }
 
-
-/* =========================
-   MEMORY WALL SLIDESHOW
-========================= */
-
-const memoryGrid = document.getElementById("memoryGrid");
-const allCards = Array.from(memoryGrid.children);
-
+/* Memory wall slideshow */
 const imageCards = allCards.filter(c => c.querySelector("img"));
 const videoCards = allCards.filter(c => c.querySelector("video"));
 
-let imgIndex = 0;
-let vidIndex = 0;
-let memoryTimer = null;
-
-const VISIBLE_COUNT = 8;
-
-/* Shuffle helper */
 function shuffle(arr){
   for(let i = arr.length - 1; i > 0; i--){
     const j = Math.floor(Math.random() * (i + 1));
@@ -106,31 +85,19 @@ function startMemorySlideshow(){
 function updateMemoryWall(){
   memoryGrid.innerHTML = "";
 
-  let placed = 0;
+  const combined = [...imageCards, ...videoCards];
+  shuffle(combined);
 
-  while(placed < VISIBLE_COUNT){
-    /* 2 IMAGES */
-    for(let i = 0; i < 2 && placed < VISIBLE_COUNT; i++){
-      const imgCard = imageCards[imgIndex % imageCards.length];
-      memoryGrid.appendChild(imgCard);
-      imgIndex++;
-      placed++;
+  for(let i = 0; i < VISIBLE_COUNT; i++){
+    const card = combined[i % combined.length];
+
+    const video = card.querySelector("video");
+    if(video){
+      video.currentTime = 0;
+      video.muted = true;
+      video.play().catch(()=>{});
     }
 
-    /* 1 VIDEO */
-    if(placed < VISIBLE_COUNT && videoCards.length){
-      const vidCard = videoCards[vidIndex % videoCards.length];
-      const video = vidCard.querySelector("video");
-
-      if(video){
-        video.currentTime = 0;
-        video.muted = true;
-        video.play().catch(()=>{});
-      }
-
-      memoryGrid.appendChild(vidCard);
-      vidIndex++;
-      placed++;
-    }
+    memoryGrid.appendChild(card);
   }
 }
