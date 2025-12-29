@@ -14,28 +14,37 @@
 /* ================= BODY ================= */
 body{
   font-family:'Poppins',sans-serif;
-  background:linear-gradient(135deg,#b11226,var(--red),var(--pink));
+  min-height:100vh;
+  background:linear-gradient(135deg,#b11226,#e63946,#ff8fab);
   color:var(--soft);
-  overflow-x:hidden;
-  overflow-y:hidden; /* prevent empty scroll */
+  overflow:hidden;
+  position:relative;
+}
+
+/* Optional smooth gradient layer */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,#b11226,#e63946,#ff8fab);
+  z-index:-1;
 }
 
 /* ================= SECTIONS ================= */
-/* IMPORTANT: sections are VISIBLE by default */
 .section{
-  min-height:85vh;
+  min-height:100vh;            /* exactly viewport height */
   padding:28px;
   text-align:center;
 
-  display:flex;                 /* ⭐ SHOW CONTENT */
+  display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
 
+  background:transparent;       /* important */
   opacity:1;
 }
 
-/* JS can still switch sections */
 .section:not(.active){
   display:none;
 }
@@ -59,7 +68,6 @@ body{
   letter-spacing:.5px;
 }
 
-/* Decorative line */
 .subtitle::after{
   content:"";
   display:block;
@@ -88,20 +96,16 @@ button:hover{
 }
 
 /* ================= GALLERY ================= */
-.section.glass{
-  gap:18px;
-}
-
 .memory-frame-grid{
   max-width:880px;
   width:100%;
-  height:52vh;                     /* ⭐ medium size */
+  height:52vh;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   grid-template-rows:repeat(3,1fr);
   gap:14px;
   padding:14px;
-  background:linear-gradient(135deg,#ffb3c6,#ff8fab);
+  background:transparent;       /* removed double split */
   border-radius:22px;
   box-shadow:0 0 35px rgba(255,182,193,.4);
 }
@@ -156,6 +160,13 @@ button:hover{
   text-shadow:0 0 15px rgba(255,182,193,.9);
 }
 
+/* ================= FINAL PAGE OVERRIDE ================= */
+#final,
+#final.section,
+#final.glass{
+  background:transparent !important;
+}
+
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
   .title{
@@ -172,4 +183,5 @@ button:hover{
     height:60vh;
   }
 }
+
 
