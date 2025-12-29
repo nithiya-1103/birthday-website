@@ -4,54 +4,75 @@
   --soft:#fff0f3;
 }
 
-/* RESET */
+/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
-/* BODY – NO EMPTY SCROLL */
+/* ================= BODY ================= */
 body{
   font-family:'Poppins',sans-serif;
   background:linear-gradient(135deg,#b11226,var(--red),var(--pink));
   color:var(--soft);
-  overflow-x:hidden;
-  overflow-y:hidden; /* ⭐ prevents empty scrolling */
+  overflow:hidden; /* no empty scroll */
 }
 
 /* ================= SECTIONS ================= */
 .section{
-  min-height:85vh;           /* ⭐ flexible, not forced */
+  min-height:85vh;
   padding:28px;
   text-align:center;
+
+  /* CENTER CONTENT PROPERLY */
   display:none;
   opacity:0;
   transition:opacity .5s ease;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
 }
 
 .section.active{
-  display:block;
+  display:flex;
   opacity:1;
-  overflow-y:auto;           /* ⭐ scroll only if needed */
 }
 
 /* ================= TITLES ================= */
 .title{
   font-family:'Playfair Display',serif;
-  font-size:2.6rem;
-  text-shadow:0 0 18px rgba(255,182,193,.8);
+  font-size:3.2rem;
+  font-weight:600;
+  letter-spacing:1px;
+  margin-bottom:10px;
+  text-shadow:
+    0 0 10px rgba(255,182,193,.9),
+    0 0 25px rgba(255,105,135,.7);
 }
 
 .subtitle{
-  font-size:1.25rem;
-  margin-top:8px;
+  font-size:1.35rem;
+  color:#ffe6ec;
+  letter-spacing:.5px;
+}
+
+.subtitle::after{
+  content:"";
+  display:block;
+  width:80px;
+  height:3px;
+  margin:14px auto 0;
+  background:linear-gradient(to right,#ff8fab,#fff0f3);
+  border-radius:10px;
 }
 
 /* ================= BUTTONS ================= */
 button{
-  margin-top:20px;
-  padding:12px 34px;
+  margin-top:24px;
+  padding:12px 36px;
   border:none;
   border-radius:30px;
   background:linear-gradient(45deg,var(--red),#ff6b81);
@@ -67,15 +88,12 @@ button:hover{
 
 /* ================= GALLERY ================= */
 .section.glass{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:16px;
+  gap:18px;
 }
 
 .memory-frame-grid{
   max-width:880px;
-  height:52vh;               /* ⭐ medium size */
+  height:52vh;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   grid-template-rows:repeat(3,1fr);
@@ -112,7 +130,6 @@ button:hover{
   animation:floatUp linear infinite;
 }
 
-/* ⭐ NO SCROLL-CAUSING ANIMATION */
 @keyframes floatUp{
   from{
     transform:translateY(0);
@@ -149,6 +166,10 @@ button:hover{
   }
 
   .title{
-    font-size:2.2rem;
+    font-size:2.4rem;
+  }
+
+  .subtitle{
+    font-size:1.15rem;
   }
 }
