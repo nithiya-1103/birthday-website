@@ -3,33 +3,30 @@ const container = document.querySelector(".letters");
 const hearts = ["❤️","💖","💕","💘"];
 
 /* ================= CAKE PAGE ================= */
-/* ================= CAKE PAGE ================= */
 const lightCandleBtn = document.getElementById("lightCandleBtn");
 const flame = document.getElementById("flame");
 const nextPageBtn = document.getElementById("nextPageBtn");
 const cakePage = document.getElementById("cakePage");
 const homePage = document.getElementById("home");
 
-/* Light candle and start music */
 lightCandleBtn.addEventListener("click", ()=>{
-  flame.style.display = "block";                // show flame
-  document.getElementById("candle").classList.add("lit"); // optional glow effect
-
-  if(!audio.src){                               // play music if not already playing
-    audio.src = "music/love.mp3";
-    audio.volume = 0.7;
-    audio.play().catch(()=>{});                 // catch autoplay errors
-  }
+  flame.style.display = "block";
+  document.getElementById("candle").classList.add("lit");
 });
 
+nextPageBtn.addEventListener("click", ()=>{
+  cakePage.classList.remove("active");
+  homePage.classList.add("active");
 
-/* ================= MUSIC ================= */
-function startExperience(next){
   if(!audio.src){
     audio.src = "music/love.mp3";
     audio.volume = 0.7;
     audio.play().catch(()=>{});
   }
+});
+
+/* ================= MUSIC CONTROL ================= */
+function startExperience(next){
   showSection(next);
 }
 
@@ -64,7 +61,7 @@ setInterval(()=>{
   t.innerHTML = Math.floor(d/86400000)+"d "+ pad(Math.floor((d%86400000)/3600000))+"h "+ pad(Math.floor((d%3600000)/60000))+"m "+ pad(Math.floor((d%60000)/1000))+"s";
 },1000);
 
-/* ================= LOVE REVEAL (Typewriter Effect) ================= */
+/* ================= LOVE REVEAL (Typewriter) ================= */
 function revealLove(){
   const text = "I LOVE YOU";
   const container = document.getElementById("loveReveal");
