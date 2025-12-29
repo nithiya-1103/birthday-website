@@ -112,7 +112,7 @@ body::before{
   to{ text-shadow:0 0 25px rgba(255,182,193,1),0 0 55px rgba(255,105,135,.9);}
 }
 .subtitle {
-  font-size: 1.8rem; /* increased from 1.4rem */
+  font-size: 2 rem; /* increased from 1.4rem */
   color: #ffe6ec;
   margin-top: 6px;
   letter-spacing: 0.5px;
