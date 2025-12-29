@@ -63,7 +63,7 @@ body::before{
   to{ text-shadow:0 0 25px rgba(255,182,193,1),0 0 55px rgba(255,105,135,.9);}
 }
 .subtitle{
-  font-size:2rem; /* increased */
+  font-size:2rem;
   color:#ffe6ec;
   margin-top:6px;
   letter-spacing:.5px;
@@ -106,10 +106,9 @@ button:hover{
 .memory-frame-grid{
   max-width:900px;
   width:100%;
-  height:55vh;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  grid-template-rows:repeat(3,1fr);
+  grid-auto-rows:180px;
   gap:14px;
   padding:14px;
   background: rgba(255,255,255,0.05);
@@ -255,11 +254,19 @@ button:hover{
 @media(max-width:768px){
   .title{ font-size:2.6rem; }
   .subtitle{ font-size:1.6rem; }
+
+  /* Mobile gallery */
   .memory-frame-grid{
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:auto;
-    height:auto;
+    grid-template-columns: 1fr; /* single column */
+    grid-auto-rows: 200px;     /* uniform height */
+    max-height: 70vh;
+    overflow-y: auto;
   }
+  .memory-card img, .memory-card video{
+    height:100%;
+    object-fit:cover;
+  }
+
   .cake{ width:140px; height:140px; }
   .layers{ height:45px; }
   .frosting.top{ height:22px; top:-10px; }
