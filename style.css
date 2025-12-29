@@ -1,6 +1,5 @@
 :root{
-  --red1:#b11226;
-  --red2:#e63946;
+  --red:#e63946;
   --pink:#ff8fab;
   --soft:#fff0f3;
 }
@@ -12,100 +11,144 @@
   box-sizing:border-box;
 }
 
-/* BODY */
+/* BODY – NO EMPTY SCROLL */
 body{
   font-family:'Poppins',sans-serif;
-  height:100vh;
-  background:linear-gradient(135deg,var(--red1),var(--red2),var(--pink));
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  background:linear-gradient(135deg,#b11226,var(--red),var(--pink));
+  color:var(--soft);
+  overflow-x:hidden;
+  overflow-y:hidden; /* ⭐ prevents empty scrolling */
 }
 
-/* ================= MAIN CONTAINER ================= */
+/* ================= SECTIONS ================= */
 .section{
+  min-height:85vh;           /* ⭐ flexible, not forced */
+  padding:28px;
+  text-align:center;
+  display:none;
+  opacity:0;
+  transition:opacity .5s ease;
+}
+
+.section.active{
+  display:block;
+  opacity:1;
+  overflow-y:auto;           /* ⭐ scroll only if needed */
+}
+
+/* ================= TITLES ================= */
+.title{
+  font-family:'Playfair Display',serif;
+  font-size:2.6rem;
+  text-shadow:0 0 18px rgba(255,182,193,.8);
+}
+
+.subtitle{
+  font-size:1.25rem;
+  margin-top:8px;
+}
+
+/* ================= BUTTONS ================= */
+button{
+  margin-top:20px;
+  padding:12px 34px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(45deg,var(--red),#ff6b81);
+  color:#fff;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  transform:scale(1.06);
+}
+
+/* ================= GALLERY ================= */
+.section.glass{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+.memory-frame-grid{
+  max-width:880px;
+  height:52vh;               /* ⭐ medium size */
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-template-rows:repeat(3,1fr);
+  gap:14px;
+  padding:14px;
+  background:linear-gradient(135deg,#ffb3c6,#ff8fab);
+  border-radius:22px;
+  box-shadow:0 0 35px rgba(255,182,193,.4);
+}
+
+.memory-card{
+  border-radius:14px;
+  overflow:hidden;
+  transition:transform .3s;
+}
+
+.memory-card:hover{
+  transform:scale(1.04);
+}
+
+.memory-card img,
+.memory-card video{
   width:100%;
   height:100%;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
+  object-fit:cover;
 }
 
-/* ================= CARD ================= */
-.birthday-card{
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(10px);
-  padding:60px 50px;
-  border-radius:30px;
-  box-shadow:0 0 40px rgba(255,182,193,.45);
-  animation:fadeUp 1.2s ease;
-}
-
-/* ================= TEXT ================= */
-.birthday-card h1{
-  font-family:'Playfair Display',serif;
-  font-size:3.4rem;
-  color:#fff;
-  text-shadow:0 0 20px rgba(255,182,193,.9);
-}
-
-.birthday-card h1 span{
-  font-size:3.6rem;
-}
-
-.birthday-card p{
-  margin-top:12px;
-  font-size:1.3rem;
-  color:#ffe6ec;
-  letter-spacing:.5px;
-}
-
-/* ================= DECOR HEARTS ================= */
-.decor-hearts span{
+/* ================= FLOATING HEARTS ================= */
+.letters span{
   position:fixed;
   bottom:-30px;
   font-size:1.4rem;
-  animation:floatUp linear infinite;
-  opacity:.7;
   pointer-events:none;
+  animation:floatUp linear infinite;
 }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
+/* ⭐ NO SCROLL-CAUSING ANIMATION */
 @keyframes floatUp{
   from{
     transform:translateY(0);
     opacity:1;
   }
   to{
-    transform:translateY(-120vh);
+    transform:translateY(-100%);
     opacity:0;
   }
 }
 
+/* ================= LOVE REVEAL ================= */
+.love-reveal{
+  display:none;
+  margin-top:18px;
+}
+
+.love-reveal span{
+  font-size:3.6rem;
+  margin:0 8px;
+  text-shadow:0 0 15px rgba(255,182,193,.9);
+}
+
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-  .birthday-card{
-    padding:45px 30px;
+  .section{
+    min-height:90vh;
   }
 
-  .birthday-card h1{
-    font-size:2.5rem;
+  .memory-frame-grid{
+    grid-template-columns:repeat(2,1fr);
+    grid-template-rows:repeat(4,1fr);
+    height:60vh;
   }
 
-  .birthday-card h1 span{
-    font-size:2.7rem;
+  .title{
+    font-size:2.2rem;
   }
 }
