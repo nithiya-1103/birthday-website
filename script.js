@@ -1,43 +1,50 @@
 const audio = document.getElementById("bgMusic");
 const memoryGrid = document.getElementById("memoryGrid");
-const allCards = Array.from(memoryGrid.children);
 
-let memoryTimer = null;
-let VISIBLE_COUNT = 16; // default desktop
-
-/* Start music once */
-function startExperience(nextSection){
+/* MUSIC – plays once */
+function startExperience(next){
   if(!audio.src){
     audio.src = "music/love.mp3";
     audio.volume = 0.7;
     audio.play().catch(()=>{});
   }
-  showSection(nextSection);
+  showSection(next);
 }
 
-/* Section control */
+/* PAGE-LIKE NAVIGATION */
 function showSection(id){
-  document.querySelectorAll(".section").forEach(s => s.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+  history.pushState({}, "", "#" + id);
 
-  if(id === "gallery"){
-    startMemorySlideshow();
-  }
+  document.querySelectorAll(".section").forEach(s=>{
+    s.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
 }
 
-/* Floating hearts */
-const symbols = ["❤️","💖","💕","💘"];
+/* FLOATING HEARTS */
+const hearts = ["❤️","💖","💕","💘"];
 const container = document.querySelector(".letters");
-setInterval(()=>{
-  const s = document.createElement("span");
-  s.innerText = symbols[Math.floor(Math.random()*symbols.length)];
-  s.style.left = Math.random() * 100 + "vw";
-  s.style.animationDuration = 6 + Math.random()*4 + "s";
-  container.appendChild(s);
-  setTimeout(()=>s.remove(), 9000);
-}, 600);
 
-/* Countdown timer */
+setInterval(()=>{
+  const h = document.createElement("span");
+  h.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+  h.style.left = Math.random()*100 + "vw";
+  h.style.animationDuration = 6 + Math.random()*4 + "s";
+  container.appendChild(h);
+  setTimeout(()=>h.remove(), 9000);
+}, 700);
+
+/* VIDEO HOVER PLAY */
+memoryGrid?.addEventListener("mouseover", e=>{
+  const v = e.target.closest("video");
+  if(v) v.play().catch(()=>{});
+});
+memoryGrid?.addEventListener("mouseout", e=>{
+  const v = e.target.closest("video");
+  if(v) v.pause();
+});
+
+/* COUNTDOWN */
 const birthday = new Date("2025-03-20").getTime();
 setInterval(()=>{
   const t = document.getElementById("timer");
@@ -49,73 +56,15 @@ setInterval(()=>{
     return;
   }
 
-  const pad = n => n.toString().padStart(2,"0");
+  const pad = n=>n.toString().padStart(2,"0");
   t.innerHTML =
-    Math.floor(d/86400000) + "d " +
-    pad(Math.floor((d%86400000)/3600000)) + "h " +
-    pad(Math.floor((d%3600000)/60000)) + "m " +
-    pad(Math.floor((d%60000)/1000)) + "s";
-}, 1000);
+    Math.floor(d/86400000)+"d "+
+    pad(Math.floor((d%86400000)/3600000))+"h "+
+    pad(Math.floor((d%3600000)/60000))+"m "+
+    pad(Math.floor((d%60000)/1000))+"s";
+},1000);
 
-/* Love reveal */
+/* LOVE REVEAL */
 function revealLove(){
-  document.getElementById("loveReveal").style.display = "block";
+  document.getElementById("loveReveal").style.display="block";
 }
-
-/* Memory wall slideshow */
-const imageCards = allCards.filter(c => c.querySelector("img"));
-const videoCards = allCards.filter(c => c.querySelector("video"));
-
-function shuffle(arr){
-  for(let i = arr.length - 1; i > 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-}
-
-shuffle(imageCards);
-shuffle(videoCards);
-
-function startMemorySlideshow(){
-  if(memoryTimer) return;
-  updateMemoryWall();
-  memoryTimer = setInterval(updateMemoryWall, 6000);
-}
-
-function updateMemoryWall(){
-  memoryGrid.innerHTML = "";
-
-  const combined = [...imageCards, ...videoCards];
-  shuffle(combined);
-
-  for(let i = 0; i < VISIBLE_COUNT; i++){
-    const card = combined[i % combined.length];
-
-    const video = card.querySelector("video");
-    if(video){
-      video.currentTime = 0;
-      video.muted = true;
-      video.play().catch(()=>{});
-    }
-
-    memoryGrid.appendChild(card);
-  }
-}
-
-/* Responsive: adjust VISIBLE_COUNT based on screen */
-function updateVisibleCount(){
-  if(window.innerWidth <= 600){
-    VISIBLE_COUNT = 16; // 1x16 mobile
-  } else if(window.innerWidth <= 1024){
-    VISIBLE_COUNT = 16; // 2x8 tablet
-  } else {
-    VISIBLE_COUNT = 16; // 4x4 desktop
-  }
-}
-
-window.addEventListener("resize", ()=>{
-  updateVisibleCount();
-  updateMemoryWall();
-});
-
-updateVisibleCount();
