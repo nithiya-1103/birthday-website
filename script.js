@@ -3,17 +3,25 @@ const container = document.querySelector(".letters");
 const hearts = ["❤️","💖","💕","💘"];
 
 /* ================= CAKE PAGE ================= */
+/* ================= CAKE PAGE ================= */
 const lightCandleBtn = document.getElementById("lightCandleBtn");
 const flame = document.getElementById("flame");
 const nextPageBtn = document.getElementById("nextPageBtn");
 const cakePage = document.getElementById("cakePage");
 const homePage = document.getElementById("home");
 
-lightCandleBtn.addEventListener("click", ()=>{ flame.style.display="block"; });
-nextPageBtn.addEventListener("click", ()=>{
-  cakePage.classList.remove("active");
-  homePage.classList.add("active");
+/* Light candle and start music */
+lightCandleBtn.addEventListener("click", ()=>{
+  flame.style.display = "block";                // show flame
+  document.getElementById("candle").classList.add("lit"); // optional glow effect
+
+  if(!audio.src){                               // play music if not already playing
+    audio.src = "music/love.mp3";
+    audio.volume = 0.7;
+    audio.play().catch(()=>{});                 // catch autoplay errors
+  }
 });
+
 
 /* ================= MUSIC ================= */
 function startExperience(next){
