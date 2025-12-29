@@ -5,11 +5,7 @@
 }
 
 /* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{ margin:0; padding:0; box-sizing:border-box; }
 
 /* ================= BODY ================= */
 body{
@@ -21,33 +17,37 @@ body{
   position:relative;
 }
 
-/* Optional smooth gradient layer */
+/* Animated gradient layer */
 body::before{
   content:"";
   position:fixed;
   inset:0;
-  background:linear-gradient(135deg,#b11226,#e63946,#ff8fab);
+  background: linear-gradient(135deg, #b11226, #e63946, #ff8fab, #fdb7c0);
+  background-size: 400% 400%;
+  animation: gradientShift 20s ease infinite;
   z-index:-1;
+}
+
+@keyframes gradientShift{
+  0%{ background-position:0% 50%; }
+  50%{ background-position:100% 50%; }
+  100%{ background-position:0% 50%; }
 }
 
 /* ================= SECTIONS ================= */
 .section{
-  min-height:100vh;            /* exactly viewport height */
+  min-height:100vh;
   padding:28px;
   text-align:center;
-
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
-
-  background:transparent;       /* important */
+  background:transparent;
   opacity:1;
 }
 
-.section:not(.active){
-  display:none;
-}
+.section:not(.active){ display:none; }
 
 /* ================= TITLES ================= */
 .title{
@@ -59,6 +59,12 @@ body::before{
   text-shadow:
     0 0 12px rgba(255,182,193,.9),
     0 0 30px rgba(255,105,135,.7);
+  animation: glow 2.5s infinite alternate;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 12px rgba(255,182,193,.9),0 0 30px rgba(255,105,135,.7);}
+  to{ text-shadow:0 0 20px rgba(255,182,193,1),0 0 45px rgba(255,105,135,.9);}
 }
 
 .subtitle{
@@ -66,6 +72,7 @@ body::before{
   color:#ffe6ec;
   margin-top:6px;
   letter-spacing:.5px;
+  font-family:'Dancing Script', cursive;
 }
 
 .subtitle::after{
@@ -89,10 +96,15 @@ button{
   font-size:1rem;
   cursor:pointer;
   transition:.3s;
+  animation: pulse 2s infinite;
 }
 
-button:hover{
-  transform:scale(1.06);
+button:hover{ transform:scale(1.06); }
+
+@keyframes pulse{
+  0%{ transform:scale(1); }
+  50%{ transform:scale(1.08); }
+  100%{ transform:scale(1); }
 }
 
 /* ================= GALLERY ================= */
@@ -105,7 +117,7 @@ button:hover{
   grid-template-rows:repeat(3,1fr);
   gap:14px;
   padding:14px;
-  background:transparent;       /* removed double split */
+  background:transparent;
   border-radius:22px;
   box-shadow:0 0 35px rgba(255,182,193,.4);
 }
@@ -116,16 +128,10 @@ button:hover{
   transition:transform .3s;
 }
 
-.memory-card:hover{
-  transform:scale(1.04);
-}
+.memory-card:hover{ transform:scale(1.04); }
 
 .memory-card img,
-.memory-card video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
+.memory-card video{ width:100%; height:100%; object-fit:cover; }
 
 /* ================= FLOATING HEARTS ================= */
 .letters span{
@@ -137,20 +143,17 @@ button:hover{
 }
 
 @keyframes floatUp{
-  from{
-    transform:translateY(0);
-    opacity:1;
-  }
-  to{
-    transform:translateY(-100vh);
-    opacity:0;
-  }
+  from{ transform:translateY(0); opacity:1; }
+  to{ transform:translateY(-100vh); opacity:0; }
 }
 
 /* ================= LOVE REVEAL ================= */
 .love-reveal{
   display:none;
   margin-top:18px;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:5px;
 }
 
 .love-reveal span{
@@ -160,28 +163,20 @@ button:hover{
   text-shadow:0 0 15px rgba(255,182,193,.9);
 }
 
-/* ================= FINAL PAGE OVERRIDE ================= */
-#final,
-#final.section,
-#final.glass{
-  background:transparent !important;
+/* ================= CONFETTI CANVAS ================= */
+#confettiCanvas{
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:9999;
 }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
-  .title{
-    font-size:2.4rem;
-  }
-
-  .subtitle{
-    font-size:1.15rem;
-  }
-
-  .memory-frame-grid{
-    grid-template-columns:repeat(2,1fr);
-    grid-template-rows:repeat(4,1fr);
-    height:60vh;
-  }
+  .title{ font-size:2.4rem; }
+  .subtitle{ font-size:1.15rem; }
+  .memory-frame-grid{ grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(4,1fr); height:60vh; }
 }
-
 
