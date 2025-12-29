@@ -24,14 +24,14 @@
 
 <!-- STORY -->
 <section class="section" id="story">
-  <h2 class="title">Our Story</h2>
-  <p class="subtitle">Every smile, every memory became my favorite chapter with you.</p>
+  <h1 class="title">Our Story</h1>
+  <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
   <button onclick="showSection('gallery')">Next 💕</button>
 </section>
 
 <!-- GALLERY -->
 <section class="section glass" id="gallery">
-  <h2 class="title">Captured Memories</h2>
+  <h1 class="title">Captured Memories</h1>
 
   <div class="memory-frame-grid" id="memoryGrid">
     <!-- IMAGES -->
@@ -41,14 +41,20 @@
     <div class="memory-card"><img src="images/img4.jpg"></div>
     <div class="memory-card"><img src="images/img5.jpg"></div>
     <div class="memory-card"><img src="images/img6.jpg"></div>
-    <div class="memory-card"><img src="images/img7.jpg"></div>
-    <div class="memory-card"><img src="images/img8.jpg"></div>
 
-    <!-- VIDEOS -->
-    <div class="memory-card"><video src="videos/vid1.mp4" muted loop></video></div>
-    <div class="memory-card"><video src="videos/vid2.mp4" muted loop></video></div>
-    <div class="memory-card"><video src="videos/vid3.mp4" muted loop></video></div>
-    <div class="memory-card"><video src="videos/vid4.mp4" muted loop></video></div>
+    <!-- VIDEOS (AUTOPLAY) -->
+    <div class="memory-card">
+      <video src="videos/vid1.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="memory-card">
+      <video src="videos/vid2.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="memory-card">
+      <video src="videos/vid3.mp4" autoplay muted loop playsinline></video>
+    </div>
+    <div class="memory-card">
+      <video src="videos/vid4.mp4" autoplay muted loop playsinline></video>
+    </div>
   </div>
 
   <button onclick="showSection('final')">Final ❤️</button>

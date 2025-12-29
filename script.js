@@ -1,7 +1,6 @@
 const audio = document.getElementById("bgMusic");
-const memoryGrid = document.getElementById("memoryGrid");
 
-/* MUSIC – plays once */
+/* MUSIC – PLAY ONCE */
 function startExperience(next){
   if(!audio.src){
     audio.src = "music/love.mp3";
@@ -15,10 +14,16 @@ function startExperience(next){
 function showSection(id){
   history.pushState({}, "", "#" + id);
 
-  document.querySelectorAll(".section").forEach(s=>{
-    s.classList.remove("active");
+  document.querySelectorAll(".section").forEach(sec=>{
+    sec.classList.remove("active");
   });
   document.getElementById(id).classList.add("active");
+
+  // ensure videos keep playing
+  document.querySelectorAll("video").forEach(v=>{
+    v.muted = true;
+    v.play().catch(()=>{});
+  });
 }
 
 /* FLOATING HEARTS */
@@ -34,17 +39,7 @@ setInterval(()=>{
   setTimeout(()=>h.remove(), 9000);
 }, 700);
 
-/* VIDEO HOVER PLAY */
-memoryGrid?.addEventListener("mouseover", e=>{
-  const v = e.target.closest("video");
-  if(v) v.play().catch(()=>{});
-});
-memoryGrid?.addEventListener("mouseout", e=>{
-  const v = e.target.closest("video");
-  if(v) v.pause();
-});
-
-/* COUNTDOWN */
+/* COUNTDOWN TIMER */
 const birthday = new Date("2025-03-20").getTime();
 setInterval(()=>{
   const t = document.getElementById("timer");
@@ -68,3 +63,9 @@ setInterval(()=>{
 function revealLove(){
   document.getElementById("loveReveal").style.display="block";
 }
+
+/* FORCE AUTOPLAY SAFETY */
+document.querySelectorAll("video").forEach(v=>{
+  v.muted = true;
+  v.play().catch(()=>{});
+});
