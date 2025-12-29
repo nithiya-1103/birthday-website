@@ -15,24 +15,47 @@
 <audio id="bgMusic" loop></audio>
 <div class="letters"></div>
 
-<!-- HOME -->
-<section class="section active" id="home">
+<!-- ================= CAKE PAGE ================= -->
+<section class="section active" id="cakePage">
+  <div class="balloons">
+    <span class="balloon" style="background:#d4c1ff;"></span>
+    <span class="balloon" style="background:#c1ffd4;"></span>
+    <span class="balloon" style="background:#fff8c1;"></span>
+    <span class="balloon" style="background:#ffc1c1;"></span>
+    <span class="balloon" style="background:#ffff81;"></span>
+  </div>
+
+  <h1 class="title">Happy Birthday 🎉</h1>
+
+  <div class="cake">
+    <div class="frosting"></div>
+    <div class="layers"></div>
+    <div class="candle" id="candle">
+      <div class="flame" id="flame"></div>
+    </div>
+  </div>
+
+  <button id="lightCandleBtn">LIGHT CANDLE 🕯️</button>
+  <button id="nextPageBtn" style="margin-top:10px;">NEXT 🎁</button>
+</section>
+
+<!-- ================= HOME / LOVE JOURNEY ================= -->
+<section class="section" id="home">
   <h1 class="title">A Special Journey</h1>
   <p class="subtitle">Made with love, just for you</p>
   <button onclick="startExperience('story')">Begin ❤️</button>
 </section>
 
-<!-- STORY -->
+<!-- ================= STORY ================= -->
 <section class="section" id="story">
   <h1 class="title">Our Story</h1>
   <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
   <button onclick="showSection('gallery')">Next 💕</button>
 </section>
 
-<!-- GALLERY -->
+<!-- ================= GALLERY ================= -->
 <section class="section glass" id="gallery">
   <h1 class="title">Captured Memories</h1>
-
   <div class="memory-frame-grid" id="memoryGrid">
     <div class="memory-card"><img src="images/img1.jpg"></div>
     <div class="memory-card"><img src="images/img2.jpg"></div>
@@ -46,20 +69,18 @@
     <div class="memory-card"><video src="videos/vid3.mp4" autoplay muted loop playsinline></video></div>
     <div class="memory-card"><video src="videos/vid4.mp4" autoplay muted loop playsinline></video></div>
   </div>
-
   <button onclick="showSection('final')">Final ❤️</button>
 </section>
 
-<!-- FINAL -->
+<!-- ================= FINAL ================= -->
 <section class="section" id="final">
   <h1 class="title">Happy Birthday ❤️</h1>
   <div id="timer"></div>
   <button onclick="revealLove()">Tap Gently 💖</button>
-
   <div class="love-reveal" id="loveReveal"></div>
 </section>
 
-<!-- Optional confetti canvas -->
+<!-- ================= OPTIONAL CONFETTI CANVAS ================= -->
 <canvas id="confettiCanvas"></canvas>
 
 </body>

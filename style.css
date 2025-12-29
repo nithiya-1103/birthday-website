@@ -4,20 +4,11 @@
   --soft:#fff0f3;
 }
 
-/* ================= RESET ================= */
+/* RESET */
 *{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Poppins',sans-serif; min-height:100vh; background:#ffe5b4; overflow:hidden; position:relative; }
 
-/* ================= BODY ================= */
-body{
-  font-family:'Poppins',sans-serif;
-  min-height:100vh;
-  background:linear-gradient(135deg,#b11226,#e63946,#ff8fab);
-  color:var(--soft);
-  overflow:hidden;
-  position:relative;
-}
-
-/* Animated gradient layer */
+/* ================= ANIMATED GRADIENT ================= */
 body::before{
   content:"";
   position:fixed;
@@ -27,7 +18,6 @@ body::before{
   animation: gradientShift 20s ease infinite;
   z-index:-1;
 }
-
 @keyframes gradientShift{
   0%{ background-position:0% 50%; }
   50%{ background-position:100% 50%; }
@@ -35,143 +25,57 @@ body::before{
 }
 
 /* ================= SECTIONS ================= */
-.section{
-  min-height:100vh;
-  padding:28px;
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background:transparent;
-  opacity:1;
-}
-
+.section{ display:none; min-height:100vh; padding:28px; text-align:center; flex-direction:column; justify-content:center; align-items:center; display:flex; }
 .section:not(.active){ display:none; }
 
 /* ================= TITLES ================= */
 .title{
   font-family:'Playfair Display',serif;
-  font-size:3.2rem;
+  font-size:3rem;
   font-weight:600;
   letter-spacing:1px;
   margin-bottom:10px;
-  text-shadow:
-    0 0 12px rgba(255,182,193,.9),
-    0 0 30px rgba(255,105,135,.7);
+  text-shadow:0 0 12px rgba(255,182,193,.9),0 0 30px rgba(255,105,135,.7);
   animation: glow 2.5s infinite alternate;
 }
-
 @keyframes glow{
   from{ text-shadow:0 0 12px rgba(255,182,193,.9),0 0 30px rgba(255,105,135,.7);}
   to{ text-shadow:0 0 20px rgba(255,182,193,1),0 0 45px rgba(255,105,135,.9);}
 }
-
-.subtitle{
-  font-size:1.35rem;
-  color:#ffe6ec;
-  margin-top:6px;
-  letter-spacing:.5px;
-  font-family:'Dancing Script', cursive;
-}
-
-.subtitle::after{
-  content:"";
-  display:block;
-  width:80px;
-  height:3px;
-  margin:14px auto 0;
-  background:linear-gradient(to right,#ff8fab,#fff0f3);
-  border-radius:10px;
-}
+.subtitle{ font-size:1.35rem; color:#ffe6ec; margin-top:6px; letter-spacing:.5px; font-family:'Dancing Script', cursive; }
+.subtitle::after{ content:""; display:block; width:80px; height:3px; margin:14px auto 0; background:linear-gradient(to right,#ff8fab,#fff0f3); border-radius:10px; }
 
 /* ================= BUTTONS ================= */
-button{
-  margin-top:24px;
-  padding:12px 36px;
-  border:none;
-  border-radius:30px;
-  background:linear-gradient(45deg,var(--red),#ff6b81);
-  color:#fff;
-  font-size:1rem;
-  cursor:pointer;
-  transition:.3s;
-  animation: pulse 2s infinite;
-}
-
+button{ margin-top:24px; padding:12px 36px; border:none; border-radius:30px; background:linear-gradient(45deg,var(--red),#ff6b81); color:#fff; font-size:1rem; cursor:pointer; transition:.3s; animation: pulse 2s infinite; }
 button:hover{ transform:scale(1.06); }
-
-@keyframes pulse{
-  0%{ transform:scale(1); }
-  50%{ transform:scale(1.08); }
-  100%{ transform:scale(1); }
-}
+@keyframes pulse{ 0%{ transform:scale(1); } 50%{ transform:scale(1.08); } 100%{ transform:scale(1); } }
 
 /* ================= GALLERY ================= */
-.memory-frame-grid{
-  max-width:880px;
-  width:100%;
-  height:52vh;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  grid-template-rows:repeat(3,1fr);
-  gap:14px;
-  padding:14px;
-  background:transparent;
-  border-radius:22px;
-  box-shadow:0 0 35px rgba(255,182,193,.4);
-}
-
-.memory-card{
-  border-radius:14px;
-  overflow:hidden;
-  transition:transform .3s;
-}
-
+.memory-frame-grid{ max-width:880px; width:100%; height:52vh; display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(3,1fr); gap:14px; padding:14px; background:transparent; border-radius:22px; box-shadow:0 0 35px rgba(255,182,193,.4); }
+.memory-card{ border-radius:14px; overflow:hidden; transition:transform .3s; }
 .memory-card:hover{ transform:scale(1.04); }
-
-.memory-card img,
-.memory-card video{ width:100%; height:100%; object-fit:cover; }
+.memory-card img, .memory-card video{ width:100%; height:100%; object-fit:cover; }
 
 /* ================= FLOATING HEARTS ================= */
-.letters span{
-  position:fixed;
-  bottom:-30px;
-  font-size:1.4rem;
-  pointer-events:none;
-  animation:floatUp linear infinite;
-}
-
-@keyframes floatUp{
-  from{ transform:translateY(0); opacity:1; }
-  to{ transform:translateY(-100vh); opacity:0; }
-}
+.letters span{ position:fixed; bottom:-30px; font-size:1.4rem; pointer-events:none; animation:floatUp linear infinite; }
+@keyframes floatUp{ from{ transform:translateY(0); opacity:1; } to{ transform:translateY(-100vh); opacity:0; } }
 
 /* ================= LOVE REVEAL ================= */
-.love-reveal{
-  display:none;
-  margin-top:18px;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:5px;
-}
+.love-reveal{ display:none; margin-top:18px; flex-wrap:wrap; justify-content:center; gap:5px; }
+.love-reveal span{ font-family:'Playfair Display',serif; font-size:3.6rem; margin:0 8px; text-shadow:0 0 15px rgba(255,182,193,.9); }
 
-.love-reveal span{
-  font-family:'Playfair Display',serif;
-  font-size:3.6rem;
-  margin:0 8px;
-  text-shadow:0 0 15px rgba(255,182,193,.9);
-}
+/* ================= CONFETTI ================= */
+#confettiCanvas{ position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; }
 
-/* ================= CONFETTI CANVAS ================= */
-#confettiCanvas{
-  position:fixed;
-  top:0; left:0;
-  width:100%;
-  height:100%;
-  pointer-events:none;
-  z-index:9999;
-}
+/* ================= CAKE PAGE ================= */
+.balloons{ position:absolute; top:10px; left:0; right:0; display:flex; justify-content:center; gap:10px; }
+.balloon{ width:50px; height:70px; border-radius:50%; display:inline-block; }
+.cake{ position:relative; width:120px; height:120px; margin:20px auto; }
+.layers{ width:100%; height:100%; background:#7b3f00; border-radius:8px; position:relative; }
+.frosting{ width:100%; height:20px; background:#fff; border-radius:8px 8px 0 0; position:absolute; top:0; }
+.candle{ width:10px; height:40px; background:#fff; position:absolute; top:-40px; left:50%; transform:translateX(-50%); border-radius:3px; }
+.flame{ width:10px; height:15px; background:orange; border-radius:50%; position:absolute; top:-15px; left:0; display:none; animation: flicker 0.3s infinite; }
+@keyframes flicker{ 0%{ transform: scale(1) translateY(0); opacity:1; } 50%{ transform: scale(1.2) translateY(-2px); opacity:0.9; } 100%{ transform: scale(1) translateY(0); opacity:1; } }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){

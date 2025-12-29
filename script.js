@@ -2,6 +2,19 @@ const audio = document.getElementById("bgMusic");
 const container = document.querySelector(".letters");
 const hearts = ["❤️","💖","💕","💘"];
 
+/* ================= CAKE PAGE ================= */
+const lightCandleBtn = document.getElementById("lightCandleBtn");
+const flame = document.getElementById("flame");
+const nextPageBtn = document.getElementById("nextPageBtn");
+const cakePage = document.getElementById("cakePage");
+const homePage = document.getElementById("home");
+
+lightCandleBtn.addEventListener("click", ()=>{ flame.style.display="block"; });
+nextPageBtn.addEventListener("click", ()=>{
+  cakePage.classList.remove("active");
+  homePage.classList.add("active");
+});
+
 /* ================= MUSIC ================= */
 function startExperience(next){
   if(!audio.src){
@@ -60,11 +73,10 @@ function revealLove(){
   }, 400);
 }
 
-/* ================= CONFETTI EFFECT ================= */
+/* ================= CONFETTI ================= */
 const canvas = document.getElementById("confettiCanvas");
 const ctx = canvas.getContext("2d");
 let confettiParticles = [];
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -100,4 +112,3 @@ function animateConfetti(){
 
 /* ================= AUTOPLAY VIDEOS ================= */
 document.querySelectorAll("video").forEach(v=>{ v.muted=true; v.play().catch(()=>{}); });
-
