@@ -68,14 +68,85 @@ button:hover{ transform:scale(1.06); }
 #confettiCanvas{ position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:9999; }
 
 /* ================= CAKE PAGE ================= */
-.balloons{ position:absolute; top:10px; left:0; right:0; display:flex; justify-content:center; gap:10px; }
-.balloon{ width:50px; height:70px; border-radius:50%; display:inline-block; }
-.cake{ position:relative; width:120px; height:120px; margin:20px auto; }
-.layers{ width:100%; height:100%; background:#7b3f00; border-radius:8px; position:relative; }
-.frosting{ width:100%; height:20px; background:#fff; border-radius:8px 8px 0 0; position:absolute; top:0; }
-.candle{ width:10px; height:40px; background:#fff; position:absolute; top:-40px; left:50%; transform:translateX(-50%); border-radius:3px; }
-.flame{ width:10px; height:15px; background:orange; border-radius:50%; position:absolute; top:-15px; left:0; display:none; animation: flicker 0.3s infinite; }
-@keyframes flicker{ 0%{ transform: scale(1) translateY(0); opacity:1; } 50%{ transform: scale(1.2) translateY(-2px); opacity:0.9; } 100%{ transform: scale(1) translateY(0); opacity:1; } }
+/* ================= CAKE PAGE ================= */
+.cakeTitle{
+  margin-bottom:50px;  /* space above cake */
+  font-size:3.2rem;
+  text-shadow: 0 0 15px rgba(255,182,193,0.9), 0 0 35px rgba(255,105,135,0.7);
+}
+
+/* Cake Layers */
+.cake{
+  position: relative;
+  width:160px;
+  height:160px;
+  margin:20px auto;
+}
+
+.layers{
+  width:100%;
+  height:50px;
+  border-radius:12px;
+  position:relative;
+}
+
+.layer2{ background:#d2691e; top:0px; }
+.layer1{ background:#a0522d; top:10px; }
+
+/* Frosting */
+.frosting.top{
+  width:100%;
+  height:25px;
+  background: #fff0f5;
+  border-radius:12px 12px 0 0;
+  position:absolute;
+  top:-10px;
+  left:0;
+  box-shadow: inset 0 2px 5px rgba(255,182,193,.7);
+}
+
+/* Candle */
+.candle{
+  width:14px;
+  height:50px;
+  background:#fff;
+  position:absolute;
+  top:-50px;
+  left:50%;
+  transform:translateX(-50%);
+  border-radius:4px;
+}
+
+/* Flame */
+.flame{
+  width:12px;
+  height:18px;
+  background:orange;
+  border-radius:50%;
+  position:absolute;
+  top:-18px;
+  left:0;
+  display:none;
+  animation: flicker 0.3s infinite;
+}
+@keyframes flicker{
+  0%{ transform: scale(1) translateY(0); opacity:1; }
+  50%{ transform: scale(1.2) translateY(-2px); opacity:0.9; }
+  100%{ transform: scale(1) translateY(0); opacity:1; }
+}
+
+/* Sprinkles */
+.layers.layer1::before, .layers.layer2::before{
+  content:"";
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background: #ff69b4;
+  top:10px;
+  left:20px;
+  box-shadow: 20px 5px #ffdab9, 50px 20px #fdfd96, 80px 10px #ff6b81, 120px 25px #ffe4e1;
+}
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:768px){
