@@ -1,38 +1,36 @@
+/* style.css */
 :root {
-    --red: #e63946;
-    --pink: #ff8fab;
+    --primary-pink: #ff758c;
+    --secondary-pink: #ff7eb3;
     --soft-pink: #ffd1dc;
-    --glass: rgba(255, 255, 255, 0.12);
-    --border: rgba(255, 255, 255, 0.3);
-    --gradient1: linear-gradient(135deg, #b11226, #e63946, #ff8fab, #fdb7c0);
+    --glass-bg: rgba(255, 255, 255, 0.18);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --chocolate: #5d4037;
+    --vanilla: #f4d03f;
 }
 
 /* RESET & BASE */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
 
 body { 
     font-family: 'Poppins', sans-serif; 
     min-height: 100vh; 
-    background: #ffe5b4; 
+    background: linear-gradient(135deg, #feb2b2 0%, #ff758c 100%);
     overflow: hidden; 
     position: relative; 
     color: #fff;
 }
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: var(--gradient1);
-    background-size: 400% 400%;
-    animation: gradientShift 20s ease infinite;
-    z-index: -1;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* FLOATING PARTICLES LAYER */
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
 }
 
 /* GLASS SECTIONS */
@@ -42,17 +40,15 @@ body::before {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    padding: 30px;
+    padding: 20px;
     text-align: center;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--border);
+    position: relative;
+    z-index: 2;
 }
 
 .section.active {
     display: flex;
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn 0.8s ease-out;
 }
 
 @keyframes fadeIn {
@@ -60,62 +56,170 @@ body::before {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* TITLES */
+/* THE GLASS CARD */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+    padding: 45px 30px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+    width: 90%;
+}
+
+/* ADVANCED TYPOGRAPHY */
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: white;
+}
+
+/* Compact Headings */
+.cakeTitle.compact {
+    font-size: 2rem;
+    letter-spacing: 1px;
     background: linear-gradient(to bottom, #fff, var(--soft-pink));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    margin-bottom: 10px;
+    animation: floatingText 3s ease-in-out infinite;
+}
+
+@keyframes floatingText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.highlight {
+    display: block;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
 }
 
 .subtitle {
     font-family: 'Dancing Script', cursive;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     color: #fff0f3;
-    max-width: 600px;
+    margin-top: 10px;
 }
 
-/* BUTTONS */
+/* 3D CAKE */
+.cake-platform {
+    margin: 45px auto;
+    perspective: 1000px;
+}
+
+.cake-3d {
+    position: relative;
+    width: 170px;
+    height: 110px;
+    margin: 0 auto;
+    transform: rotateX(5deg);
+}
+
+.cake-layer {
+    width: 100%;
+    height: 45px;
+    border-radius: 12px;
+    position: absolute;
+    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.2), 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.chocolate { background: var(--chocolate); bottom: 0; }
+.vanilla { background: var(--vanilla); bottom: 35px; }
+
+.frosting-glow {
+    position: absolute;
+    top: 5px;
+    width: 100%;
+    height: 35px;
+    background: #fff;
+    border-radius: 12px 12px 5px 5px;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.6);
+}
+
+.candle-3d {
+    width: 10px;
+    height: 35px;
+    background: #fff;
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 4px;
+}
+
+.flame-advanced {
+    width: 16px;
+    height: 24px;
+    background: radial-gradient(circle at 50% 100%, #fff, #fffa65, orange);
+    border-radius: 50% 50% 20% 20%;
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    animation: flicker 0.15s infinite alternate;
+    box-shadow: 0 0 20px orange;
+}
+
+@keyframes flicker {
+    from { transform: translateX(-50%) scale(1); }
+    to { transform: translateX(-50%) scale(1.1) rotate(2deg); }
+}
+
+/* MODERN BUTTONS */
+.action-area {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
 button {
-    margin-top: 25px;
-    padding: 14px 35px;
+    padding: 16px 30px;
     border: none;
     border-radius: 50px;
-    background: linear-gradient(45deg, #ff758c, #ff7eb3);
-    color: white;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(255, 107, 129, 0.4);
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
 }
 
-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 15px 25px rgba(255, 107, 129, 0.6);
+.btn-primary {
+    background: #fff;
+    color: var(--primary-pink);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* UPDATED GALLERY GRID */
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* POLAROID GALLERY */
 .memory-frame-grid {
-    max-width: 950px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
+    gap: 20px;
+    max-width: 1000px;
     padding: 20px;
-    max-height: 65vh;
+    max-height: 70vh;
     overflow-y: auto;
-    scrollbar-width: none;
+    scrollbar-width: none; /* Firefox */
 }
+
+.memory-frame-grid::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
 .memory-card {
     background: white;
-    padding: 8px 8px 30px 8px; /* Polaroid Style */
-    border-radius: 4px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 10px 10px 30px 10px;
+    border-radius: 2px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     transform: rotate(var(--r, 0deg));
+    transition: 0.4s;
 }
 
 .memory-card:hover {
@@ -130,37 +234,31 @@ button:hover {
     border: 1px solid #eee;
 }
 
-/* CAKE DESIGN */
-.cake-container { margin: 40px 0; }
-.cake { position: relative; width: 180px; height: 120px; }
-.layer1 { background: #5d4037; height: 50px; width: 100%; position: absolute; bottom: 0; border-radius: 0 0 10px 10px; }
-.layer2 { background: #8d6e63; height: 50px; width: 100%; position: absolute; bottom: 40px; border-radius: 10px; }
-.frosting.top { 
-    background: #fff0f5; height: 30px; width: 100%; 
-    position: absolute; top: 0; border-radius: 10px 10px 0 0; 
-    box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
-}
-.candle { width: 12px; height: 40px; background: #fff; position: absolute; top: -35px; left: 50%; transform: translateX(-50%); border-radius: 4px; }
-.flame { 
-    width: 15px; height: 22px; background: orange; border-radius: 50%; 
-    position: absolute; top: -22px; display: none;
-    box-shadow: 0 0 20px orange; animation: flicker 0.2s infinite;
+/* DOCTOR PULSE EFFECT */
+.doctor-pulse {
+    animation: heartbeat 1.5s ease-in-out infinite;
 }
 
-@keyframes flicker { 50% { transform: scale(1.1); opacity: 0.8; } }
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
 
-/* MOBILE RESPONSIVE */
+/* RESPONSIVE */
 @media(max-width: 768px) {
-    .title { font-size: 2.2rem; }
     .memory-frame-grid { grid-template-columns: repeat(2, 1fr); }
+    .title { font-size: 1.8rem; }
+    .glass-card { padding: 30px 20px; }
 }
 
-/* HEARTS */
-.letters span {
-    position: fixed; bottom: -50px;
-    animation: floatUp linear infinite;
+/* CONFETTI */
+#confettiCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
     pointer-events: none;
-}
-@keyframes floatUp {
-    to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    z-index: 999;
 }
