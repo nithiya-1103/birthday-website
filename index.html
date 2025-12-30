@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Special Journey ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;600&family=Dancing+Script&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
@@ -12,40 +12,47 @@
 
 <audio id="bgMusic" loop></audio>
 <div class="letters"></div>
+<div id="particles-js"></div>
 
 <section class="section active" id="cakePage">
-    <h1 class="title cakeTitle">HAPPIEE BIRTHDAY MY DEAR PAAPUU😘💕</h1>
-
-    <div class="cake-container">
-        <div class="cake">
-            <div class="frosting top"></div>
-            <div class="layers layer2"></div>
-            <div class="layers layer1"></div>
-            <div class="candle" id="candle">
-                <div class="flame" id="flame"></div>
+    <div class="glass-card">
+        <h1 class="title main-glow">HAPPIEE BIRTHDAY<br><span class="highlight">MY DEAR PAAPUU</span> 😘💕</h1>
+        
+        <div class="cake-platform">
+            <div class="cake-3d">
+                <div class="frosting-glow"></div>
+                <div class="cake-layer vanilla"></div>
+                <div class="cake-layer chocolate"></div>
+                <div class="candle-3d" id="candle">
+                    <div class="flame-advanced" id="flame"></div>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="button-group">
-        <button id="lightCandleBtn">CLICK TO LIGHT UP🕯️</button>
-        <button id="nextPageBtn">NEXT🎁</button>
+        <div class="action-area">
+            <button class="btn-primary" id="lightCandleBtn">LIGHT UP THE MAGIC 🕯️</button>
+            <button class="btn-secondary" id="nextPageBtn">NEXT🎁</button>
+        </div>
     </div>
 </section>
 
 <section class="section" id="home">
-    <h1 class="title">MY DEAR DOCTOR AE!! 🩺</h1>
-    <p class="subtitle">Happy Birthday! Since I can’t be there in person, I made this digital world just for you—made with love across the miles.</p>
-    <button onclick="startExperience('story')">Begin❤️</button>
+    <div class="glass-card">
+        <h1 class="title">MY DEAR DOCTOR AE!! 🩺</h1>
+        <p class="subtitle">Since I can’t be there to give you a gift in person, I made this special world just for you—made with love across the miles.</p>
+        <button class="btn-primary" onclick="startExperience('story')">Begin Journey ❤️</button>
+    </div>
 </section>
 
 <section class="section" id="story">
-    <h1 class="title">Our Story</h1>
-    <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
-    <button onclick="showSection('gallery')">See Our Moments 💕</button>
+    <div class="glass-card">
+        <h1 class="title">Our Story</h1>
+        <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
+        <button class="btn-primary" onclick="showSection('gallery')">Our Moments 💕</button>
+    </div>
 </section>
 
-<section class="section glass" id="gallery">
+<section class="section" id="gallery">
     <h1 class="title">Captured Memories</h1>
     <div class="memory-frame-grid" id="memoryGrid">
         <div class="memory-card"><img src="images/img1.jpg"></div>
@@ -62,17 +69,21 @@
         <div class="memory-card"><video src="videos/vid5.mp4" autoplay muted loop playsinline></video></div>
         <div class="memory-card"><video src="videos/vid6.mp4" autoplay muted loop playsinline></video></div>
     </div>
-    <button onclick="showSection('final')">Final Surprise ❤️</button>
+    <button class="btn-primary" onclick="showSection('final')">Final Surprise ❤️</button>
 </section>
 
 <section class="section" id="final">
-    <h1 class="title">Forever Yours ❤️</h1>
-    <div id="timer"></div>
-    <button onclick="revealLove()">Tap Gently 💖</button>
-    <div class="love-reveal" id="loveReveal"></div>
+    <div class="glass-card">
+        <h1 class="title">Forever Yours ❤️</h1>
+        <div id="timer"></div>
+        <button class="btn-primary" onclick="revealLove()">Tap Gently 💖</button>
+        <div class="love-reveal" id="loveReveal"></div>
+    </div>
 </section>
 
 <canvas id="confettiCanvas"></canvas>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 </body>
 </html>
