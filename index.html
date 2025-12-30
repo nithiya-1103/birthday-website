@@ -16,8 +16,7 @@
 
 <section class="section active" id="cakePage">
     <div class="glass-card">
-        <h1 class="title main-glow">HAPPIEE BIRTHDAY<br><span class="highlight">MY DEAR PAAPUU</span> 😘💕</h1>
-        
+        <h1 class="title">HAPPIEE BIRTHDAY<br><span class="highlight">MY DEAR PAAPUU</span> 😘💕</h1>
         <div class="cake-platform">
             <div class="cake-3d">
                 <div class="frosting-glow"></div>
@@ -28,40 +27,30 @@
                 </div>
             </div>
         </div>
-
         <div class="action-area">
             <button class="btn-primary" id="lightCandleBtn">LIGHT UP THE MAGIC 🕯️</button>
-            <button class="btn-secondary" id="nextPageBtn">NEXT🎁</button>
+            <button class="btn-primary" id="nextPageBtn">NEXT 🎁</button>
         </div>
     </div>
 </section>
 
 <section class="section" id="home">
     <div class="glass-card">
-        <h1 class="title">MY DEAR DOCTOR AE!! 🩺</h1>
-        <p class="subtitle">Since I can’t be there to give you a gift in person, I made this special world just for you—made with love across the miles.</p>
-        <button class="btn-primary" onclick="startExperience('story')">Begin Journey ❤️</button>
-    </div>
-</section>
-
-<section class="section" id="story">
-    <div class="glass-card">
-        <h1 class="title">Our Story</h1>
-        <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
-        <button class="btn-primary" onclick="showSection('gallery')">Our Moments 💕</button>
+        <h1 class="title">MY DEAR DOCTOR!! 🩺</h1>
+        <p class="subtitle">A little digital world made with love across the miles.</p>
+        <button class="btn-primary" onclick="showSection('story')">Begin ❤️</button>
     </div>
 </section>
 
 <section class="section" id="gallery">
     <h1 class="title">Captured Memories</h1>
     <div class="memory-frame-grid" id="memoryGrid">
-        <div class="memory-card"><img src="images/img1.jpg"></div>
-        <div class="memory-card"><img src="images/img2.jpg"></div>
-        <div class="memory-card"><img src="images/img3.jpg"></div>
-        <div class="memory-card"><img src="images/img4.jpg"></div>
-        <div class="memory-card"><img src="images/img5.jpg"></div>
-        <div class="memory-card"><img src="images/img6.jpg"></div>
-
+        <div class="memory-card"><img src="images/img1.jpg" alt="Memory 1"></div>
+        <div class="memory-card"><img src="images/img2.jpg" alt="Memory 2"></div>
+        <div class="memory-card"><img src="images/img3.jpg" alt="Memory 3"></div>
+        <div class="memory-card"><img src="images/img4.jpg" alt="Memory 4"></div>
+        <div class="memory-card"><img src="images/img5.jpg" alt="Memory 5"></div>
+        <div class="memory-card"><img src="images/img6.jpg" alt="Memory 6"></div>
         <div class="memory-card"><video src="videos/vid1.mp4" autoplay muted loop playsinline></video></div>
         <div class="memory-card"><video src="videos/vid2.mp4" autoplay muted loop playsinline></video></div>
         <div class="memory-card"><video src="videos/vid3.mp4" autoplay muted loop playsinline></video></div>
@@ -69,21 +58,18 @@
         <div class="memory-card"><video src="videos/vid5.mp4" autoplay muted loop playsinline></video></div>
         <div class="memory-card"><video src="videos/vid6.mp4" autoplay muted loop playsinline></video></div>
     </div>
-    <button class="btn-primary" onclick="showSection('final')">Final Surprise ❤️</button>
+    <button class="btn-primary" onclick="showSection('final')">Final ❤️</button>
 </section>
 
 <section class="section" id="final">
     <div class="glass-card">
         <h1 class="title">Forever Yours ❤️</h1>
-        <div id="timer"></div>
         <button class="btn-primary" onclick="revealLove()">Tap Gently 💖</button>
-        <div class="love-reveal" id="loveReveal"></div>
+        <div id="loveReveal" class="subtitle" style="display:none; margin-top:20px;"></div>
     </div>
 </section>
 
 <canvas id="confettiCanvas"></canvas>
-
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
 </body>
 </html>
