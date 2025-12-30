@@ -2,15 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Our Special Journey ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script defer src="script.js"></script>
 </head>
 <body>
 
 <audio id="bgMusic" loop></audio>
+
 <div class="letters"></div>
 
 <section class="section active" id="cakePage">
@@ -22,8 +23,8 @@
                 <div class="flame" id="flame"></div>
             </div>
             <div class="frosting top"></div>
-            <div class="layers layer2"></div>
-            <div class="layers layer1"></div>
+            <div class="layer2"></div>
+            <div class="layer1"></div>
         </div>
     </div>
 
@@ -32,6 +33,7 @@
         <button id="nextPageBtn">NEXT🎁</button>
     </div>
 </section>
+
 <section class="section" id="home">
     <h1 class="title">MY DEAR DOCTOR AE!! 🩺</h1>
     <p class="subtitle">Happy Birthday! Since I can’t be there in person, I made this digital world just for you—made with love across the miles.</p>
@@ -45,28 +47,42 @@
 </section>
 
 <section class="section glass" id="gallery">
-    <h1 class="title">Captured Memories</h1>
+    <h1 class="title">~ Our Memories ~</h1>
+    
     <div class="memory-frame-grid" id="memoryGrid">
-        <div class="memory-card"><img src="images/img1.jpg"></div>
-        <div class="memory-card"><img src="images/img2.jpg"></div>
-        <div class="memory-card"><img src="images/img3.jpg"></div>
-        <div class="memory-card"><img src="images/img4.jpg"></div>
-        <div class="memory-card"><img src="images/img5.jpg"></div>
-        <div class="memory-card"><img src="images/img6.jpg"></div>
+        <div class="memory-card"><img src="images/img1.jpg" alt="Memory"></div>
+        <div class="memory-card"><img src="images/img2.jpg" alt="Memory"></div>
+        <div class="memory-card"><img src="images/img3.jpg" alt="Memory"></div>
+        <div class="memory-card"><img src="images/img4.jpg" alt="Memory"></div>
+        <div class="memory-card"><img src="images/img5.jpg" alt="Memory"></div>
+        <div class="memory-card"><img src="images/img6.jpg" alt="Memory"></div>
 
-        <div class="memory-card"><video src="videos/vid1.mp4" autoplay muted loop playsinline></video></div>
-        <div class="memory-card"><video src="videos/vid2.mp4" autoplay muted loop playsinline></video></div>
-        <div class="memory-card"><video src="videos/vid3.mp4" autoplay muted loop playsinline></video></div>
-        <div class="memory-card"><video src="videos/vid4.mp4" autoplay muted loop playsinline></video></div>
-        <div class="memory-card"><video src="videos/vid5.mp4" autoplay muted loop playsinline></video></div>
-        <div class="memory-card"><video src="videos/vid6.mp4" autoplay muted loop playsinline></video></div>
+        <div class="memory-card">
+            <video src="videos/vid1.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="memory-card">
+            <video src="videos/vid2.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="memory-card">
+            <video src="videos/vid3.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="memory-card">
+            <video src="videos/vid4.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="memory-card">
+            <video src="videos/vid5.mp4" autoplay muted loop playsinline></video>
+        </div>
+        <div class="memory-card">
+            <video src="videos/vid6.mp4" autoplay muted loop playsinline></video>
+        </div>
     </div>
+    
     <button onclick="showSection('final')">Final Surprise ❤️</button>
 </section>
 
 <section class="section" id="final">
     <h1 class="title">Forever Yours ❤️</h1>
-    <div id="timer"></div>
+    <div id="timer" class="subtitle"></div>
     <button onclick="revealLove()">Tap Gently 💖</button>
     <div class="love-reveal" id="loveReveal"></div>
 </section>
