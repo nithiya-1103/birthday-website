@@ -1,107 +1,237 @@
 const audio = document.getElementById("bgMusic");
+
 const container = document.querySelector(".letters");
-const hearts = ["❤️","💖","💕","🩺","👩‍⚕️","✨"];
 
-/* Particles Background */
-particlesJS("particles-js", {
-    "particles": {
-        "number": { "value": 30 },
-        "color": { "value": "#ffffff" },
-        "shape": { "type": "heart" },
-        "opacity": { "value": 0.3 },
-        "size": { "value": 4 },
-        "move": { "speed": 1.5 }
-    }
+const hearts = ["❤️","💖","💕","💘"];
+
+
+
+/* CAKE PAGE */
+
+const lightCandleBtn = document.getElementById("lightCandleBtn");
+
+const flame = document.getElementById("flame");
+
+const nextPageBtn = document.getElementById("nextPageBtn");
+
+const cakePage = document.getElementById("cakePage");
+
+const homePage = document.getElementById("home");
+
+
+
+lightCandleBtn.addEventListener("click", ()=>{
+
+  flame.style.display = "block";
+
+  document.getElementById("candle").classList.add("lit");
+
 });
 
-/* CAKE PAGE LOGIC */
-document.getElementById("lightCandleBtn").addEventListener("click", function() {
-    document.getElementById("flame").style.display = "block";
-    this.innerText = "✨ MAGICAL ✨";
-    this.style.opacity = "0.7";
+
+
+nextPageBtn.addEventListener("click", ()=>{
+
+  cakePage.classList.remove("active");
+
+  homePage.classList.add("active");
+
+
+
+  if(!audio.src){
+
+    audio.src = "music/love.mp3";
+
+    audio.volume = 0.7;
+
+    audio.play().catch(()=>{});
+
+  }
+
 });
 
-document.getElementById("nextPageBtn").addEventListener("click", function() {
-    if(!audio.src) {
-        audio.src = "music/love.mp3"; // Ensure this path is correct
-        audio.play().catch(e => console.log("Audio waiting for interaction"));
-    }
-    showSection('home');
-});
 
-/* NAVIGATION */
-function startExperience(id) { showSection(id); }
 
-function showSection(id) {
-    document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
-    document.getElementById(id).classList.add("active");
-    
-    // Auto-play videos in gallery
-    if(id === 'gallery') {
-        document.querySelectorAll('video').forEach(v => v.play().catch(() => {}));
-    }
+/* MUSIC CONTROL */
+
+function startExperience(next){
+
+  showSection(next);
+
 }
 
-/* POLAROID TILT */
-document.querySelectorAll('.memory-card').forEach(card => {
-    const randomRotation = Math.floor(Math.random() * 10 - 5) + "deg";
-    card.style.setProperty('--r', randomRotation);
-});
 
-/* FLOATING HEARTS (Manual override for extra love) */
-setInterval(() => {
-    const h = document.createElement("span");
-    h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
-    h.style.left = Math.random() * 100 + "vw";
-    h.style.fontSize = (15 + Math.random() * 20) + "px";
-    h.style.animationDuration = (5 + Math.random() * 5) + "s";
-    container.appendChild(h);
-    setTimeout(() => h.remove(), 8000);
-}, 600);
 
-/* FINAL LOVE REVEAL */
-function revealLove() {
-    const reveal = document.getElementById("loveReveal");
-    reveal.innerHTML = "<h2>I LOVE YOU FOREVER ❤️</h2>";
-    reveal.style.display = "block";
+/* PAGE NAVIGATION */
+
+function showSection(id){
+
+  history.pushState({}, "", "#" + id);
+
+  document.querySelectorAll(".section").forEach(sec=> sec.classList.remove("active"));
+
+  document.getElementById(id).classList.add("active");
+
+  document.querySelectorAll("video").forEach(v=>{ v.muted=true; v.play().catch(()=>{}); });
+
+}
+
+
+
+/* FLOATING HEARTS */
+
+setInterval(()=>{
+
+  const h = document.createElement("span");
+
+  h.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+
+  h.style.left = 5 + Math.random()*90 + "vw"; // away from edges
+
+  h.style.fontSize = (12 + Math.random()*12) + "px";
+
+  h.style.transform = `rotate(${Math.random()*360}deg)`;
+
+  h.style.animationDuration = 6 + Math.random()*4 + "s";
+
+  container.appendChild(h);
+
+  setTimeout(()=>h.remove(), 9000);
+
+}, 500);
+
+
+
+/* COUNTDOWN TIMER */
+
+const birthday = new Date("2025-03-20").getTime();
+
+setInterval(()=>{
+
+  const t = document.getElementById("timer");
+
+  if(!t) return;
+
+  const d = birthday - Date.now();
+
+  if(d <= 0){ t.innerHTML="🎉 Today is your day 🎉"; return; }
+
+  const pad = n=>n.toString().padStart(2,"0");
+
+  t.innerHTML = Math.floor(d/86400000)+"d "+ pad(Math.floor((d%86400000)/3600000))+"h "+ pad(Math.floor((d%3600000)/60000))+"m "+ pad(Math.floor((d%60000)/1000))+"s";
+
+},1000);
+
+
+
+/* LOVE REVEAL */
+
+function revealLove(){
+
+  const text = "I LOVE YOU";
+
+  const container = document.getElementById("loveReveal");
+
+  container.innerHTML = "";
+
+  container.style.display = "flex";
+
+  let i = 0;
+
+  const interval = setInterval(()=>{
+
+    const span = document.createElement("span");
+
+    span.innerText = text[i];
+
+    container.appendChild(span);
+
+    i++;
+
     triggerConfetti();
-    if (navigator.vibrate) navigator.vibrate(100);
+
+    if(i >= text.length) clearInterval(interval);
+
+  }, 400);
+
 }
 
-/* CONFETTI LOGIC (Simplified for performance) */
+
+
+/* CONFETTI */
+
 const canvas = document.getElementById("confettiCanvas");
+
 const ctx = canvas.getContext("2d");
+
+let confettiParticles = [];
+
 canvas.width = window.innerWidth;
+
 canvas.height = window.innerHeight;
-let particles = [];
 
-function triggerConfetti() {
-    for(let i=0; i<100; i++) {
-        particles.push({
-            x: Math.random() * canvas.width,
-            y: Math.random() * canvas.height - canvas.height,
-            r: Math.random() * 6 + 2,
-            d: Math.random() * 10,
-            color: `hsl(${Math.random() * 360}, 100%, 70%)`
-        });
-    }
-    drawConfetti();
+
+
+function Confetti(){
+
+  this.x = Math.random()*canvas.width;
+
+  this.y = Math.random()*canvas.height- canvas.height;
+
+  this.r = Math.random()*6+4;
+
+  this.d = Math.random()*canvas.height;
+
+  this.color = hearts[Math.floor(Math.random()*hearts.length)];
+
+  this.tilt = Math.floor(Math.random()*10)-10;
+
 }
 
-function drawConfetti() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach((p, i) => {
-        p.y += 3;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fill();
-        if(p.y > canvas.height) particles.splice(i, 1);
-    });
-    if(particles.length > 0) requestAnimationFrame(drawConfetti);
+
+
+function triggerConfetti(){
+
+  for(let i=0;i<30;i++) confettiParticles.push(new Confetti());
+
+  animateConfetti();
+
 }
-// Add this to the bottom of your script.js
-document.querySelectorAll('.memory-card').forEach(card => {
-  const randomRotation = Math.floor(Math.random() * 10 - 5) + "deg";
-  card.style.setProperty('--r', randomRotation);
-});
+
+
+
+function animateConfetti(){
+
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  for(let i=0;i<confettiParticles.length;i++){
+
+    let p = confettiParticles[i];
+
+    p.y += (Math.cos(p.d) + 1 + p.r/2);
+
+    p.x += Math.sin(p.d);
+
+    ctx.strokeStyle = p.color;
+
+    ctx.beginPath();
+
+    ctx.moveTo(p.x,p.y);
+
+    ctx.lineTo(p.x+p.tilt,p.y+p.r);
+
+    ctx.stroke();
+
+    if(p.y>canvas.height) confettiParticles.splice(i,1);
+
+  }
+
+  if(confettiParticles.length>0) requestAnimationFrame(animateConfetti);
+
+}
+
+
+
+/* AUTOPLAY VIDEOS */
+
+document.querySelectorAll("video").forEach(v=>{ v.muted=true; v.play().catch(()=>{}); });
