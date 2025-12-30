@@ -17,13 +17,16 @@ lightCandleBtn.addEventListener("click", () => {
 });
 
 nextPageBtn.addEventListener("click", () => {
-    cakePage.classList.remove("active");
-    homePage.classList.add("active");
+    // 1. Hide the cake page
+    document.getElementById("cakePage").classList.remove("active");
+    
+    // 2. Show the home page (or whatever the next ID is)
+    document.getElementById("home").classList.add("active");
 
+    // 3. Play music
     if (!audio.src || audio.paused) {
         audio.src = "music/love.mp3";
-        audio.volume = 0.5;
-        audio.play().catch(e => console.log("Audio play blocked until user interaction"));
+        audio.play().catch(() => {});
     }
 });
 
