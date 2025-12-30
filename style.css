@@ -1,116 +1,195 @@
-/* Optimized Root Variables for a Romantic Aesthetic */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap');
+
 :root {
-    --primary-red: #e63946;
-    --accent-pink: #ff8fab;
-    --soft-white: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.15);
+    /* Refined Romantic Palette */
+    --primary-red: #9d0208;
+    --ruby: #d00000;
+    --rose-petal: #ff85a1;
+    --medical-white: #fffaff;
+    --glass: rgba(255, 255, 255, 0.15);
     --glass-border: rgba(255, 255, 255, 0.3);
-    --gradient-romantic: linear-gradient(-45deg, #ff758c, #ff7eb3, #e73c7e, #b11226);
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    --gradient1: linear-gradient(-45deg, #6a040f, #9d0208, #ff4d6d, #ff85a1);
 }
 
-/* Global Reset to Remove Blank Space */
+/* RESET & BASE */
 * { 
     margin: 0; 
     padding: 0; 
     box-sizing: border-box; 
+    -webkit-font-smoothing: antialiased;
 }
 
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Fixes blank space/scrolling issues */
-    font-family: 'Poppins', sans-serif;
+body { 
+    font-family: 'Poppins', sans-serif; 
+    min-height: 100vh; 
+    background: #000; 
+    overflow-x: hidden; 
+    color: var(--medical-white);
 }
 
-/* Animated Romantic Background */
-body {
-    background: var(--gradient-romantic);
+/* Dynamic Romantic Background */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: var(--gradient1);
     background-size: 400% 400%;
-    animation: gradientFlow 15s ease infinite;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    animation: gradientShift 15s ease infinite;
+    z-index: -1;
 }
 
-@keyframes gradientFlow {
+@keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Central Glass Container */
+/* PROFESSIONAL GLASS SECTIONS */
 .section {
-    width: 90%;
-    max-width: 500px;
-    padding: 2.5rem;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
     text-align: center;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    background: var(--glass-bg);
+    background: var(--glass);
     border: 1px solid var(--glass-border);
-    border-radius: 30px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
 }
 
-/* Refined Typography */
+.section.active {
+    display: flex;
+    animation: elegantFade 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes elegantFade {
+    from { opacity: 0; filter: blur(10px); transform: scale(0.95); }
+    to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
+/* FLUID TYPOGRAPHY */
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 5vw, 2.2rem);
-    color: white;
-    text-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    line-height: 1.3;
+    /* Responsive font size: grows with screen size */
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    background: linear-gradient(to right, #ffffff, #ffccd5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
-/* Modern Romantic Buttons */
-.btn-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-}
-
-button {
-    width: 100%;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 50px;
-    background: white;
-    color: var(--primary-red);
-    font-weight: 600;
-    text-transform: uppercase;
+.subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(1.2rem, 4vw, 2.2rem);
+    color: #ffccd5;
+    max-width: 800px;
     letter-spacing: 1px;
+}
+
+/* ROMANTIC NEUMORPHIC BUTTONS */
+button {
+    margin-top: 30px;
+    padding: 15px 40px;
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow);
 }
 
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 126, 179, 0.4);
-    background: var(--accent-pink);
-    color: white;
+    background: white;
+    color: var(--primary-red);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 133, 161, 0.4);
 }
 
-/* Cake Design Adjustments */
-.cake {
-    position: relative;
-    width: 160px;
-    margin: 20px 0;
+/* RESPONSIVE GALLERY GRID */
+.memory-frame-grid {
+    width: 100%;
+    max-width: 1200px;
+    display: grid;
+    /* auto-fit makes it responsive automatically */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    max-height: 70vh;
+    overflow-y: auto;
+    /* Smooth scrolling for mobile */
+    -webkit-overflow-scrolling: touch;
 }
 
-/* Floating Elements (Hearts) */
-.heart-float {
-    position: fixed;
-    pointer-events: none;
-    z-index: -1;
+/* Hide scrollbar for clean look */
+.memory-frame-grid::-webkit-scrollbar { display: none; }
+
+.memory-card {
+    background: white;
+    padding: 10px 10px 30px 10px;
+    border-radius: 2px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: rotate(var(--r, 0deg));
+}
+
+.memory-card:hover {
+    transform: rotate(0deg) scale(1.1) !important;
+    z-index: 10;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* 3D CAKE IMPROVEMENTS */
+.cake-container { margin: 50px 0; perspective: 1000px; }
+.cake { position: relative; width: 200px; height: 140px; transform: rotateX(10deg); }
+
+.layer1 { background: #4a1e1b; height: 60px; width: 100%; position: absolute; bottom: 0; border-radius: 0 0 20px 20px; box-shadow: inset 0 -10px 20px rgba(0,0,0,0.3); }
+.layer2 { background: #7a3530; height: 60px; width: 100%; position: absolute; bottom: 50px; border-radius: 15px; }
+
+.frosting.top { 
+    background: #fff; height: 40px; width: 100%; 
+    position: absolute; top: 0; border-radius: 20px 20px 5px 5px; 
+    box-shadow: 0 5px 15px rgba(255,255,255,0.4);
+}
+
+.flame { 
+    width: 18px; height: 26px; 
+    background: radial-gradient(#fff, #ffae00, #ff4500);
+    border-radius: 50% 50% 20% 20%; 
+    box-shadow: 0 0 25px #ffae00;
+}
+
+/* FLOATING HEARTS/STETHOSCOPES */
+.letters span {
+    position: fixed; bottom: -100px;
     animation: floatUp linear infinite;
+    pointer-events: none;
+    font-size: 24px;
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.5));
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+
+/* MOBILE SPECIFIC OVERRIDES */
+@media(max-width: 480px) {
+    .section { padding: 15px; }
+    .memory-frame-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .cake { width: 160px; height: 110px; }
+    button { width: 100%; padding: 15px 20px; }
 }
