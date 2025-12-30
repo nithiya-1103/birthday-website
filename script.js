@@ -1,237 +1,151 @@
 const audio = document.getElementById("bgMusic");
-
 const container = document.querySelector(".letters");
+const hearts = ["❤️", "💖", "💕", "🩺", "✨"]; // Added doctor & sparkle icons
 
-const hearts = ["❤️","💖","💕","💘"];
-
-
-
-/* CAKE PAGE */
-
+/* --- CAKE PAGE LOGIC --- */
 const lightCandleBtn = document.getElementById("lightCandleBtn");
-
 const flame = document.getElementById("flame");
-
 const nextPageBtn = document.getElementById("nextPageBtn");
-
 const cakePage = document.getElementById("cakePage");
-
 const homePage = document.getElementById("home");
 
-
-
-lightCandleBtn.addEventListener("click", ()=>{
-
-  flame.style.display = "block";
-
-  document.getElementById("candle").classList.add("lit");
-
+lightCandleBtn.addEventListener("click", () => {
+    flame.style.display = "block";
+    document.getElementById("candle").classList.add("lit");
+    // Add a nice glow effect to the frosting when lit
+    document.querySelector(".frosting.top").style.boxShadow = "0 0 20px rgba(255, 165, 0, 0.6)";
 });
 
+nextPageBtn.addEventListener("click", () => {
+    cakePage.classList.remove("active");
+    homePage.classList.add("active");
 
-
-nextPageBtn.addEventListener("click", ()=>{
-
-  cakePage.classList.remove("active");
-
-  homePage.classList.add("active");
-
-
-
-  if(!audio.src){
-
-    audio.src = "music/love.mp3";
-
-    audio.volume = 0.7;
-
-    audio.play().catch(()=>{});
-
-  }
-
+    if (!audio.src || audio.paused) {
+        audio.src = "music/love.mp3";
+        audio.volume = 0.5;
+        audio.play().catch(e => console.log("Audio play blocked until user interaction"));
+    }
 });
 
-
-
-/* MUSIC CONTROL */
-
-function startExperience(next){
-
-  showSection(next);
-
+/* --- PAGE NAVIGATION --- */
+function startExperience(next) {
+    showSection(next);
 }
 
+function showSection(id) {
+    history.pushState({}, "", "#" + id);
+    document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
+    const activeSection = document.getElementById(id);
+    activeSection.classList.add("active");
 
-
-/* PAGE NAVIGATION */
-
-function showSection(id){
-
-  history.pushState({}, "", "#" + id);
-
-  document.querySelectorAll(".section").forEach(sec=> sec.classList.remove("active"));
-
-  document.getElementById(id).classList.add("active");
-
-  document.querySelectorAll("video").forEach(v=>{ v.muted=true; v.play().catch(()=>{}); });
-
+    // Auto-play videos in gallery if that's the current section
+    activeSection.querySelectorAll("video").forEach(v => {
+        v.muted = true;
+        v.play().catch(() => {});
+    });
 }
 
+/* --- FLOATING HEARTS --- */
+setInterval(() => {
+    const h = document.createElement("span");
+    h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+    h.style.position = "fixed";
+    h.style.bottom = "-50px";
+    h.style.left = 5 + Math.random() * 90 + "vw";
+    h.style.fontSize = (15 + Math.random() * 15) + "px";
+    h.style.transition = "transform 6s linear, opacity 6s linear";
+    h.style.zIndex = "1000";
+    container.appendChild(h);
 
+    // Animate up
+    setTimeout(() => {
+        h.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
+        h.style.opacity = "0";
+    }, 100);
 
-/* FLOATING HEARTS */
-
-setInterval(()=>{
-
-  const h = document.createElement("span");
-
-  h.innerText = hearts[Math.floor(Math.random()*hearts.length)];
-
-  h.style.left = 5 + Math.random()*90 + "vw"; // away from edges
-
-  h.style.fontSize = (12 + Math.random()*12) + "px";
-
-  h.style.transform = `rotate(${Math.random()*360}deg)`;
-
-  h.style.animationDuration = 6 + Math.random()*4 + "s";
-
-  container.appendChild(h);
-
-  setTimeout(()=>h.remove(), 9000);
-
+    setTimeout(() => h.remove(), 7000);
 }, 500);
 
+/* --- COUNTDOWN TIMER --- */
+const birthday = new Date("2025-03-20T00:00:00").getTime();
+setInterval(() => {
+    const t = document.getElementById("timer");
+    if (!t) return;
+    const d = birthday - Date.now();
+    if (d <= 0) {
+        t.innerHTML = "🎉 HAPPY BIRTHDAY DOCTOR! 🎉";
+        return;
+    }
+    const days = Math.floor(d / 86400000);
+    const hours = Math.floor((d % 86400000) / 3600000);
+    const mins = Math.floor((d % 3600000) / 60000);
+    const secs = Math.floor((d % 60000) / 1000);
+    
+    t.innerHTML = `${days}d ${hours.toString().padStart(2, '0')}h ${mins.toString().padStart(2, '0')}m ${secs.toString().padStart(2, '0')}s`;
+}, 1000);
 
-
-/* COUNTDOWN TIMER */
-
-const birthday = new Date("2025-03-20").getTime();
-
-setInterval(()=>{
-
-  const t = document.getElementById("timer");
-
-  if(!t) return;
-
-  const d = birthday - Date.now();
-
-  if(d <= 0){ t.innerHTML="🎉 Today is your day 🎉"; return; }
-
-  const pad = n=>n.toString().padStart(2,"0");
-
-  t.innerHTML = Math.floor(d/86400000)+"d "+ pad(Math.floor((d%86400000)/3600000))+"h "+ pad(Math.floor((d%3600000)/60000))+"m "+ pad(Math.floor((d%60000)/1000))+"s";
-
-},1000);
-
-
-
-/* LOVE REVEAL */
-
-function revealLove(){
-
-  const text = "I LOVE YOU";
-
-  const container = document.getElementById("loveReveal");
-
-  container.innerHTML = "";
-
-  container.style.display = "flex";
-
-  let i = 0;
-
-  const interval = setInterval(()=>{
-
-    const span = document.createElement("span");
-
-    span.innerText = text[i];
-
-    container.appendChild(span);
-
-    i++;
-
-    triggerConfetti();
-
-    if(i >= text.length) clearInterval(interval);
-
-  }, 400);
-
+/* --- LOVE REVEAL & CONFETTI --- */
+function revealLove() {
+    const text = "I LOVE YOU";
+    const revealContainer = document.getElementById("loveReveal");
+    revealContainer.innerHTML = "";
+    revealContainer.style.display = "flex";
+    
+    let i = 0;
+    const interval = setInterval(() => {
+        const span = document.createElement("span");
+        span.innerText = text[i];
+        span.style.animation = "elegantFade 0.5s forwards";
+        revealContainer.appendChild(span);
+        i++;
+        triggerConfetti();
+        if (i >= text.length) clearInterval(interval);
+    }, 300);
 }
-
-
-
-/* CONFETTI */
 
 const canvas = document.getElementById("confettiCanvas");
-
 const ctx = canvas.getContext("2d");
-
 let confettiParticles = [];
 
-canvas.width = window.innerWidth;
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
-canvas.height = window.innerHeight;
-
-
-
-function Confetti(){
-
-  this.x = Math.random()*canvas.width;
-
-  this.y = Math.random()*canvas.height- canvas.height;
-
-  this.r = Math.random()*6+4;
-
-  this.d = Math.random()*canvas.height;
-
-  this.color = hearts[Math.floor(Math.random()*hearts.length)];
-
-  this.tilt = Math.floor(Math.random()*10)-10;
-
+function Confetti() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height - canvas.height;
+    this.r = Math.random() * 6 + 4;
+    this.d = Math.random() * canvas.height;
+    // Doctor/Romantic theme colors
+    const colors = ["#ff4d6d", "#ff85a1", "#ffffff", "#d00000"];
+    this.color = colors[Math.floor(Math.random() * colors.length)];
+    this.tilt = Math.floor(Math.random() * 10) - 10;
 }
 
-
-
-function triggerConfetti(){
-
-  for(let i=0;i<30;i++) confettiParticles.push(new Confetti());
-
-  animateConfetti();
-
+function triggerConfetti() {
+    for (let i = 0; i < 20; i++) confettiParticles.push(new Confetti());
+    if (confettiParticles.length <= 20) animateConfetti();
 }
 
+function animateConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < confettiParticles.length; i++) {
+        let p = confettiParticles[i];
+        p.y += (Math.cos(p.d) + 1 + p.r / 2);
+        p.x += Math.sin(p.d);
+        
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r/2, 0, Math.PI * 2);
+        ctx.fill();
 
-
-function animateConfetti(){
-
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-
-  for(let i=0;i<confettiParticles.length;i++){
-
-    let p = confettiParticles[i];
-
-    p.y += (Math.cos(p.d) + 1 + p.r/2);
-
-    p.x += Math.sin(p.d);
-
-    ctx.strokeStyle = p.color;
-
-    ctx.beginPath();
-
-    ctx.moveTo(p.x,p.y);
-
-    ctx.lineTo(p.x+p.tilt,p.y+p.r);
-
-    ctx.stroke();
-
-    if(p.y>canvas.height) confettiParticles.splice(i,1);
-
-  }
-
-  if(confettiParticles.length>0) requestAnimationFrame(animateConfetti);
-
+        if (p.y > canvas.height) {
+            confettiParticles.splice(i, 1);
+            i--;
+        }
+    }
+    if (confettiParticles.length > 0) requestAnimationFrame(animateConfetti);
 }
-
-
-
-/* AUTOPLAY VIDEOS */
-
-document.querySelectorAll("video").forEach(v=>{ v.muted=true; v.play().catch(()=>{}); });
