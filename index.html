@@ -1,81 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Our Special Journey ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Special Journey ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
 </head>
-
 <body>
 
 <audio id="bgMusic" loop></audio>
 <div class="letters"></div>
 
-<!-- CAKE PAGE -->
 <section class="section active" id="cakePage">
-  <h1 class="title cakeTitle">HAPPIEE BIRTHDAY MY DEAR PAAPUU😘💕</h1>
+    <h1 class="title cakeTitle">HAPPIEE BIRTHDAY MY DEAR PAAPUU😘💕</h1>
 
-  <div class="cake">
-    <div class="frosting top"></div>
-    <div class="layers layer2"></div>
-    <div class="layers layer1"></div>
-    <div class="candle" id="candle">
-      <div class="flame" id="flame"></div>
+    <div class="cake-container">
+        <div class="cake">
+            <div class="frosting top"></div>
+            <div class="layers layer2"></div>
+            <div class="layers layer1"></div>
+            <div class="candle" id="candle">
+                <div class="flame" id="flame"></div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <button id="lightCandleBtn">CLICK TO LIGHT UP THE CANDLE🕯️</button>
-  <button id="nextPageBtn" style="margin-top:10px;">NEXT🎁</button>
+    <div class="button-group">
+        <button id="lightCandleBtn">CLICK TO LIGHT UP🕯️</button>
+        <button id="nextPageBtn">NEXT🎁</button>
+    </div>
 </section>
 
-<!-- HOME / LOVE JOURNEY -->
 <section class="section" id="home">
-  <h1 class="title">MY DEAR DOCTOR AE!!😽</h1>
-  <p class="subtitle">Happy Birthday! Since I can’t be there to give you a gift in person, I made this special birthday website just for you—a little surprise from me, made with love across the miles.</p>
-  <button onclick="startExperience('story')">Begin❤️</button>
+    <h1 class="title">MY DEAR DOCTOR AE!! 🩺</h1>
+    <p class="subtitle">Happy Birthday! Since I can’t be there in person, I made this digital world just for you—made with love across the miles.</p>
+    <button onclick="startExperience('story')">Begin❤️</button>
 </section>
 
-<!-- STORY -->
 <section class="section" id="story">
-  <h1 class="title">Our Story</h1>
-  <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
-  <button onclick="showSection('gallery')">Next 💕</button>
+    <h1 class="title">Our Story</h1>
+    <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
+    <button onclick="showSection('gallery')">See Our Moments 💕</button>
 </section>
 
-<!-- GALLERY -->
 <section class="section glass" id="gallery">
-  <h1 class="title">Captured Memories</h1>
-  <div class="memory-frame-grid" id="memoryGrid">
-    <div class="memory-card"><img src="images/img1.jpg"></div>
-    <div class="memory-card"><img src="images/img2.jpg"></div>
-    <div class="memory-card"><img src="images/img3.jpg"></div>
-    <div class="memory-card"><img src="images/img4.jpg"></div>
-    <div class="memory-card"><img src="images/img5.jpg"></div>
-    <div class="memory-card"><img src="images/img6.jpg"></div>
+    <h1 class="title">Captured Memories</h1>
+    <div class="memory-frame-grid" id="memoryGrid">
+        <div class="memory-card"><img src="images/img1.jpg"></div>
+        <div class="memory-card"><img src="images/img2.jpg"></div>
+        <div class="memory-card"><img src="images/img3.jpg"></div>
+        <div class="memory-card"><img src="images/img4.jpg"></div>
+        <div class="memory-card"><img src="images/img5.jpg"></div>
+        <div class="memory-card"><img src="images/img6.jpg"></div>
 
-    <div class="memory-card"><video src="videos/vid1.mp4" autoplay muted loop playsinline></video></div>
-    <div class="memory-card"><video src="videos/vid2.mp4" autoplay muted loop playsinline></video></div>
-    <div class="memory-card"><video src="videos/vid3.mp4" autoplay muted loop playsinline></video></div>
-    <div class="memory-card"><video src="videos/vid4.mp4" autoplay muted loop playsinline></video></div>
-  </div>
-  <button onclick="showSection('final')">Final ❤️</button>
+        <div class="memory-card"><video src="videos/vid1.mp4" autoplay muted loop playsinline></video></div>
+        <div class="memory-card"><video src="videos/vid2.mp4" autoplay muted loop playsinline></video></div>
+        <div class="memory-card"><video src="videos/vid3.mp4" autoplay muted loop playsinline></video></div>
+        <div class="memory-card"><video src="videos/vid4.mp4" autoplay muted loop playsinline></video></div>
+        <div class="memory-card"><video src="videos/vid5.mp4" autoplay muted loop playsinline></video></div>
+        <div class="memory-card"><video src="videos/vid6.mp4" autoplay muted loop playsinline></video></div>
+    </div>
+    <button onclick="showSection('final')">Final Surprise ❤️</button>
 </section>
 
-<!-- FINAL -->
 <section class="section" id="final">
-  <h1 class="title">Happy Birthday ❤️</h1>
-  <div id="timer"></div>
-  <button onclick="revealLove()">Tap Gently 💖</button>
-  <div class="love-reveal" id="loveReveal"></div>
+    <h1 class="title">Forever Yours ❤️</h1>
+    <div id="timer"></div>
+    <button onclick="revealLove()">Tap Gently 💖</button>
+    <div class="love-reveal" id="loveReveal"></div>
 </section>
 
-<!-- CONFETTI -->
 <canvas id="confettiCanvas"></canvas>
 
 </body>
 </html>
-
