@@ -1,54 +1,57 @@
 const audio = document.getElementById("bgMusic");
 const container = document.querySelector(".letters");
-const hearts = ["❤️", "💖", "💕", "🩺", "✨"]; // Added doctor & sparkle icons
+const hearts = ["❤️", "💖", "💕", "🩺", "✨"]; 
 
 /* --- CAKE PAGE LOGIC --- */
 const lightCandleBtn = document.getElementById("lightCandleBtn");
 const flame = document.getElementById("flame");
 const nextPageBtn = document.getElementById("nextPageBtn");
-const cakePage = document.getElementById("cakePage");
-const homePage = document.getElementById("home");
 
 lightCandleBtn.addEventListener("click", () => {
     flame.style.display = "block";
     document.getElementById("candle").classList.add("lit");
-    // Add a nice glow effect to the frosting when lit
     document.querySelector(".frosting.top").style.boxShadow = "0 0 20px rgba(255, 165, 0, 0.6)";
 });
 
 nextPageBtn.addEventListener("click", () => {
-    // 1. Hide the cake page
-    document.getElementById("cakePage").classList.remove("active");
-    
-    // 2. Show the home page (or whatever the next ID is)
-    document.getElementById("home").classList.add("active");
+    showSection('home'); // Using the standardized navigation function
 
-    // 3. Play music
     if (!audio.src || audio.paused) {
         audio.src = "music/love.mp3";
-        audio.play().catch(() => {});
+        audio.volume = 0.5;
+        audio.play().catch(() => console.log("Music play blocked by browser."));
     }
 });
 
-/* --- PAGE NAVIGATION --- */
+/* --- STANDARDIZED PAGE NAVIGATION --- */
 function startExperience(next) {
     showSection(next);
 }
 
 function showSection(id) {
+    // 1. Update History for browser back-button support
     history.pushState({}, "", "#" + id);
+    
+    // 2. Hide all sections and show the active one
     document.querySelectorAll(".section").forEach(sec => sec.classList.remove("active"));
     const activeSection = document.getElementById(id);
     activeSection.classList.add("active");
 
-    // Auto-play videos in gallery if that's the current section
+    // 3. INTERNAL SCROLL RESET: Fixes the unwanted space issue
+    // If we enter the gallery, we reset its specific grid scroll to the top
+    if (id === 'gallery') {
+        const grid = document.getElementById("memoryGrid");
+        if (grid) grid.scrollTop = 0;
+    }
+
+    // 4. Handle Videos
     activeSection.querySelectorAll("video").forEach(v => {
         v.muted = true;
         v.play().catch(() => {});
     });
 }
 
-/* --- FLOATING HEARTS --- */
+/* --- FLOATING ELEMENTS --- */
 setInterval(() => {
     const h = document.createElement("span");
     h.innerText = hearts[Math.floor(Math.random() * hearts.length)];
@@ -58,9 +61,9 @@ setInterval(() => {
     h.style.fontSize = (15 + Math.random() * 15) + "px";
     h.style.transition = "transform 6s linear, opacity 6s linear";
     h.style.zIndex = "1000";
+    h.style.pointerEvents = "none"; // Users can't accidentally click them
     container.appendChild(h);
 
-    // Animate up
     setTimeout(() => {
         h.style.transform = `translateY(-110vh) rotate(${Math.random() * 360}deg)`;
         h.style.opacity = "0";
@@ -69,16 +72,18 @@ setInterval(() => {
     setTimeout(() => h.remove(), 7000);
 }, 500);
 
-/* --- COUNTDOWN TIMER --- */
+/* --- BIRTHDAY COUNTDOWN --- */
 const birthday = new Date("2025-03-20T00:00:00").getTime();
 setInterval(() => {
     const t = document.getElementById("timer");
     if (!t) return;
     const d = birthday - Date.now();
+    
     if (d <= 0) {
         t.innerHTML = "🎉 HAPPY BIRTHDAY DOCTOR! 🎉";
         return;
     }
+    
     const days = Math.floor(d / 86400000);
     const hours = Math.floor((d % 86400000) / 3600000);
     const mins = Math.floor((d % 3600000) / 60000);
@@ -87,7 +92,7 @@ setInterval(() => {
     t.innerHTML = `${days}d ${hours.toString().padStart(2, '0')}h ${mins.toString().padStart(2, '0')}m ${secs.toString().padStart(2, '0')}s`;
 }, 1000);
 
-/* --- LOVE REVEAL & CONFETTI --- */
+/* --- FINAL SURPRISE: LOVE REVEAL & CONFETTI --- */
 function revealLove() {
     const text = "I LOVE YOU";
     const revealContainer = document.getElementById("loveReveal");
@@ -122,7 +127,6 @@ function Confetti() {
     this.y = Math.random() * canvas.height - canvas.height;
     this.r = Math.random() * 6 + 4;
     this.d = Math.random() * canvas.height;
-    // Doctor/Romantic theme colors
     const colors = ["#ff4d6d", "#ff85a1", "#ffffff", "#d00000"];
     this.color = colors[Math.floor(Math.random() * colors.length)];
     this.tilt = Math.floor(Math.random() * 10) - 10;
@@ -130,7 +134,8 @@ function Confetti() {
 
 function triggerConfetti() {
     for (let i = 0; i < 20; i++) confettiParticles.push(new Confetti());
-    if (confettiParticles.length <= 20) animateConfetti();
+    // Only start loop if it's not already running
+    if (confettiParticles.length === 20) animateConfetti();
 }
 
 function animateConfetti() {
