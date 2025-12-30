@@ -100,3 +100,8 @@ function drawConfetti() {
     });
     if(particles.length > 0) requestAnimationFrame(drawConfetti);
 }
+// Add this to the bottom of your script.js
+document.querySelectorAll('.memory-card').forEach(card => {
+  const randomRotation = Math.floor(Math.random() * 10 - 5) + "deg";
+  card.style.setProperty('--r', randomRotation);
+});
