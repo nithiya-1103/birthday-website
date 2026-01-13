@@ -1,16 +1,15 @@
 /* ================= GOOGLE FONTS ================= */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=Parisienne&family=Poppins:wght@300;400;500;600&display=swap');
 
 /* ================= ROOT ================= */
 :root {
     --primary-red: #9d0208;
-    --ruby: #d00000;
     --rose-petal: #ff85a1;
     --medical-white: #fffaff;
-    --glass: rgba(255, 255, 255, 0.18);
-    --glass-border: rgba(255, 255, 255, 0.35);
-    --shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
-    --gradient1: linear-gradient(-45deg, #6a040f, #9d0208, #ff4d6d, #ff85a1);
+    --glass: rgba(255,255,255,0.18);
+    --glass-border: rgba(255,255,255,0.35);
+    --shadow: 0 12px 45px rgba(0,0,0,0.4);
+    --gradient1: linear-gradient(-45deg,#6a040f,#9d0208,#ff4d6d,#ff85a1);
 }
 
 /* ================= RESET ================= */
@@ -57,59 +56,60 @@ body::before {
     width: 100vw;
     padding: 22px;
     text-align: center;
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(15px);
     background: var(--glass);
     border: 1px solid var(--glass-border);
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
 }
 
 .section.active {
     display: flex;
-    animation: elegantFade 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: elegantFade 1.2s ease;
 }
 
 /* ================= TYPOGRAPHY ================= */
 .title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 7.5vw, 3.6rem);
-    letter-spacing: 1.2px;
-    margin-bottom: 16px;
-    background: linear-gradient(to right, #ffffff, #ffccd5);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.1rem, 7.8vw, 3.7rem);
+    letter-spacing: 1.4px;
+    margin-bottom: 14px;
+    background: linear-gradient(to right,#ffffff,#ffd6df);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 12px rgba(0,0,0,0.25);
+    text-shadow: 2px 3px 14px rgba(0,0,0,0.35);
 }
 
+/* Romantic cake heading */
 .cakeTitle {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(2.8rem, 9vw, 4.3rem);
+    font-family: 'Allura', cursive;
+    font-size: clamp(3rem, 9vw, 4.6rem);
     letter-spacing: 2px;
 }
 
+/* Subtitles / love text */
 .subtitle {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(1.3rem, 4vw, 2.2rem);
-    color: #ffccd5;
+    font-family: 'Parisienne', cursive;
+    font-size: clamp(1.4rem, 4.5vw, 2.3rem);
+    color: #ffdde4;
+    line-height: 1.6;
     max-width: 850px;
-    line-height: 1.5;
-    margin-bottom: 10px;
 }
 
 /* ================= BUTTONS ================= */
 button {
-    margin-top: 18px;
-    padding: 14px 40px;
+    margin-top: 20px;
+    padding: 14px 42px;
     border-radius: 50px;
-    background: rgba(255, 255, 255, 0.15);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 1.2px;
+    background: rgba(255,255,255,0.15);
     color: #fff;
-    font-weight: 500;
-    letter-spacing: 1px;
+    border: 1px solid var(--glass-border);
     cursor: pointer;
     transition: all 0.4s ease;
-    border: 1px solid var(--glass-border);
 }
 
 button:hover {
@@ -119,69 +119,40 @@ button:hover {
 }
 
 /* ================= CAKE ================= */
-.cake-container {
-    margin: 28px 0;
-    perspective: 1000px;
-}
+.cake-container { margin: 28px 0; perspective: 1000px; }
 
 .cake {
     width: 180px;
     height: 120px;
     position: relative;
     transform: rotateX(10deg);
-    margin: auto;
 }
 
 .layer1 {
     background: #4a1e1b;
     height: 50px;
-    width: 100%;
     position: absolute;
     bottom: 0;
+    width: 100%;
     border-radius: 0 0 20px 20px;
 }
 
 .layer2 {
     background: #7a3530;
     height: 50px;
-    width: 100%;
     position: absolute;
     bottom: 40px;
+    width: 100%;
     border-radius: 15px;
 }
 
 .frosting.top {
     background: #fff;
     height: 35px;
-    width: 100%;
     position: absolute;
     top: 0;
+    width: 100%;
     border-radius: 20px 20px 6px 6px;
-}
-
-.candle {
-    width: 10px;
-    height: 42px;
-    background: linear-gradient(to right, #ff85a1, #ffccd5);
-    border-radius: 4px;
-    position: absolute;
-    top: -38px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-#flame {
-    display: none;
-    position: absolute;
-    top: -26px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 15px;
-    height: 26px;
-    background: radial-gradient(#fff, #ffae00, #ff4500);
-    border-radius: 50% 50% 20% 20%;
-    box-shadow: 0 0 22px #ffae00;
-    animation: flicker 0.1s infinite alternate;
 }
 
 /* ================= MEMORY GALLERY ================= */
@@ -189,7 +160,7 @@ button:hover {
     width: 100%;
     max-width: 1100px;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
     gap: 28px;
     padding: 40px 20px;
     max-height: 65vh;
@@ -197,46 +168,21 @@ button:hover {
     scrollbar-width: none;
 }
 
-.memory-frame-grid::-webkit-scrollbar {
-    display: none;
-}
+.memory-frame-grid::-webkit-scrollbar { display: none; }
 
 .memory-card {
-    position: relative;
     background: #111;
     padding: 25px 0;
     box-shadow: var(--shadow);
     border-radius: 4px;
-    transition: transform 0.4s ease, filter 0.4s ease;
+    transition: 0.4s ease;
 }
-
-.memory-card::before,
-.memory-card::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 12px;
-    background-image: linear-gradient(
-        90deg,
-        #fff 0%,
-        #fff 50%,
-        transparent 50%,
-        transparent 100%
-    );
-    background-size: 20px 100%;
-    z-index: 2;
-}
-
-.memory-card::before { top: 6px; }
-.memory-card::after { bottom: 6px; }
 
 .memory-card img,
 .memory-card video {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block;
     border-top: 5px solid #000;
     border-bottom: 5px solid #000;
 }
@@ -244,22 +190,16 @@ button:hover {
 .memory-card:hover {
     transform: scale(1.05);
     filter: brightness(1.15);
-    z-index: 5;
 }
 
 /* ================= ANIMATIONS ================= */
-@keyframes flicker {
-    from { opacity: 0.8; }
-    to { opacity: 1; }
-}
-
 @keyframes elegantFade {
     from { opacity: 0; transform: scale(0.95); }
     to { opacity: 1; transform: scale(1); }
 }
 
 /* ================= MOBILE ================= */
-@media (max-width: 480px) {
+@media (max-width:480px) {
     .memory-frame-grid {
         grid-template-columns: 1fr;
         max-height: 55vh;
@@ -275,3 +215,4 @@ button:hover {
         width: 90%;
     }
 }
+
