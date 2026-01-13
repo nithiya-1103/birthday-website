@@ -1,179 +1,176 @@
-/* ================= GOOGLE FONTS ================= */
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
 
-/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ================= BODY ================= */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #b8323a, #8f1f27);
-    color: #ffffff;
+    background: linear-gradient(135deg, #a4161a, #590d22);
+    color: #fff;
     height: 100vh;
     overflow: hidden;
 }
 
-/* ================= MAIN CONTAINER ================= */
-.container {
-    height: 100vh;
-    width: 100%;
-    padding: 20px;
-    display: flex;
+/* ---------- SECTIONS ---------- */
+.section {
+    position: absolute;
+    inset: 0;
+    display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    padding: 20px;
 }
 
-/* ================= TITLES ================= */
+.section.active {
+    display: flex;
+}
+
+/* ---------- TEXT ---------- */
 .title {
     font-family: 'Great Vibes', cursive;
-    font-size: clamp(2.4rem, 7vw, 3.2rem);
-    margin-bottom: 8px;
-    text-shadow: 0 6px 20px rgba(0,0,0,0.45);
+    font-size: clamp(2.2rem, 6vw, 3.2rem);
+    margin-bottom: 14px;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.5);
 }
 
-.subTitle {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(2rem, 6vw, 2.6rem);
-    margin-bottom: 28px;
+.subtitle {
+    font-size: 1rem;
+    max-width: 600px;
+    opacity: 0.9;
+    margin-bottom: 22px;
 }
 
-/* ================= CAKE ================= */
+/* ---------- CAKE ---------- */
+.cake-container {
+    margin: 30px 0;
+}
+
 .cake {
     position: relative;
     width: 180px;
     height: 120px;
-    background: linear-gradient(#4a1f1b, #2b0e0c);
-    border-radius: 14px;
-    margin: 25px 0;
+    overflow: visible;
 }
 
-/* Cream top */
-.cake span {
+.layer1 {
     position: absolute;
-    top: -18px;
-    left: 0;
+    bottom: 0;
     width: 100%;
-    height: 26px;
-    background: #ffffff;
+    height: 50px;
+    background: #3b1512;
+    border-radius: 12px;
+}
+
+.layer2 {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    height: 45px;
+    background: #5a1f1b;
+    border-radius: 12px;
+}
+
+.frosting.top {
+    position: absolute;
+    top: -12px;
+    width: 100%;
+    height: 28px;
+    background: #fff;
     border-radius: 14px;
 }
 
-/* ================= CANDLE (ALWAYS VISIBLE) ================= */
-.cake::before {
-    content: "";
+/* ---------- CANDLE ---------- */
+.candle {
     position: absolute;
-    top: -50px;
+    top: -42px;
     left: 50%;
     transform: translateX(-50%);
     width: 10px;
-    height: 40px;
+    height: 38px;
     background: linear-gradient(#ffd1dc, #ff6f91);
     border-radius: 6px;
-    z-index: 5;
+    z-index: 10;
 }
 
-/* ================= FLAME ================= */
-.cake::after {
-    content: "";
+/* ---------- FLAME ---------- */
+.flame {
     position: absolute;
-    top: -70px;
+    top: -22px;
     left: 50%;
     transform: translateX(-50%);
     width: 18px;
     height: 26px;
     background: radial-gradient(circle, #fff2a8, #ff9f1c, transparent);
     border-radius: 50%;
+    opacity: 0;
     animation: flicker 1s infinite;
-    z-index: 6;
 }
 
-/* Flame animation */
 @keyframes flicker {
-    0% {
-        transform: translateX(-50%) scale(1);
-        opacity: 1;
-    }
-    50% {
-        transform: translateX(-50%) scale(1.15);
-        opacity: 0.85;
-    }
-    100% {
-        transform: translateX(-50%) scale(1);
-        opacity: 1;
-    }
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.15); }
+    100% { transform: translateX(-50%) scale(1); }
 }
 
-/* ================= BUTTONS ================= */
-.buttons {
+/* ---------- BUTTONS ---------- */
+.button-group {
     display: flex;
     gap: 14px;
-    margin-top: 26px;
+    margin-top: 24px;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 button {
-    font-family: 'Cinzel Decorative', serif;
+    font-family: 'Playfair Display', serif;
     padding: 12px 26px;
-    font-size: 0.9rem;
     border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.55);
+    border: 1px solid rgba(255,255,255,0.6);
     background: rgba(255,255,255,0.18);
     color: #fff;
     cursor: pointer;
-    transition: all 0.3s ease;
-    backdrop-filter: blur(6px);
+    transition: 0.3s;
 }
 
 button:hover {
-    background: rgba(255,255,255,0.32);
+    background: rgba(255,255,255,0.35);
     transform: translateY(-2px);
 }
 
-/* ================= FLOATING HEARTS (OPTIONAL) ================= */
-.heart {
-    position: absolute;
-    font-size: 18px;
-    opacity: 0.7;
-    animation: float 6s linear infinite;
+/* ---------- MEMORY GRID ---------- */
+.memory-frame-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 14px;
+    max-width: 800px;
 }
 
-@keyframes float {
-    from {
-        transform: translateY(100vh) scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 1;
-    }
+.memory-card {
+    border-radius: 14px;
+    overflow: hidden;
 }
 
-/* ================= MOBILE ================= */
+.memory-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ---------- FINAL ---------- */
+.love-reveal {
+    margin-top: 20px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+}
+
+/* ---------- MOBILE ---------- */
 @media (max-width: 600px) {
     .cake {
         width: 150px;
-        height: 105px;
-    }
-
-    .cake::before {
-        height: 36px;
-        top: -46px;
-    }
-
-    .cake::after {
-        top: -64px;
-    }
-
-    button {
-        font-size: 0.85rem;
-        padding: 10px 22px;
+        height: 110px;
     }
 }
-
