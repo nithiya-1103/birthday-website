@@ -1,92 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Our Special Journey ❤️</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Special Journey ❤️</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="style.css">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
-  <!-- Script -->
-  <script defer src="script.js"></script>
+<!-- Stylesheet -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Script -->
+<script defer src="script.js"></script>
 </head>
 <body>
 
-  <!-- Background Music -->
-  <audio id="bgMusic" loop></audio>
+<!-- Background Music -->
+<audio id="bgMusic" loop></audio>
 
-  <!-- Floating Hearts -->
-  <div class="letters"></div>
+<!-- Floating Hearts -->
+<div class="letters"></div>
 
-  <!-- Cake Page -->
-  <section class="section active" id="cakePage">
-    <h1 class="title cakeTitle">HAPPIEE BIRTHDAY MY DEAR PAAPUU😘💕</h1>
-    <div class="cake-container">
-      <div class="cake">
-        <div class="candle" id="candle">
-          <div class="flame" id="flame"></div>
-        </div>
-        <div class="frosting top"></div>
-        <div class="layer2"></div>
-        <div class="layer1"></div>
-      </div>
+<!-- Cake Page -->
+<section class="section active" id="cakePage">
+  <h1 class="title cakeTitle">HAPPIEE BIRTHDAY MY DEAR ❤️</h1>
+  <div class="cake-container">
+    <div class="cake">
+      <div class="candle" id="candle"><div class="flame" id="flame"></div></div>
+      <div class="frosting top"></div>
+      <div class="layer2"></div>
+      <div class="layer1"></div>
     </div>
-    <div class="button-group">
-      <button id="lightCandleBtn">CLICK TO LIGHT UP🕯️</button><br>
-      <button id="nextPageBtn">NEXT🎁</button>
-    </div>
-  </section>
+  </div>
+  <div class="button-group">
+    <button id="lightCandleBtn">CLICK TO LIGHT UP🕯️</button><br>
+    <button id="nextPageBtn">NEXT🎁</button>
+  </div>
+</section>
 
-  <!-- Home Page -->
-  <section class="section" id="home">
-    <h1 class="title">MY DEAR DOCTOR AE!! 🩺</h1>
-    <p class="subtitle">Happy Birthday! Since I can’t be there in person, I made this digital world just for you—made with love across the miles.</p>
-    <button onclick="startExperience('story')">Begin❤️</button>
-  </section>
+<!-- Home Page -->
+<section class="section" id="home">
+  <h1 class="title">MY DEAR ❤️</h1>
+  <p class="subtitle">Happy Birthday! I made this digital world just for you, filled with memories and love.</p>
+  <button onclick="startExperience('story')">Begin❤️</button>
+</section>
 
-  <!-- Story Page -->
-  <section class="section" id="story">
-    <h1 class="title">Our Story</h1>
-    <p class="subtitle">Every smile, every moment became my favorite chapter with you.</p>
-    <button onclick="showSection('gallery')">See Our Moments 💕</button>
-  </section>
+<!-- Story Page -->
+<section class="section" id="story">
+  <h1 class="title">Our Story</h1>
+  <p class="subtitle" id="storyText"></p>
+  <button onclick="showSection('gallery')">See Our Memories 💕</button>
+</section>
 
-  <!-- Gallery Page -->
-  <section class="section glass" id="gallery">
-    <h1 class="title">~ Our Memories ~</h1>
-    <div class="memory-frame-grid" id="memoryGrid">
-      <!-- Images -->
-      <div class="memory-card"><img src="images/img1.jpg" alt="Memory"></div>
-      <div class="memory-card"><img src="images/img2.jpg" alt="Memory"></div>
-      <div class="memory-card"><img src="images/img3.jpg" alt="Memory"></div>
-      <div class="memory-card"><img src="images/img4.jpg" alt="Memory"></div>
-      <div class="memory-card"><img src="images/img5.jpg" alt="Memory"></div>
-      <div class="memory-card"><img src="images/img6.jpg" alt="Memory"></div>
-      <!-- Videos -->
-      <div class="memory-card"><video src="videos/vid1.mp4" autoplay muted loop playsinline></video></div>
-      <div class="memory-card"><video src="videos/vid2.mp4" autoplay muted loop playsinline></video></div>
-      <div class="memory-card"><video src="videos/vid3.mp4" autoplay muted loop playsinline></video></div>
-      <div class="memory-card"><video src="videos/vid4.mp4" autoplay muted loop playsinline></video></div>
-      <div class="memory-card"><video src="videos/vid5.mp4" autoplay muted loop playsinline></video></div>
-      <div class="memory-card"><video src="videos/vid6.mp4" autoplay muted loop playsinline></video></div>
-    </div>
-    <button onclick="showSection('final')">Final Surprise ❤️</button>
-  </section>
+<!-- Gallery Page -->
+<section class="section glass" id="gallery">
+  <h1 class="title">~ Our Memories ~</h1>
+  <div class="memory-frame-grid" id="memoryGrid">
+    <!-- Images -->
+    <div class="memory-card"><img src="images/img1.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img2.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img3.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img4.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img5.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img6.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img7.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img8.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img9.jpg" alt="Memory"></div>
+    <div class="memory-card"><img src="images/img10.jpg" alt="Memory"></div>
 
-  <!-- Final Page -->
-  <section class="section" id="final">
-    <h1 class="title">Forever Yours ❤️</h1>
-    <div id="timer" class="subtitle"></div>
-    <button onclick="revealLove()">Tap Gently 💖</button>
-    <div class="love-reveal" id="loveReveal"></div>
-  </section>
+    <!-- Videos -->
+    <div class="memory-card"><video src="videos/vid1.mp4" autoplay muted loop playsinline></video></div>
+    <div class="memory-card"><video src="videos/vid2.mp4" autoplay muted loop playsinline></video></div>
+    <div class="memory-card"><video src="videos/vid3.mp4" autoplay muted loop playsinline></video></div>
+    <div class="memory-card"><video src="videos/vid4.mp4" autoplay muted loop playsinline></video></div>
+    <div class="memory-card"><video src="videos/vid5.mp4" autoplay muted loop playsinline></video></div>
+    <div class="memory-card"><video src="videos/vid6.mp4" autoplay muted loop playsinline></video></div>
+  </div>
+  <button onclick="showSection('final')">Final Surprise ❤️</button>
+</section>
 
-  <!-- Confetti Canvas -->
-  <canvas id="confettiCanvas"></canvas>
+<!-- Final Page -->
+<section class="section" id="final">
+  <h1 class="title">Forever Yours ❤️</h1>
+  <div id="timer" class="subtitle"></div>
+  <button onclick="revealLove()">Tap Gently 💖</button>
+  <div class="love-reveal" id="loveReveal"></div>
+</section>
+
+<!-- Confetti Canvas -->
+<canvas id="confettiCanvas"></canvas>
 
 </body>
 </html>
