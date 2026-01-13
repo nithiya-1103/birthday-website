@@ -1,5 +1,5 @@
 /* ================= GOOGLE FONTS ================= */
-@import url('https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@500;600;700&family=Parisienne&family=Poppins:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Sacramento&family=Montserrat:wght@400;500;600&display=swap');
 
 /* ================= ROOT ================= */
 :root {
@@ -25,7 +25,7 @@ html, body {
     width: 100%;
     overflow: hidden;
     position: fixed;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: var(--medical-white);
 }
 
@@ -54,9 +54,9 @@ body::before {
     align-items: center;
     height: 100vh;
     width: 100vw;
-    padding: 22px;
+    padding: 24px;
     text-align: center;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(16px);
     background: var(--glass);
     border: 1px solid var(--glass-border);
     position: absolute;
@@ -68,33 +68,35 @@ body::before {
     animation: elegantFade 1.2s ease;
 }
 
-/* ================= TYPOGRAPHY ================= */
+/* ================= MAIN TITLES ================= */
 .title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.1rem, 7.8vw, 3.7rem);
-    letter-spacing: 1.4px;
-    margin-bottom: 14px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.4rem, 8vw, 3.8rem);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
     background: linear-gradient(to right,#ffffff,#ffd6df);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 2px 3px 14px rgba(0,0,0,0.35);
+    text-shadow: 0 6px 22px rgba(0,0,0,0.4);
 }
 
-/* Romantic cake heading */
+/* ================= CAKE PAGE TITLE ================= */
 .cakeTitle {
-    font-family: 'Allura', cursive;
-    font-size: clamp(3rem, 9vw, 4.6rem);
-    letter-spacing: 2px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2.8rem, 9vw, 4.4rem);
+    letter-spacing: 4px;
 }
 
-/* Subtitles / love text */
+/* ================= SUBTITLES / LOVE TEXT ================= */
 .subtitle {
-    font-family: 'Parisienne', cursive;
-    font-size: clamp(1.4rem, 4.5vw, 2.3rem);
-    color: #ffdde4;
-    line-height: 1.6;
-    max-width: 850px;
+    font-family: 'Sacramento', cursive;
+    font-size: clamp(1.6rem, 4.8vw, 2.4rem);
+    color: #ffe1e8;
+    letter-spacing: 1.5px;
+    line-height: 1.7;
+    max-width: 880px;
 }
 
 /* ================= BUTTONS ================= */
@@ -102,9 +104,10 @@ button {
     margin-top: 20px;
     padding: 14px 42px;
     border-radius: 50px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.95rem;
-    letter-spacing: 1.2px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
     background: rgba(255,255,255,0.15);
     color: #fff;
     border: 1px solid var(--glass-border);
@@ -119,7 +122,10 @@ button:hover {
 }
 
 /* ================= CAKE ================= */
-.cake-container { margin: 28px 0; perspective: 1000px; }
+.cake-container {
+    margin: 30px 0;
+    perspective: 1000px;
+}
 
 .cake {
     width: 180px;
@@ -131,27 +137,27 @@ button:hover {
 .layer1 {
     background: #4a1e1b;
     height: 50px;
+    width: 100%;
     position: absolute;
     bottom: 0;
-    width: 100%;
     border-radius: 0 0 20px 20px;
 }
 
 .layer2 {
     background: #7a3530;
     height: 50px;
+    width: 100%;
     position: absolute;
     bottom: 40px;
-    width: 100%;
     border-radius: 15px;
 }
 
 .frosting.top {
     background: #fff;
     height: 35px;
+    width: 100%;
     position: absolute;
     top: 0;
-    width: 100%;
     border-radius: 20px 20px 6px 6px;
 }
 
@@ -168,14 +174,17 @@ button:hover {
     scrollbar-width: none;
 }
 
-.memory-frame-grid::-webkit-scrollbar { display: none; }
+.memory-frame-grid::-webkit-scrollbar {
+    display: none;
+}
 
 .memory-card {
+    position: relative;
     background: #111;
     padding: 25px 0;
     box-shadow: var(--shadow);
     border-radius: 4px;
-    transition: 0.4s ease;
+    transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .memory-card img,
@@ -183,6 +192,7 @@ button:hover {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    display: block;
     border-top: 5px solid #000;
     border-bottom: 5px solid #000;
 }
@@ -190,6 +200,7 @@ button:hover {
 .memory-card:hover {
     transform: scale(1.05);
     filter: brightness(1.15);
+    z-index: 5;
 }
 
 /* ================= ANIMATIONS ================= */
@@ -203,7 +214,7 @@ button:hover {
     .memory-frame-grid {
         grid-template-columns: 1fr;
         max-height: 55vh;
-        padding: 25px 12px;
+        padding: 24px 12px;
     }
 
     .memory-card img,
@@ -215,4 +226,5 @@ button:hover {
         width: 90%;
     }
 }
+
 
