@@ -1,7 +1,7 @@
 /* ================= GOOGLE FONTS ================= */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel+Decorative:wght@400;700&family=Poppins:wght@300;400;500&display=swap');
 
-/* ================= GLOBAL RESET ================= */
+/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
@@ -11,8 +11,8 @@
 /* ================= BODY ================= */
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #c83a43, #a92d34);
-    color: #fff;
+    background: linear-gradient(135deg, #b8323a, #8f1f27);
+    color: #ffffff;
     height: 100vh;
     overflow: hidden;
 }
@@ -21,97 +21,99 @@ body {
 .container {
     height: 100vh;
     width: 100%;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px;
 }
 
 /* ================= TITLES ================= */
 .title {
     font-family: 'Great Vibes', cursive;
-    font-size: clamp(2.4rem, 7vw, 3.4rem); /* reduced */
-    font-weight: 400;
+    font-size: clamp(2.4rem, 7vw, 3.2rem);
     margin-bottom: 8px;
-    text-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    text-shadow: 0 6px 20px rgba(0,0,0,0.45);
 }
 
 .subTitle {
     font-family: 'Great Vibes', cursive;
-    font-size: clamp(2rem, 6vw, 2.8rem);
-    margin-bottom: 30px;
+    font-size: clamp(2rem, 6vw, 2.6rem);
+    margin-bottom: 28px;
 }
 
 /* ================= CAKE ================= */
 .cake {
     position: relative;
-    width: 170px;
+    width: 180px;
     height: 120px;
-    margin: 20px auto;
-    overflow: visible; /* IMPORTANT: shows candle */
+    background: linear-gradient(#4a1f1b, #2b0e0c);
+    border-radius: 14px;
+    margin: 25px 0;
 }
 
-.cake-layer {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#5b2b26, #3c1a17);
-    border-radius: 12px;
-    position: relative;
-}
-
-.cake-layer::before {
-    content: '';
+/* Cream top */
+.cake span {
     position: absolute;
     top: -18px;
     left: 0;
     width: 100%;
     height: 26px;
-    background: #fff;
-    border-radius: 12px;
+    background: #ffffff;
+    border-radius: 14px;
 }
 
-/* ================= CANDLE ================= */
-.candle {
+/* ================= CANDLE (ALWAYS VISIBLE) ================= */
+.cake::before {
+    content: "";
     position: absolute;
-    top: -32px;   /* FIXED */
+    top: -50px;
     left: 50%;
     transform: translateX(-50%);
     width: 10px;
-    height: 36px;
-    background: linear-gradient(#ffccd5, #ff6f91);
+    height: 40px;
+    background: linear-gradient(#ffd1dc, #ff6f91);
     border-radius: 6px;
     z-index: 5;
 }
 
 /* ================= FLAME ================= */
-#flame {
+.cake::after {
+    content: "";
     position: absolute;
-    top: -22px;
+    top: -70px;
     left: 50%;
     transform: translateX(-50%);
-    width: 14px;
-    height: 22px;
-    background: radial-gradient(circle, #ffd966, #ff9f1c, transparent);
+    width: 18px;
+    height: 26px;
+    background: radial-gradient(circle, #fff2a8, #ff9f1c, transparent);
     border-radius: 50%;
-    opacity: 0;
     animation: flicker 1s infinite;
     z-index: 6;
 }
 
 /* Flame animation */
 @keyframes flicker {
-    0% { transform: translateX(-50%) scale(1); }
-    50% { transform: translateX(-50%) scale(1.15); }
-    100% { transform: translateX(-50%) scale(1); }
+    0% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.15);
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
 }
 
 /* ================= BUTTONS ================= */
-.button-group {
+.buttons {
     display: flex;
     gap: 14px;
-    margin-top: 28px;
+    margin-top: 26px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -121,8 +123,8 @@ button {
     padding: 12px 26px;
     font-size: 0.9rem;
     border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.5);
-    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.18);
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -130,16 +132,16 @@ button {
 }
 
 button:hover {
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.32);
     transform: translateY(-2px);
 }
 
-/* ================= HEART FLOAT ================= */
+/* ================= FLOATING HEARTS (OPTIONAL) ================= */
 .heart {
     position: absolute;
     font-size: 18px;
-    animation: float 6s infinite linear;
     opacity: 0.7;
+    animation: float 6s linear infinite;
 }
 
 @keyframes float {
@@ -153,11 +155,20 @@ button:hover {
     }
 }
 
-/* ================= MOBILE FIX ================= */
+/* ================= MOBILE ================= */
 @media (max-width: 600px) {
     .cake {
         width: 150px;
-        height: 110px;
+        height: 105px;
+    }
+
+    .cake::before {
+        height: 36px;
+        top: -46px;
+    }
+
+    .cake::after {
+        top: -64px;
     }
 
     button {
@@ -165,5 +176,4 @@ button:hover {
         padding: 10px 22px;
     }
 }
-
 
