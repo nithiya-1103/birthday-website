@@ -1,242 +1,169 @@
 /* ================= GOOGLE FONTS ================= */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Sacramento&family=Montserrat:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Great+Vibes&family=Poppins:wght@300;400;500&display=swap');
 
-/* ================= ROOT ================= */
-:root {
-    --primary-red: #9d0208;
-    --rose-petal: #ff85a1;
-    --medical-white: #fffaff;
-    --glass: rgba(255,255,255,0.18);
-    --glass-border: rgba(255,255,255,0.35);
-    --shadow: 0 12px 45px rgba(0,0,0,0.4);
-    --gradient1: linear-gradient(-45deg,#6a040f,#9d0208,#ff4d6d,#ff85a1);
-}
-
-/* ================= RESET ================= */
+/* ================= GLOBAL RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
 }
 
-html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    position: fixed;
-    font-family: 'Montserrat', sans-serif;
-    color: var(--medical-white);
-}
-
-/* ================= BACKGROUND ================= */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: var(--gradient1);
-    background-size: 400% 400%;
-    animation: gradientShift 15s ease infinite;
-    z-index: -1;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* ================= SECTIONS ================= */
-.section {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    padding: 24px;
-    text-align: center;
-    backdrop-filter: blur(16px);
-    background: var(--glass);
-    border: 1px solid var(--glass-border);
-    position: absolute;
-    inset: 0;
-}
-
-.section.active {
-    display: flex;
-    animation: elegantFade 1.2s ease;
-}
-
-/* ================= MAIN TITLES ================= */
-.title {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(2rem, 7vw, 3.2rem);  /* reduced */
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    background: linear-gradient(to right,#ffffff,#ffd6df);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 5px 18px rgba(0,0,0,0.35);
-}
-/* ================= CAKE PAGE TITLE ================= */
-.cakeTitle {
-    font-family: 'Cinzel Decorative', serif;
-    font-size: clamp(2.3rem, 8vw, 3.6rem); /* smaller & balanced */
-    letter-spacing: 3px;
-}
-/* ================= SUBTITLES / LOVE TEXT ================= */
-.subtitle {
-    font-family: 'Sacramento', cursive;
-    font-size: clamp(1.6rem, 4.8vw, 2.4rem);
-    color: #ffe1e8;
-    letter-spacing: 1.5px;
-    line-height: 1.7;
-    max-width: 880px;
-}
-
-/* ================= BUTTONS ================= */
-button {
-    margin-top: 20px;
-    padding: 14px 42px;
-    border-radius: 50px;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    background: rgba(255,255,255,0.15);
+/* ================= BODY ================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #c83a43, #a92d34);
     color: #fff;
-    border: 1px solid var(--glass-border);
-    cursor: pointer;
-    transition: all 0.4s ease;
+    height: 100vh;
+    overflow: hidden;
 }
 
-button:hover {
-    background: #ffffff;
-    color: var(--primary-red);
-    transform: translateY(-4px);
+/* ================= MAIN CONTAINER ================= */
+.container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* ================= TITLES ================= */
+.title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.4rem, 7vw, 3.4rem); /* reduced */
+    font-weight: 400;
+    margin-bottom: 8px;
+    text-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+.subTitle {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    margin-bottom: 30px;
 }
 
 /* ================= CAKE ================= */
-.cake-container {
-    margin: 30px 0;
-    perspective: 1000px;
-}
-
 .cake {
-    width: 180px;
+    position: relative;
+    width: 170px;
     height: 120px;
+    margin: 20px auto;
+    overflow: visible; /* IMPORTANT: shows candle */
+}
+
+.cake-layer {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(#5b2b26, #3c1a17);
+    border-radius: 12px;
     position: relative;
-    transform: rotateX(10deg);
 }
 
-.layer1 {
-    background: #4a1e1b;
-    height: 50px;
-    width: 100%;
+.cake-layer::before {
+    content: '';
     position: absolute;
-    bottom: 0;
-    border-radius: 0 0 20px 20px;
-}
-
-.layer2 {
-    background: #7a3530;
-    height: 50px;
+    top: -18px;
+    left: 0;
     width: 100%;
-    position: absolute;
-    bottom: 40px;
-    border-radius: 15px;
-}
-
-.frosting.top {
+    height: 26px;
     background: #fff;
-    height: 35px;
-    width: 100%;
+    border-radius: 12px;
+}
+
+/* ================= CANDLE ================= */
+.candle {
     position: absolute;
-    top: 0;
-    border-radius: 20px 20px 6px 6px;
-}
-
-/* ================= MEMORY GALLERY ================= */
-.memory-frame-grid {
-    width: 100%;
-    max-width: 1100px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
-    gap: 28px;
-    padding: 40px 20px;
-    max-height: 65vh;
-    overflow-y: auto;
-    scrollbar-width: none;
-}
-
-.memory-frame-grid::-webkit-scrollbar {
-    display: none;
-}
-
-.memory-card {
-    position: relative;
-    background: #111;
-    padding: 25px 0;
-    box-shadow: var(--shadow);
-    border-radius: 4px;
-    transition: transform 0.4s ease, filter 0.4s ease;
-}
-
-.memory-card img,
-.memory-card video {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-    border-top: 5px solid #000;
-    border-bottom: 5px solid #000;
-}
-
-.memory-card:hover {
-    transform: scale(1.05);
-    filter: brightness(1.15);
+    top: -32px;   /* FIXED */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 36px;
+    background: linear-gradient(#ffccd5, #ff6f91);
+    border-radius: 6px;
     z-index: 5;
 }
 
-/* ================= ANIMATIONS ================= */
-@keyframes elegantFade {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
+/* ================= FLAME ================= */
+#flame {
+    position: absolute;
+    top: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 22px;
+    background: radial-gradient(circle, #ffd966, #ff9f1c, transparent);
+    border-radius: 50%;
+    opacity: 0;
+    animation: flicker 1s infinite;
+    z-index: 6;
 }
 
-/* ================= MOBILE ================= */
-@media (max-width:480px) {
-    .memory-frame-grid {
-        grid-template-columns: 1fr;
-        max-height: 55vh;
-        padding: 24px 12px;
-    }
+/* Flame animation */
+@keyframes flicker {
+    0% { transform: translateX(-50%) scale(1); }
+    50% { transform: translateX(-50%) scale(1.15); }
+    100% { transform: translateX(-50%) scale(1); }
+}
 
-    .memory-card img,
-    .memory-card video {
-        height: 180px;
+/* ================= BUTTONS ================= */
+.button-group {
+    display: flex;
+    gap: 14px;
+    margin-top: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+button {
+    font-family: 'Cinzel Decorative', serif;
+    padding: 12px 26px;
+    font-size: 0.9rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(6px);
+}
+
+button:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+}
+
+/* ================= HEART FLOAT ================= */
+.heart {
+    position: absolute;
+    font-size: 18px;
+    animation: float 6s infinite linear;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    from {
+        transform: translateY(100vh) scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* ================= MOBILE FIX ================= */
+@media (max-width: 600px) {
+    .cake {
+        width: 150px;
+        height: 110px;
     }
 
     button {
-        width: 90%;
+        font-size: 0.85rem;
+        padding: 10px 22px;
     }
-}
-/* ===== FIX CANDLE VISIBILITY ===== */
-.cake {
-    overflow: visible;   /* allow candle to show */
-}
-
-.candle {
-    top: -28px;          /* bring candle closer to cake */
-    z-index: 5;
-}
-
-#flame {
-    top: -22px;
-    z-index: 6;
 }
 
 
