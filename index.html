@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Our Special Journey ❤️</title>
+    <title>Happy 20 My Boy!!❤️</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Dancing+Script:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -43,7 +43,7 @@
 
     <div class="button-group">
         <button id="lightCandleBtn">CLICK TO LIGHT UP 🕯️</button><br>
-        <button id="nextPageBtn">NEXT 🎁</button>
+        <button id="nextPageBtn">NEXT🎁</button>
     </div>
 </section>
 
@@ -54,12 +54,34 @@
     <button onclick="startExperience('story')">Begin ❤️</button>
 </section>
 
-<!-- Story Section -->
+<!-- Surprise Envelope Section -->
 <section class="section" id="story">
-    <h1 class="title">Our Story</h1>
-    <p class="subtitle">Every smile, every moment became my favorite chapter with you. From first messages to today, each memory shines brighter than the last.</p>
-    <button onclick="showSection('gallery')">See Our Moments 💕</button>
+    <h1 class="title">A Special Surprise 💌</h1>
+    
+    <div class="envelope-container">
+        <div class="envelope">
+            <div class="envelope-flap"></div>
+            <div class="envelope-body">
+                <!-- Hidden letter text -->
+                <div id="envelopeMessage" class="hidden-letter">
+                    My Dearest Love 💖,<br><br>
+                    Every moment with you feels like magic. From your smile to your gentle heart, 
+                    you light up my world in ways words can hardly describe. I treasure every memory, 
+                    every laugh, every heartbeat we share. You are my forever, my today, and my tomorrow. 
+                    I love you more than words can say. 💕<br><br>
+                    Yours eternally,<br>
+                    [Your Name]
+                </div>
+            </div>
+            <div class="envelope-shadow"></div>
+        </div>
+    </div>
+
+    <button id="openEnvelopeBtn">Open 💌</button>
+    <button onclick="showSection('gallery')">See Our Memories 💕</button>
 </section>
+
+
 
 <!-- Gallery Section -->
 <section class="section glass" id="gallery">

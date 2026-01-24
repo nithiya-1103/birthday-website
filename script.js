@@ -182,4 +182,14 @@ function animateConfetti(){
     });
     if(particles.length) requestAnimationFrame(animateConfetti);
 }
+// Envelope open logic
+const envelope = document.querySelector(".envelope");
+const openBtn = document.getElementById("openEnvelopeBtn");
+const message = document.getElementById("envelopeMessage");
+
+openBtn.addEventListener("click", () => {
+    envelope.classList.add("open"); 
+    message.style.overflowY = "auto"; // allow scrolling after opening
+});
+
 

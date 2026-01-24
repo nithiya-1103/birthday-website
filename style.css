@@ -337,3 +337,212 @@ button:hover::before {
     .memory-card:hover { transform: scale(1.04) rotate(0deg) translateY(-3px); z-index:10; }
     .floating-heart { font-size:12px !important; }
 }
+/* ================= ENVELOPE ================= */
+/* ================= ENVELOPE CONTAINER ================= */
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    perspective: 800px; /* for flap 3D effect */
+}
+
+/* ================= ENVELOPE ================= */
+.envelope {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    cursor: pointer;
+}
+
+/* ================= ENVELOPE BODY ================= */
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: #fff8f5;
+    border: 2px solid #b5172f;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #7b1e3a;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    text-align: left;
+    padding: 20px;
+    box-shadow: inset 0 -3px 6px rgba(0,0,0,0.1);
+    overflow: hidden; /* hide letter until open */
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= HIDDEN LETTER ================= */
+.hidden-letter {
+    opacity: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all 1s ease;
+}
+
+/* Reveal letter when envelope opens */
+.envelope.open .hidden-letter {
+    opacity: 1;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Scrollbar for letter */
+.envelope.open .hidden-letter::-webkit-scrollbar {
+    width: 6px;
+}
+.envelope.open .hidden-letter::-webkit-scrollbar-thumb {
+    background: rgba(183, 23, 47, 0.5);
+    border-radius: 3px;
+}
+
+/* ================= ENVELOPE CONTAINER ================= */
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    perspective: 800px; /* gives 3D depth for flap rotation */
+}
+
+/* ================= ENVELOPE CONTAINER ================= */
+.envelope-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    perspective: 800px; /* 3D depth for flap rotation */
+}
+
+/* ================= ENVELOPE ================= */
+.envelope {
+    position: relative;
+    width: 250px;
+    height: 300px;
+    cursor: pointer;
+}
+
+/* ================= ENVELOPE BODY ================= */
+.envelope-body {
+    width: 100%;
+    height: 100%;
+    background: #fff8f5;
+    border: 2px solid #b5172f;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    color: #7b1e3a;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    text-align: left;
+    padding: 20px;
+    box-shadow: inset 0 -3px 6px rgba(0,0,0,0.1);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* ================= HIDDEN LETTER ================= */
+.hidden-letter {
+    opacity: 0;
+    max-height: 0;
+    overflow-y: hidden;
+    transition: all 1s ease;
+}
+
+/* Reveal letter when envelope opens */
+.envelope.open .hidden-letter {
+    opacity: 1;
+    max-height: 100%;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+/* Scrollbar for letter */
+.envelope.open .hidden-letter::-webkit-scrollbar {
+    width: 6px;
+}
+.envelope.open .hidden-letter::-webkit-scrollbar-thumb {
+    background: rgba(183, 23, 47, 0.5);
+    border-radius: 3px;
+}
+
+/* ================= ENVELOPE FLAP ================= */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 125px solid #fff8f5; /* side triangle matches letter/envelope body */
+    border-right: 125px solid #fff8f5; /* side triangle matches letter/envelope body */
+    border-bottom: 80px solid #ff758f; /* main flap triangle pink */
+    transform-origin: top center; 
+    transition: transform 0.8s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    z-index: 2;
+}
+
+/* Flap shine for realism */
+.envelope-flap::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -125px;
+    width: 250px;
+    height: 80px;
+    background: linear-gradient(to top, rgba(255,255,255,0.25), transparent);
+    pointer-events: none;
+}
+
+
+/* ================= ENVELOPE SHADOW ================= */
+.envelope-shadow {
+    position: absolute;
+    bottom: -6px;
+    left: 5px;
+    width: 240px;
+    height: 6px;
+    background: rgba(0,0,0,0.15);
+    border-radius: 50%;
+    filter: blur(3px);
+    z-index: 0;
+}
+
+/* ================= OPEN ANIMATION ================= */
+.envelope.open .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.envelope.open .envelope-flap {
+    transform: rotateX(-180deg); /* flap lifts upward */
+}
+
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width:480px){
+    .envelope {
+        width: 200px;
+        height: 250px;
+    }
+    .envelope-flap {
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-top: 65px solid #ff758f;
+    }
+    .envelope-body {
+        font-size: 1rem;
+        padding: 15px;
+    }
+    .envelope-shadow {
+        width: 190px;
+        height: 5px;
+        bottom: -5px;
+    }
+}
+
