@@ -701,38 +701,34 @@ button:hover {
     }
 
     /* Envelope wrapper */
+       .envelope-wrapper.open .letter {
+        position: fixed;        /* fix to viewport */
+        top: 50%;               /* vertical center */
+        left: 50%;              /* horizontal center */
+        transform: translate(-50%, -50%);  /* center properly */
+        
+        width: 90vw;            /* almost full width */
+        max-width: 320px;       /* optional max width */
+        height: 70vh;           /* bigger height */
+        max-height: 70vh;       /* ensure it fits in viewport */
+        
+        background: #ffffff;    /* full white background */
+        padding: 20px;          /* spacing inside letter */
+        font-size: 1.1rem;      /* bigger readable text */
+        overflow-y: auto;       /* scrollable for long text */
+        border-radius: 12px;    /* rounded corners */
+        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        z-index: 999;           /* above everything else */
+    }
+
+    /* Optional: reduce envelope wrapper interference */
     .envelope-wrapper {
-        width: 220px;
-        height: 150px;
+        height: auto;
     }
 
-    /* Envelope flap */
+    /* Optional: adjust flap for mobile */
     .envelope-flap {
-        border-left: 110px solid transparent;
-        border-right: 110px solid transparent;
-        border-top: 80px solid #ff8fa3;
-    }
-
-    /* Envelope front pocket */
- 
-    /* Opened Letter */
-    .envelope-wrapper.open .letter {
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        
-        width: 90vw;        /* Wider letter for mobile */
-        height: 70vh;       /* Bigger, fits inside screen */
-        max-height: 70vh;   /* ensures it doesn't overflow */
-        
-        background: #ffffff;  /* full white background */
-        padding: 18px;
-        font-size: 1.05rem;
-        z-index: 999;
-        overflow-y: auto;      /* scrollable for long messages */
-        border-radius: 12px;
-        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        transform-origin: top center;
     }
 }
 
