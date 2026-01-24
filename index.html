@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>Happy 20 My Boy!!❤️</title>
+<title>Happy 20 My Boy ❤️</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Dancing+Script:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Dancing+Script:wght@500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="style.css">
-
-    <!-- JS -->
-    <script defer src="script.js"></script>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
 </head>
+
 <body>
 
-<!-- Background Music -->
-<audio id="bgMusic" loop preload="auto"></audio>
-
-<!-- Floating Hearts -->
+<audio id="bgMusic" loop></audio>
 <div class="letters"></div>
 
-<!-- Cake Section -->
+<!-- CAKE -->
 <section class="section active" id="cakePage">
     <h1 class="cakeTitle">
-        <span class="cakeMain">Happie Birthday Paapuu💕</span>
-        <p class="love-subline">A Small Surprise For You🎁</p>
+        <span class="cakeMain">Happie Birthday Paapuu 💕</span>
+        <p class="love-subline">A Small Surprise For You 🎁</p>
     </h1>
 
     <div class="cake-container">
         <div class="cake">
-            <div class="candle" id="candle">
-                <div class="flame" id="flame"></div>
+            <div class="candle">
+                <div id="flame"></div>
             </div>
             <div class="frosting top"></div>
             <div class="layer2"></div>
@@ -42,78 +36,82 @@
     </div>
 
     <div class="button-group">
-        <button id="lightCandleBtn">CLICK TO LIGHT UP 🕯️</button><br>
-        <button id="nextPageBtn">NEXT🎁</button>
+        <button id="lightCandleBtn">CLICK</button></div>
+        <div><button id="nextPageBtn">NEXT 🎁</button>
     </div>
 </section>
 
-<!-- Home Section -->
+<!-- HOME -->
 <section class="section" id="home">
     <h1 class="title">MY DEAR DOCTOR AE!! 🩺</h1>
-    <p class="subtitle">Happy Birthday! Since I can’t be there in person, I made this digital world just for you—made with love across the miles.</p>
+    <p class="subtitle">
+        Happy Birthday! Since I can’t be there in person,
+        I made this digital world just for you — made with love 💕
+    </p>
     <button onclick="startExperience('story')">Begin ❤️</button>
 </section>
+
+<!-- STORY -->
 <section class="section" id="story">
     <h1 class="title">A Special Surprise 💌</h1>
 
     <div class="envelope-container">
         <div class="envelope-wrapper" id="envelope">
-            
             <div class="envelope-flap"></div>
-            
             <div class="envelope-front"></div>
-            
             <div class="letter">
                 <p>
                     My Dearest Love 💖,<br><br>
-                    Every moment with you feels like magic. From your smile to your gentle heart, 
-                    you light up my world in ways words can hardly describe. I treasure every memory, 
-                    every laugh, every heartbeat we share.<br><br>
-                    You are my forever. 💕<br><br>
+                    Every moment with you feels magical.
+                    Your smile, your care, your heart —
+                    everything about you means the world to me.<br><br>
+                    You are my foreverEvery moment with you feels magical.
+                    Your smile, your care, your heart —
+                    everything about you means the world to me.<br><br>
+                    You are my forever Every moment with you feels magical.
+                    Your smile, your care, your heart —
+                    everything about you means the world to me.<br><br>
+                    You are my forever  💕<br><br>
                     Yours eternally,<br>
-                    <b>Your Name</b>
+                    <b>Me</b>
                 </p>
             </div>
-
             <div class="envelope-back"></div>
         </div>
     </div>
 
-    <div style="text-align:center;margin-top:20px;">
-        <button id="openEnvelopeBtn">Open 💌</button><br>
-         <button onclick="showSection('gallery')">See Our Memories 💕</button>
-    </div>
+    <button id="openEnvelopeBtn">Open 💌</button>
+    <button onclick="showSection('gallery')">See Our Memories 💕</button>
 </section>
 
-  
-<!-- Gallery Section -->
-<section class="section glass" id="gallery">
-    <h1 class="title">Together Us📸</h1>
-    
-    <div class="memory-frame-grid" id="memoryGrid">
-        <div class="memory-card"><img src="images/img1.jpg" alt="Memory 1"></div>
-        <div class="memory-card"><img src="images/img2.jpg" alt="Memory 2"></div>
-        <div class="memory-card"><img src="images/img3.jpg" alt="Memory 3"></div>
-        <div class="memory-card"><img src="images/img4.jpg" alt="Memory 4"></div>
-        <div class="memory-card"><img src="images/img5.jpg" alt="Memory 5"></div>
-        <div class="memory-card"><img src="images/img6.jpg" alt="Memory 6"></div>
-        <div class="memory-card"><img src="images/img7.jpg" alt="Memory 7"></div>
-        <div class="memory-card"><img src="images/img8.jpg" alt="Memory 8"></div>
-        <div class="memory-card"><img src="images/img9.jpg" alt="Memory 9"></div>
-        <div class="memory-card"><img src="images/img10.jpg" alt="Memory 10"></div>
-        <div class="memory-card"><img src="images/img11.jpg" alt="Memory 11"></div>
-        <div class="memory-card"><img src="images/img12.jpg" alt="Memory 12"></div>
+<!-- GALLERY -->
+<section class="section" id="gallery">
+    <h1 class="title">Together Us 📸</h1>
+
+    <div class="memory-frame-grid">
+        <div class="memory-card"><img src="images/img1.jpg"></div>
+        <div class="memory-card"><img src="images/img2.jpg"></div>
+        <div class="memory-card"><img src="images/img3.jpg"></div>
+        <div class="memory-card"><img src="images/img4.jpg"></div>
+        <div class="memory-card"><img src="images/img5.jpg"></div>
+        <div class="memory-card"><img src="images/img6.jpg"></div>
+        <div class="memory-card"><img src="images/img7.jpg"></div>
+        <div class="memory-card"><img src="images/img8.jpg"></div>
+        <div class="memory-card"><img src="images/img9.jpg"></div>
+        <div class="memory-card"><img src="images/img10.jpg"></div>
+        <div class="memory-card"><img src="images/img11.jpg"></div>
+        <div class="memory-card"><img src="images/img12.jpg"></div>
     </div>
-    
+
     <button onclick="showSection('final')">Final Surprise ❤️</button>
 </section>
 
-<!-- Final Love Section -->
+<!-- FINAL -->
 <section class="section" id="final">
     <h1 class="title">Forever Yours ❤️</h1>
     <div id="timer" class="subtitle"></div>
     <button onclick="revealLove()">Tap Gently 💖</button>
-    <div class="love-reveal" id="loveReveal"></div>
+    <div id="loveReveal"></div>
 </section>
 
 <canvas id="confettiCanvas"></canvas>

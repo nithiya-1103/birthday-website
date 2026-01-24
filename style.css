@@ -599,40 +599,34 @@ body {
     bottom: 5%;
     left: 5%;
     width: 90%;
-    height: 85%;
-    background: white;
+    height: 85%;                 /* 🔥 fixed height */
+    background: #ffffff;         /* solid white background */
     padding: 15px;
     box-sizing: border-box;
     z-index: 2;
-    
-    /* Initially hidden */
+
+    /* Hidden state */
     opacity: 0;
     visibility: hidden;
     transform: translateY(0);
-    
+
     transition: transform 0.7s ease-in-out, opacity 0.4s ease;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    
-    /* Typography for small screens */
+
     color: #4a1c2c;
     font-family: 'Dancing Script', cursive;
     font-size: clamp(0.9rem, 4vw, 1.1rem);
-    overflow-y: auto; /* Scrollable if text is long */
-}
 
-/* Open State Animations */
-.envelope-wrapper.open .envelope-flap {
-    transform: rotateX(180deg);
-    z-index: 1;
+    /* ✅ SCROLL ENABLED */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .envelope-wrapper.open .letter {
     opacity: 1;
     visibility: visible;
-    transform: translateY(-40%); /* Pulls out just enough to see on small screens */
+    transform: translateY(-22%);
     z-index: 5;
-    height: auto;
-    min-height: 100%;
 }
 .envelope-back {
     z-index: 1;
@@ -646,45 +640,26 @@ body {
     z-index: 4; /* Covers the top of the letter when closed */
 }
 
-
-.button-group {
-    display: flex;
-    flex-direction: column; /* Stack buttons on mobile */
-    gap: 15px;
-    margin-top: 30px;
-    width: 100%;
-    align-items: center;
+.envelope-wrapper.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1; /* Move behind so the letter can slide over it */
 }
-
+/* Button Styling */
 button {
     background: #ff758f;
     color: white;
     border: none;
-    padding: 12px 40px;
+    padding: 12px 30px;
     border-radius: 50px;
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.3s;
-    width: 80%; /* Wider hit area for thumbs */
-    max-width: 250px;
-    box-shadow: 0 4px 15px rgba(255, 117, 143, 0.4);
+    box-shadow: 0 4px 10px rgba(255, 117, 143, 0.3);
 }
 
-button:hover, button:active {
+button:hover {
     background: #c9184a;
-    transform: scale(1.02);
-}
-
-/* ================= MEDIA QUERIES ================= */
-@media (min-width: 768px) {
-    .button-group {
-        flex-direction: row; /* Side by side on desktop */
-        justify-content: center;
-    }
-    
-    button {
-        width: auto;
-    }
+    transform: scale(1.05);
 }
 /* ================= MOBILE RESPONSIVE ================= */
 @media (max-width: 480px) {
@@ -730,16 +705,19 @@ button:hover, button:active {
     .letter {
         width: 200px;
         left: 10px;
-        font-size: 0.85rem;
+        height: 140px;            /* 🔥 locked height */
         padding: 12px;
+        font-size: 0.85rem;
+
+        background: #ffffff;      /* stays white */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* Letter slide distance (VERY IMPORTANT) */
-    .envelope-wrapper.open .letter {
-        transform: translateY(-85px);
-        min-height: 150px;
+   .envelope-wrapper.open .letter {
+        transform: translateY(-45px);
     }
-
     /* Buttons */
     button {
         font-size: 1rem;

@@ -5,7 +5,8 @@ const hearts = ["❤️","💖","💕","💌","✨"];
 
 /* ================= MUSIC (SMOOTH FADE IN) ================= */
 function startMusic(){
-    if(audio.src) return;
+    if (!audio || !audio.paused) return;
+
     audio.src = "music/love.mp3";
     audio.volume = 0;
     audio.play().catch(()=>{});
@@ -29,7 +30,8 @@ const nextPageBtn = document.getElementById("nextPageBtn");
 lightCandleBtn?.addEventListener("click",()=>{
     flame.style.display = "block";
     flame.style.animation = "flicker 0.15s infinite alternate";
-    document.querySelector(".cake").style.filter = "drop-shadow(0 0 25px rgba(255,180,120,0.7))";
+    document.querySelector(".cake").style.filter =
+        "drop-shadow(0 0 25px rgba(255,180,120,0.7))";
 });
 
 nextPageBtn?.addEventListener("click",()=>{
@@ -48,7 +50,7 @@ function showSection(id){
     const active = document.getElementById(id);
     if(active){
         active.classList.add("active");
-        history.pushState({}, "", "#"+id);
+        history.replaceState({}, "", "#"+id);
     }
 }
 
@@ -62,34 +64,28 @@ setInterval(()=>{
     h.style.left = Math.random()*90 + "vw";
     h.style.bottom = "-40px";
     h.style.fontSize = (14 + Math.random()*16) + "px";
-    h.style.opacity = 0.8;
 
     container.appendChild(h);
-
-    setTimeout(()=>{
-        h.style.transform = `translateY(-110vh) scale(1.3)`;
-        h.style.opacity = "0";
-    },100);
-
     setTimeout(()=>h.remove(),7000);
 },650);
 
 /* ================= POLAROID CAPTIONS ================= */
 const captions = [
-    "Us 💕","My favorite smile","Always you",
-    "Pure happiness","My safe place","Forever moment",
-    "Love captured","Just us","Heartbeats",
-    "Endless love","You & Me","Always mine"
+    "Us 💕","My favorite smile","Always you","Pure happiness",
+    "My safe place","Forever moment","Love captured","Just us",
+    "Heartbeats","Endless love","You & Me","Always mine"
 ];
 
 document.querySelectorAll(".memory-card img").forEach((img,i)=>{
     const caption = document.createElement("div");
-    caption.innerText = captions[i] || "Love";
-    caption.style.fontFamily = "'Dancing Script', cursive";
-    caption.style.color = "#b5172f";
-    caption.style.marginTop = "10px";
-    caption.style.fontSize = "1.05rem";
-    caption.style.opacity = "0.85";
+    caption.textContent = captions[i] || "Love";
+    caption.style.cssText = `
+        font-family: 'Dancing Script', cursive;
+        color: #b5172f;
+        margin-top: 10px;
+        font-size: 1.05rem;
+        opacity: 0.85;
+    `;
     img.parentElement.appendChild(caption);
 });
 
@@ -102,7 +98,7 @@ setInterval(()=>{
 
     const d = birthday - Date.now();
     if(d <= 0){
-        t.innerHTML = "Happy Birthday Rowdyyy💋";
+        t.textContent = "Happy Birthday Rowdyyy💋";
         return;
     }
 
@@ -111,28 +107,29 @@ setInterval(()=>{
     const mins = Math.floor((d%3600000)/60000);
     const secs = Math.floor((d%60000)/1000);
 
-    t.innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
+    t.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
 },1000);
 
 /* ================= FINAL LOVE LETTER ================= */
 function revealLove(){
-    const container = document.getElementById("loveReveal");
-    container.innerHTML = "";
-    container.style.display = "block";
+    const box = document.getElementById("loveReveal");
+    box.innerHTML = "";
+    box.style.display = "block";
 
     const text = "I LOVE YOU THANGOO";
     let i = 0;
 
     const interval = setInterval(()=>{
         const span = document.createElement("span");
-        span.innerText = text[i];
-        span.style.fontSize = "2.4rem";
-        span.style.color = "#ff4d6d";
-        span.style.fontFamily = "'Playfair Display', serif";
-        span.style.opacity = "0";
-        span.style.margin = "0 4px";
-
-        container.appendChild(span);
+        span.textContent = text[i];
+        span.style.cssText = `
+            font-size: 2.4rem;
+            color: #ff4d6d;
+            font-family: 'Playfair Display', serif;
+            margin: 0 4px;
+            opacity: 0;
+        `;
+        box.appendChild(span);
 
         requestAnimationFrame(()=>{
             span.style.transition = "0.6s ease";
@@ -140,9 +137,8 @@ function revealLove(){
             span.style.transform = "translateY(-5px)";
         });
 
-        triggerConfetti();
+        addConfetti();
         i++;
-
         if(i >= text.length) clearInterval(interval);
     },260);
 }
@@ -151,25 +147,30 @@ function revealLove(){
 const canvas = document.getElementById("confettiCanvas");
 const ctx = canvas.getContext("2d");
 let particles = [];
+let confettiRunning = false;
 
 function resizeCanvas(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 }
 resizeCanvas();
-window.addEventListener("resize", resizeCanvas);
+addEventListener("resize", resizeCanvas);
 
 function Confetti(){
     this.x = Math.random()*canvas.width;
     this.y = -20;
     this.size = Math.random()*6 + 4;
     this.speed = Math.random()*3 + 2;
-    this.color = ["#ff8fab","#ffd6e0","#fff","#ff4d6d"][Math.floor(Math.random()*4)];
+    this.color = ["#ff8fab","#ffd6e0","#fff","#ff4d6d"]
+        [Math.floor(Math.random()*4)];
 }
 
-function triggerConfetti(){
-    for(let i=0;i<15;i++) particles.push(new Confetti());
-    animateConfetti();
+function addConfetti(){
+    for(let i=0;i<12;i++) particles.push(new Confetti());
+    if(!confettiRunning){
+        confettiRunning = true;
+        animateConfetti();
+    }
 }
 
 function animateConfetti(){
@@ -180,12 +181,19 @@ function animateConfetti(){
         ctx.fillRect(p.x,p.y,p.size,p.size);
         if(p.y > canvas.height) particles.splice(i,1);
     });
-    if(particles.length) requestAnimationFrame(animateConfetti);
+    if(particles.length){
+        requestAnimationFrame(animateConfetti);
+    } else {
+        confettiRunning = false;
+    }
 }
+
+/* ================= ENVELOPE ================= */
 const envelope = document.getElementById("envelope");
 const openBtn = document.getElementById("openEnvelopeBtn");
 
-openBtn.addEventListener("click", () => {
+openBtn?.addEventListener("click",()=>{
     envelope.classList.toggle("open");
-    openBtn.textContent = envelope.classList.contains("open") ? "Close 💖" : "Open 💌";
+    openBtn.textContent =
+        envelope.classList.contains("open") ? "Close 💖" : "Open 💌";
 });
