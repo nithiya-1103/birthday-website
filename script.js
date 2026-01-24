@@ -1,6 +1,6 @@
 const audio = document.getElementById("bgMusic");
 const container = document.querySelector(".letters");
-const hearts = ["❤️","💖","💕","🩺","✨"];
+const hearts = ["❤️","💖","💕","💌","✨"];
 
 /* --- CAKE LOGIC --- */
 const lightCandleBtn = document.getElementById("lightCandleBtn");
@@ -25,7 +25,10 @@ function showSection(id){
     if(active){ 
         active.classList.add("active"); 
         if(id==='gallery'){ document.getElementById("memoryGrid").scrollTop=0; }
-        active.querySelectorAll("video").forEach(v=>{ v.style.opacity=0; v.play().then(()=>{ v.style.transition="opacity 1s ease"; v.style.opacity=1; }).catch(()=>{}); });
+        active.querySelectorAll("video").forEach(v=>{
+            v.style.opacity=0;
+            v.play().then(()=>{ v.style.opacity=1; }).catch(()=>{});
+        });
     }
 }
 
@@ -39,20 +42,21 @@ function startMusic(){
 
 /* --- FLOATING HEARTS --- */
 setInterval(()=>{
-    const h=document.createElement("span");
-    h.innerText=hearts[Math.floor(Math.random()*hearts.length)];
-    h.classList.add("floating-heart");
-    h.style.position="fixed"; h.style.bottom="-50px";
-    h.style.left=Math.random()*95+"vw";
-    h.style.fontSize=(15+Math.random()*20)+"px";
-    h.style.transition="transform 6s linear, opacity 6s linear";
-    h.style.zIndex="1000"; h.style.pointerEvents="none";
-    container.appendChild(h);
-    setTimeout(()=>{ h.style.transform=`translateY(-110vh) rotate(${Math.random()*360}deg)`; h.style.opacity="0"; },100);
-    setTimeout(()=>h.remove(),7000);
+    if(container.childElementCount < 25){
+        const h=document.createElement("span");
+        h.innerText=hearts[Math.floor(Math.random()*hearts.length)];
+        h.classList.add("floating-heart");
+        h.style.bottom="-50px";
+        h.style.left=Math.random()*95+"vw";
+        h.style.fontSize=(15+Math.random()*15)+"px";
+        h.style.transition="transform 6s linear, opacity 6s linear";
+        container.appendChild(h);
+        setTimeout(()=>{ h.style.transform=`translateY(-110vh) rotate(${Math.random()*360}deg) scale(1.2)`; h.style.opacity="0"; },100);
+        setTimeout(()=>h.remove(),7000);
+    }
 },500);
 
-/* --- BIRTHDAY COUNTDOWN --- */
+/* --- COUNTDOWN --- */
 const birthday = new Date("2025-03-20T00:00:00").getTime();
 setInterval(()=>{
     const t=document.getElementById("timer"); if(!t) return;
@@ -63,7 +67,7 @@ setInterval(()=>{
     t.innerHTML=`${days}d ${hours.toString().padStart(2,'0')}h ${mins.toString().padStart(2,'0')}m ${secs.toString().padStart(2,'0')}s`;
 },1000);
 
-/* --- FINAL SURPRISE & CONFETTI --- */
+/* --- FINAL LOVE REVEAL --- */
 function revealLove(){
     const text="I LOVE YOU";
     const container=document.getElementById("loveReveal");
@@ -72,6 +76,7 @@ function revealLove(){
     let i=0; const interval=setInterval(()=>{
         const span=document.createElement("span"); span.innerText=text[i];
         span.style.animation="elegantFade 0.5s forwards";
+        span.style.margin="0 5px"; span.style.fontSize="2.5rem"; span.style.color="#ff4d6d";
         container.appendChild(span); i++; triggerConfetti();
         if(i>=text.length) clearInterval(interval);
     },300);
@@ -79,8 +84,7 @@ function revealLove(){
 
 /* --- CONFETTI --- */
 const canvas=document.getElementById("confettiCanvas");
-const ctx=canvas.getContext("2d");
-let confettiParticles=[];
+const ctx=canvas.getContext("2d"); let confettiParticles=[];
 function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
 window.addEventListener('resize',resizeCanvas); resizeCanvas();
 

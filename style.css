@@ -1,7 +1,7 @@
-/* --- GOOGLE FONTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Great+Vibes&family=Roboto:wght@300;400;500;700&display=swap');
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap');
 
-/* --- ROOT COLORS --- */
+/* --- Root Variables --- */
 :root {
     --primary-red: #9d0208;
     --ruby: #d00000;
@@ -13,113 +13,112 @@
     --gradient1: linear-gradient(-45deg, #6a040f, #9d0208, #ff4d6d, #ff85a1);
 }
 
-/* --- RESET --- */
+/* --- Global Reset & Scroll Lock --- */
 * { margin:0; padding:0; box-sizing:border-box; -webkit-font-smoothing:antialiased; }
-html, body { height:100%; width:100%; overflow-x:hidden; font-family:'Roboto', sans-serif; background:#000; color:var(--medical-white); }
-
-/* --- GRADIENT BACKGROUND --- */
+html, body { 
+    height:100%; width:100%; overflow:hidden; 
+    background:#000; font-family:'Poppins', sans-serif; 
+    color:var(--medical-white); position:fixed; 
+}
 body::before {
     content:""; position:fixed; inset:0;
     background:var(--gradient1); background-size:400% 400%;
-    animation: gradientShift 15s ease infinite; z-index:-1;
+    animation:gradientShift 15s ease infinite; z-index:-1;
 }
 @keyframes gradientShift {
-    0% {background-position:0% 50%;}
-    50% {background-position:100% 50%;}
-    100% {background-position:0% 50%;}
+    0% { background-position:0% 50%; }
+    50% { background-position:100% 50%; }
+    100% { background-position:0% 50%; }
 }
 
-/* --- SECTIONS --- */
+/* --- Section --- */
 .section {
     display:none; flex-direction:column; justify-content:center; align-items:center;
     height:100vh; width:100vw; padding:20px; text-align:center;
-    backdrop-filter:blur(12px); background:var(--glass); border:1px solid var(--glass-border);
-    position:absolute; top:0; left:0; transition: all 0.8s ease;
-    border-radius:15px;
-    box-shadow:var(--shadow);
+    backdrop-filter: blur(12px); background:var(--glass);
+    border:1px solid var(--glass-border);
+    position:absolute; top:0; left:0;
 }
 .section.active { display:flex; animation:elegantFade 1.2s cubic-bezier(0.4,0,0.2,1); }
 
-/* --- TYPOGRAPHY --- */
-.title { font-family:'Great Vibes', cursive; font-size:clamp(2rem,8vw,4rem); text-shadow:2px 2px 15px rgba(0,0,0,0.4); margin-bottom:1rem; letter-spacing:1px; }
-.subtitle { font-family:'Dancing Script', cursive; font-size:clamp(1.2rem,4vw,2rem); color:#ffccd5; max-width:850px; letter-spacing:1px; line-height:1.5; }
-
-/* --- BIRTHDAY TITLE --- */
-.cakeTitle { text-align:center; line-height:1.2; }
-.cakeMain {
-    font-family:'Great Vibes', cursive;
-    font-weight:700;
-    font-size:clamp(3rem,10vw,5rem);
-    background:linear-gradient(90deg,#ff85a1,#ff4d6d);
+/* --- Typography --- */
+.title {
+    font-family:'Playfair Display', serif;
+    font-size:clamp(2rem, 8vw, 3.5rem);
+    background:linear-gradient(to right, #ffffff, #ffccd5);
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
-    text-shadow:2px 2px 15px rgba(0,0,0,0.3);
+    text-shadow:2px 2px 10px rgba(0,0,0,0.2);
+    margin-bottom:1rem;
 }
-.cakeSub {
-    font-family:'Dancing Script', cursive;
-    font-weight:700;
-    font-size:clamp(1.8rem,6vw,3rem);
-    color:#ffccd5;
-    text-shadow:1px 1px 10px rgba(0,0,0,0.2);
-    margin-top:10px;
+.subtitle {
+    font-family:'Dancing Script', cursive; font-size:clamp(1.2rem,4vw,2.2rem);
+    color:#ffccd5; max-width:800px; letter-spacing:1px;
 }
 
-/* --- MEMORY GRID --- */
+/* --- Memory Gallery --- */
 .memory-frame-grid {
-    width:100%; max-width:1200px;
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:30px;
-    padding:40px 20px; max-height:65vh; overflow-y:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;
+    width:100%; max-width:1100px; display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px; padding:40px 20px; max-height:65vh; overflow-y:auto;
+    scrollbar-width:none; -webkit-overflow-scrolling:touch;
 }
 .memory-frame-grid::-webkit-scrollbar { display:none; }
-.memory-card {
-    position:relative; background:#111; padding:25px 0;
-    box-shadow:0 15px 35px rgba(0,0,0,0.7);
-    transition:transform 0.4s ease, box-shadow 0.4s ease;
-    border-radius:15px;
-}
-.memory-card img, .memory-card video {
-    width:100%; height:220px; object-fit:cover;
-    display:block; border-radius:12px;
-    border:3px solid rgba(255,255,255,0.1);
-}
-.memory-card:hover {
-    transform:scale(1.08) rotate(-1deg);
-    filter:brightness(1.25) drop-shadow(0 5px 20px rgba(255,0,0,0.5));
-    z-index:10;
-}
+.memory-card { position:relative; background:#111; padding:25px 0; box-shadow:0 15px 35px rgba(0,0,0,0.7);
+    transition:transform 0.4s ease; border-radius:4px; }
+.memory-card img, .memory-card video { width:100%; height:200px; object-fit:cover; display:block; border-top:5px solid #000; border-bottom:5px solid #000; }
+.memory-card:hover { transform:scale(1.05); filter:brightness(1.2); z-index:5; }
 
-/* --- BUTTONS --- */
+/* --- Buttons --- */
 button {
-    margin-top:20px; padding:15px 50px; border-radius:50px;
-    background:rgba(255,255,255,0.1); color:white; font-weight:500;
-    cursor:pointer; transition:all 0.4s ease; border:1px solid var(--glass-border);
-    text-transform:uppercase; font-family:'Roboto', sans-serif;
+    margin-top:20px; padding:18px 50px; border-radius:50px;
+    background:rgba(255,255,255,0.1); color:white; font-weight:600; cursor:pointer;
+    transition:all 0.4s ease; border:1px solid var(--glass-border); text-transform:uppercase;
 }
-button:hover {
-    background:white; color:var(--primary-red); transform:translateY(-5px) scale(1.05);
-    box-shadow:0 5px 15px rgba(0,0,0,0.4);
-}
+button:hover { background:white; color:var(--primary-red); transform:translateY(-5px); }
 
-/* --- CAKE & CANDLE --- */
-.cake-container { margin:30px 0; perspective:1000px; position:relative; }
-.cake { position:relative; width:200px; height:130px; transform:rotateX(10deg); margin:0 auto; }
-.layer1 { background:#4a1e1b; height:55px; width:100%; position:absolute; bottom:0; border-radius:0 0 20px 20px; }
-.layer2 { background:#7a3530; height:55px; width:100%; position:absolute; bottom:45px; border-radius:15px; }
-.frosting.top { background:#fff; height:40px; width:100%; position:absolute; top:0; border-radius:20px 20px 5px 5px; }
-.candle { width:12px; height:45px; background:linear-gradient(to right,#ff85a1,#ffccd5); border-radius:4px; position:absolute; top:-40px; left:50%; transform:translateX(-50%); }
-#flame { display:none; position:absolute; top:-28px; left:50%; transform:translateX(-50%); width:18px; height:30px; background:radial-gradient(#fff,#ffae00,#ff4500); border-radius:50% 50% 20% 20%; box-shadow:0 0 25px #ffae00; animation:flicker 0.1s infinite alternate; }
+/* --- Cake & Candle --- */
+.cake-container { margin:50px 0 30px 0; perspective:1000px; position:relative; }
+.cake { position:relative; width:180px; height:120px; transform:rotateX(10deg); margin:0 auto; }
+.layer1 { background:#4a1e1b; height:50px; width:100%; position:absolute; bottom:0; border-radius:0 0 20px 20px; }
+.layer2 { background:#7a3530; height:50px; width:100%; position:absolute; bottom:40px; border-radius:15px; }
+.frosting.top { background:#fff; height:35px; width:100%; position:absolute; top:0; border-radius:20px 20px 5px 5px; }
+.candle { width:10px; height:40px; background:linear-gradient(to right,#ff85a1,#ffccd5); border-radius:4px; position:absolute; top:-35px; left:50%; transform:translateX(-50%); }
+#flame { display:none; position:absolute; top:-25px; left:50%; transform:translateX(-50%);
+    width:15px; height:25px; background:radial-gradient(#fff,#ffae00,#ff4500); border-radius:50% 50% 20% 20%; box-shadow:0 0 20px #ffae00; animation:flicker 0.1s infinite alternate; }
 
-/* --- ANIMATIONS --- */
-@keyframes flicker { 0%,100%{transform:scaleY(1) translateX(-50%); opacity:0.8;} 50%{transform:scaleY(1.2) translateX(-50%) rotate(5deg); opacity:1;} }
+/* --- Floating Hearts --- */
+.floating-heart { position:fixed; z-index:1000; pointer-events:none; }
+
+/* --- Animations --- */
+@keyframes flicker { from{opacity:0.8;} to{opacity:1;} }
 @keyframes elegantFade { from{opacity:0; transform:scale(0.95);} to{opacity:1; transform:scale(1);} }
+@keyframes floatUp { 0% { transform:translateY(0) rotate(0deg) scale(1); opacity:1; } 100% { transform:translateY(-110vh) rotate(360deg) scale(1.2); opacity:0; } }
 
-/* --- MOBILE --- */
+/* --- Responsive --- */
 @media(max-width:480px){
     .memory-frame-grid { grid-template-columns:repeat(1,1fr); max-height:55vh; }
-    .memory-card img,.memory-card video{ height:180px; }
-    .title{ font-size:clamp(1.5rem,10vw,2.5rem); }
-    .subtitle{ font-size:clamp(1rem,4vw,1.5rem); }
-    .cakeMain{ font-size:clamp(2rem,12vw,3rem); }
-    .cakeSub{ font-size:clamp(1.4rem,7vw,2rem); }
-    button{ padding:12px 30px; font-size:0.9rem; }
-    .button-group button{ width:100%; margin:10px 0; }
+    .memory-card img, .memory-card video { height:180px; }
+    .floating-heart { font-size:12px !important; }
+    button { padding:15px 40px; font-size:0.95rem; }
 }
+/* --- Cake Title (Elegant, Non-Curvy Style) --- */
+/* --- Cake Title (Elegant, Error-Free) --- */
+.cakeTitle {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.cakeMain {
+    font-family: 'Playfair Display', serif;   /* classy, not curvy */
+    font-weight: 700;
+    font-size: clamp(2.1rem, 6vw, 3.3rem);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: #ffffff;
+
+    text-shadow:
+        0 2px 10px rgba(0, 0, 0, 0.25),
+        0 8px 28px rgba(255, 133, 161, 0.35);
+}
+
