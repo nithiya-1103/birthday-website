@@ -714,30 +714,18 @@ button:hover {
     }
 
     /* Envelope front pocket */
-    .envelope-front {
-        border-left: 110px solid transparent;
-        border-right: 110px solid transparent;
-        border-bottom: 70px solid #ffccd5;
-    }
-
-    /* Letter */
-    .  .letter {
-        width: 200px;
-        height: 140px;
-        left: 10px;
-        padding: 14px;
-        font-size: 0.95rem;
-    }
-         .envelope-wrapper.open .letter {
+ 
+    /* Opened Letter */
+    .envelope-wrapper.open .letter {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         
-        width: 95vw;       /* almost full width */
-        height: 75vh;      /* bigger, stays inside viewport */
-        max-height: 75vh;
-
+        width: 90vw;        /* Wider letter for mobile */
+        height: 70vh;       /* Bigger, fits inside screen */
+        max-height: 70vh;   /* ensures it doesn't overflow */
+        
         background: #ffffff;  /* full white background */
         padding: 18px;
         font-size: 1.05rem;
@@ -747,10 +735,12 @@ button:hover {
         box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
 }
+
+
     /* Buttons */
     button {
         font-size: 1rem;
         padding: 10px 24px;
         margin-top: 10px;
     }
-}
+
