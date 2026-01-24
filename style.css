@@ -728,22 +728,23 @@ button:hover {
         padding: 14px;
         font-size: 0.95rem;
     }
-      .envelope-wrapper.open .letter {
+         .envelope-wrapper.open .letter {
         position: fixed;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* Center on mobile */
+        transform: translate(-50%, -50%);
         
-        width: 90vw;      /* almost full width */
-        height: 70vh;     /* stays inside screen */
-        max-height: 72vh;
+        width: 95vw;       /* almost full width */
+        height: 75vh;      /* bigger, stays inside viewport */
+        max-height: 75vh;
 
-        background: #ffffff; /* full white background */
-        padding: 16px;
-        font-size: 1rem;
+        background: #ffffff;  /* full white background */
+        padding: 18px;
+        font-size: 1.05rem;
         z-index: 999;
-        overflow-y: auto; /* scrollable for long message */
-        border-radius: 12px; /* rounded corners on mobile */
+        overflow-y: auto;      /* scrollable for long messages */
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
     }
 }
     /* Buttons */
