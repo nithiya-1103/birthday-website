@@ -652,3 +652,64 @@ button:hover {
     background: #c9184a;
     transform: scale(1.05);
 }
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 480px) {
+
+    /* Section spacing */
+    .section {
+        padding: 20px 10px;
+    }
+
+    .title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+    }
+
+    /* Envelope container */
+    .envelope-container {
+        height: auto;
+        margin: 10px 0 30px;
+        perspective: 800px;
+    }
+
+    /* Envelope wrapper */
+    .envelope-wrapper {
+        width: 220px;
+        height: 150px;
+    }
+
+    /* Envelope flap */
+    .envelope-flap {
+        border-left: 110px solid transparent;
+        border-right: 110px solid transparent;
+        border-top: 80px solid #ff8fa3;
+    }
+
+    /* Envelope front pocket */
+    .envelope-front {
+        border-left: 110px solid transparent;
+        border-right: 110px solid transparent;
+        border-bottom: 70px solid #ffccd5;
+    }
+
+    /* Letter */
+    .letter {
+        width: 200px;
+        left: 10px;
+        font-size: 0.85rem;
+        padding: 12px;
+    }
+
+    /* Letter slide distance (VERY IMPORTANT) */
+    .envelope-wrapper.open .letter {
+        transform: translateY(-85px);
+        min-height: 150px;
+    }
+
+    /* Buttons */
+    button {
+        font-size: 1rem;
+        padding: 10px 24px;
+        margin-top: 10px;
+    }
+}
