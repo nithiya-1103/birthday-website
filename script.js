@@ -1,110 +1,185 @@
+/* ================= BASIC ELEMENTS ================= */
 const audio = document.getElementById("bgMusic");
 const container = document.querySelector(".letters");
 const hearts = ["❤️","💖","💕","💌","✨"];
 
-/* --- CAKE LOGIC --- */
+/* ================= MUSIC (SMOOTH FADE IN) ================= */
+function startMusic(){
+    if(audio.src) return;
+    audio.src = "music/love.mp3";
+    audio.volume = 0;
+    audio.play().catch(()=>{});
+
+    let vol = 0;
+    const fade = setInterval(()=>{
+        if(vol >= 0.5){
+            clearInterval(fade);
+        } else {
+            vol += 0.02;
+            audio.volume = vol;
+        }
+    },120);
+}
+
+/* ================= CAKE ================= */
 const lightCandleBtn = document.getElementById("lightCandleBtn");
 const flame = document.getElementById("flame");
 const nextPageBtn = document.getElementById("nextPageBtn");
 
 lightCandleBtn?.addEventListener("click",()=>{
-    flame.style.display="block";
-    document.getElementById("candle").classList.add("lit");
-    document.querySelector(".frosting.top").style.boxShadow="0 0 20px rgba(255,165,0,0.6)";
+    flame.style.display = "block";
+    flame.style.animation = "flicker 0.15s infinite alternate";
+    document.querySelector(".cake").style.filter = "drop-shadow(0 0 25px rgba(255,180,120,0.7))";
 });
 
-nextPageBtn?.addEventListener("click",()=>{ showSection('home'); startMusic(); });
+nextPageBtn?.addEventListener("click",()=>{
+    showSection("home");
+    startMusic();
+});
 
-/* --- NAVIGATION --- */
-function startExperience(next){ showSection(next); startMusic(); }
+/* ================= NAVIGATION ================= */
+function startExperience(next){
+    showSection(next);
+    startMusic();
+}
 
 function showSection(id){
-    history.pushState({}, "", "#"+id);
     document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
     const active = document.getElementById(id);
-    if(active){ 
-        active.classList.add("active"); 
-        if(id==='gallery'){ document.getElementById("memoryGrid").scrollTop=0; }
-        active.querySelectorAll("video").forEach(v=>{
-            v.style.opacity=0;
-            v.play().then(()=>{ v.style.opacity=1; }).catch(()=>{});
-        });
+    if(active){
+        active.classList.add("active");
+        history.pushState({}, "", "#"+id);
     }
 }
 
-/* --- MUSIC --- */
-function startMusic(){
-    if(!audio.src || audio.paused){
-        audio.src="music/love.mp3";
-        audio.volume=0.5; audio.play().catch(()=>console.log("Music blocked"));
-    }
-}
-
-/* --- FLOATING HEARTS --- */
+/* ================= FLOATING HEARTS ================= */
 setInterval(()=>{
-    if(container.childElementCount < 25){
-        const h=document.createElement("span");
-        h.innerText=hearts[Math.floor(Math.random()*hearts.length)];
-        h.classList.add("floating-heart");
-        h.style.bottom="-50px";
-        h.style.left=Math.random()*95+"vw";
-        h.style.fontSize=(15+Math.random()*15)+"px";
-        h.style.transition="transform 6s linear, opacity 6s linear";
-        container.appendChild(h);
-        setTimeout(()=>{ h.style.transform=`translateY(-110vh) rotate(${Math.random()*360}deg) scale(1.2)`; h.style.opacity="0"; },100);
-        setTimeout(()=>h.remove(),7000);
-    }
-},500);
+    if(container.childElementCount > 22) return;
 
-/* --- COUNTDOWN --- */
+    const h = document.createElement("span");
+    h.innerText = hearts[Math.floor(Math.random()*hearts.length)];
+    h.className = "floating-heart";
+    h.style.left = Math.random()*90 + "vw";
+    h.style.bottom = "-40px";
+    h.style.fontSize = (14 + Math.random()*16) + "px";
+    h.style.opacity = 0.8;
+
+    container.appendChild(h);
+
+    setTimeout(()=>{
+        h.style.transform = `translateY(-110vh) scale(1.3)`;
+        h.style.opacity = "0";
+    },100);
+
+    setTimeout(()=>h.remove(),7000);
+},650);
+
+/* ================= POLAROID CAPTIONS ================= */
+const captions = [
+    "Us 💕","My favorite smile","Always you",
+    "Pure happiness","My safe place","Forever moment",
+    "Love captured","Just us","Heartbeats",
+    "Endless love","You & Me","Always mine"
+];
+
+document.querySelectorAll(".memory-card img").forEach((img,i)=>{
+    const caption = document.createElement("div");
+    caption.innerText = captions[i] || "Love";
+    caption.style.fontFamily = "'Dancing Script', cursive";
+    caption.style.color = "#b5172f";
+    caption.style.marginTop = "10px";
+    caption.style.fontSize = "1.05rem";
+    caption.style.opacity = "0.85";
+    img.parentElement.appendChild(caption);
+});
+
+/* ================= COUNTDOWN ================= */
 const birthday = new Date("2025-03-20T00:00:00").getTime();
+
 setInterval(()=>{
-    const t=document.getElementById("timer"); if(!t) return;
+    const t = document.getElementById("timer");
+    if(!t) return;
+
     const d = birthday - Date.now();
-    if(d<=0){ t.innerHTML="🎉 HAPPY BIRTHDAY DOCTOR! 🎉"; return; }
-    const days=Math.floor(d/86400000), hours=Math.floor((d%86400000)/3600000),
-          mins=Math.floor((d%3600000)/60000), secs=Math.floor((d%60000)/1000);
-    t.innerHTML=`${days}d ${hours.toString().padStart(2,'0')}h ${mins.toString().padStart(2,'0')}m ${secs.toString().padStart(2,'0')}s`;
+    if(d <= 0){
+        t.innerHTML = "Happy Birthday Rowdyyy💋";
+        return;
+    }
+
+    const days = Math.floor(d/86400000);
+    const hours = Math.floor((d%86400000)/3600000);
+    const mins = Math.floor((d%3600000)/60000);
+    const secs = Math.floor((d%60000)/1000);
+
+    t.innerHTML = `${days}d ${hours}h ${mins}m ${secs}s`;
 },1000);
 
-/* --- FINAL LOVE REVEAL --- */
+/* ================= FINAL LOVE LETTER ================= */
 function revealLove(){
-    const text="I LOVE YOU";
-    const container=document.getElementById("loveReveal");
-    if(!container) return;
-    container.innerHTML=""; container.style.display="flex";
-    let i=0; const interval=setInterval(()=>{
-        const span=document.createElement("span"); span.innerText=text[i];
-        span.style.animation="elegantFade 0.5s forwards";
-        span.style.margin="0 5px"; span.style.fontSize="2.5rem"; span.style.color="#ff4d6d";
-        container.appendChild(span); i++; triggerConfetti();
-        if(i>=text.length) clearInterval(interval);
-    },300);
+    const container = document.getElementById("loveReveal");
+    container.innerHTML = "";
+    container.style.display = "block";
+
+    const text = "I LOVE YOU FOREVER 💖";
+    let i = 0;
+
+    const interval = setInterval(()=>{
+        const span = document.createElement("span");
+        span.innerText = text[i];
+        span.style.fontSize = "2.4rem";
+        span.style.color = "#ff4d6d";
+        span.style.fontFamily = "'Playfair Display', serif";
+        span.style.opacity = "0";
+        span.style.margin = "0 4px";
+
+        container.appendChild(span);
+
+        requestAnimationFrame(()=>{
+            span.style.transition = "0.6s ease";
+            span.style.opacity = "1";
+            span.style.transform = "translateY(-5px)";
+        });
+
+        triggerConfetti();
+        i++;
+
+        if(i >= text.length) clearInterval(interval);
+    },260);
 }
 
-/* --- CONFETTI --- */
-const canvas=document.getElementById("confettiCanvas");
-const ctx=canvas.getContext("2d"); let confettiParticles=[];
-function resizeCanvas(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
-window.addEventListener('resize',resizeCanvas); resizeCanvas();
+/* ================= CONFETTI ================= */
+const canvas = document.getElementById("confettiCanvas");
+const ctx = canvas.getContext("2d");
+let particles = [];
 
-function Confetti(){ 
-    this.x=Math.random()*canvas.width;
-    this.y=Math.random()*canvas.height - canvas.height;
-    this.r=Math.random()*6+4;
-    this.d=Math.random()*canvas.height;
-    const colors=["#ff4d6d","#ff85a1","#ffffff","#d00000"];
-    this.color=colors[Math.floor(Math.random()*colors.length)];
+function resizeCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 }
-function triggerConfetti(){ for(let i=0;i<20;i++) confettiParticles.push(new Confetti()); if(confettiParticles.length===20) animateConfetti(); }
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+function Confetti(){
+    this.x = Math.random()*canvas.width;
+    this.y = -20;
+    this.size = Math.random()*6 + 4;
+    this.speed = Math.random()*3 + 2;
+    this.color = ["#ff8fab","#ffd6e0","#fff","#ff4d6d"][Math.floor(Math.random()*4)];
+}
+
+function triggerConfetti(){
+    for(let i=0;i<15;i++) particles.push(new Confetti());
+    animateConfetti();
+}
+
 function animateConfetti(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    for(let i=0;i<confettiParticles.length;i++){
-        let p=confettiParticles[i];
-        p.y+=(Math.cos(p.d)+1+p.r/2); p.x+=Math.sin(p.d);
-        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(Math.random()*Math.PI);
-        ctx.fillStyle=p.color; ctx.fillRect(-p.r/2,-p.r/2,p.r,p.r); ctx.restore();
-        if(p.y>canvas.height){ confettiParticles.splice(i,1); i--; }
-    }
-    if(confettiParticles.length>0) requestAnimationFrame(animateConfetti);
+    particles.forEach((p,i)=>{
+        p.y += p.speed;
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x,p.y,p.size,p.size);
+        if(p.y > canvas.height) particles.splice(i,1);
+    });
+    if(particles.length) requestAnimationFrame(animateConfetti);
 }
+

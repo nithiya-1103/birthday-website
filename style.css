@@ -86,7 +86,7 @@ body::before {
 /* ================= TYPOGRAPHY ================= */
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 8vw, 3.6rem);
+    font-size: 30px;
     letter-spacing: 2px;
     background: linear-gradient(to right, #ffffff, #ffd6e0);
     -webkit-background-clip: text;
@@ -99,7 +99,7 @@ body::before {
 
 .subtitle {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.3rem, 4.5vw, 2.3rem);
+    font-size: 32px;
     color: var(--blush);
     max-width: 820px;
     letter-spacing: 1.2px;
@@ -122,18 +122,34 @@ body::before {
     display: none;
 }
 
+/* Polaroid scatter cards */
 .memory-card {
-    background: rgba(0,0,0,0.55);
-    padding: 25px 0;
+    background: var(--pure-white);
+    padding: 20px 15px 40px;
     border-radius: 8px;
     box-shadow:
-        0 20px 40px rgba(0,0,0,0.6),
-        inset 0 0 20px rgba(255,255,255,0.05);
-    transition: transform 0.45s ease, box-shadow 0.45s ease;
+        0 15px 35px rgba(0,0,0,0.35),
+        inset 0 0 10px rgba(255,255,255,0.1);
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    text-align: center;
+    position: relative;
+    transform: rotate(calc(-3deg + 6deg * var(--i)));
 }
 
-.memory-card img,
-.memory-card video {
+.memory-frame-grid .memory-card:nth-child(1) { --i: 0.1; }
+.memory-frame-grid .memory-card:nth-child(2) { --i: 0.3; }
+.memory-frame-grid .memory-card:nth-child(3) { --i: 0.5; }
+.memory-frame-grid .memory-card:nth-child(4) { --i: 0.7; }
+.memory-frame-grid .memory-card:nth-child(5) { --i: 0.2; }
+.memory-frame-grid .memory-card:nth-child(6) { --i: 0.4; }
+.memory-frame-grid .memory-card:nth-child(7) { --i: 0.6; }
+.memory-frame-grid .memory-card:nth-child(8) { --i: 0.8; }
+.memory-frame-grid .memory-card:nth-child(9) { --i: 0.15; }
+.memory-frame-grid .memory-card:nth-child(10){ --i: 0.35; }
+.memory-frame-grid .memory-card:nth-child(11){ --i: 0.55; }
+.memory-frame-grid .memory-card:nth-child(12){ --i: 0.75; }
+
+.memory-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
@@ -142,71 +158,67 @@ body::before {
 }
 
 .memory-card:hover {
-    transform: scale(1.06);
+    transform: scale(1.08) rotate(calc(-5deg + 10deg * var(--i))) translateY(-5px);
     box-shadow:
         0 25px 50px rgba(0,0,0,0.75),
         0 0 30px rgba(255,133,161,0.5);
+    z-index: 10;
 }
-/* --- Polaroid Memory Cards --- */
-.memory-card {
-    background: var(--pure-white);
-    padding: 20px 15px 40px; /* extra bottom space for caption */
-    border-radius: 8px;
-    box-shadow:
-        0 15px 35px rgba(0,0,0,0.35),
-        inset 0 0 10px rgba(255,255,255,0.1);
-    transition: transform 0.45s ease, box-shadow 0.45s ease;
-    text-align: center;
-    position: relative;
-}
-
-.memory-card img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    margin-bottom: 15px;
-}
-
-/* Caption below photo (Polaroid style) */
-.memory-card::after {
-    content: attr(alt);
-    position: absolute;
-    bottom: 8px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Dancing Script', cursive;
-    color: var(--deep-rose);
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
-}
-
 
 /* ================= BUTTONS ================= */
+/* ================= BUTTONS (Romantic Playfair) ================= */
 button {
     margin-top: 22px;
-    padding: 18px 55px;
-    border-radius: 50px;
-    background: rgba(255,255,255,0.12);
+    padding: 16px 50px;
+    border-radius: 35px;
+    background: linear-gradient(135deg, #ff758f, #ffb3c6);
     color: white;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Playfair Display', serif;
     font-weight: 600;
+    font-size: 1.1rem;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    border: 1px solid var(--glass-border);
+    text-transform: capitalize;
+    border: 2px solid rgba(255,255,255,0.3);
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: var(--shadow-soft);
+    box-shadow: 0 6px 25px rgba(255, 133, 161, 0.4);
+    position: relative;
+    overflow: hidden;
 }
 
+/* Hover Effect */
 button:hover {
-    background: white;
-    color: var(--love-red);
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-glow);
+    background: linear-gradient(135deg, #ffb3c6, #ff758f);
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 10px 30px rgba(255, 133, 161, 0.65), 0 0 12px rgba(255, 180, 200, 0.45);
 }
 
+/* Optional: glowing overlay effect on hover */
+button::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+}
+
+button:hover::before {
+    transform: rotate(45deg) scale(1);
+}
+
+/* Mobile Adjustments */
+@media (max-width:480px){
+    button {
+        font-size: 1rem;
+        padding: 12px 35px;
+    }
+}
 /* ================= CAKE ================= */
 .cake-container {
     margin: 55px 0 35px;
@@ -276,12 +288,12 @@ button:hover {
 
 /* ================= CAKE TITLE ================= */
 .cakeTitle {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     text-align: center;
 }
 .love-subline {
     font-family: 'Dancing Script', cursive;
-    font-size: clamp(1.2rem, 4vw, 1.9rem);
+    font-size: 23px;
     color: #ffe5ec;
     margin-bottom: 25px;
     text-shadow: 0 0 18px rgba(255,133,161,0.4);
@@ -289,24 +301,14 @@ button:hover {
 
 .cakeMain {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.9rem, 5.5vw, 3rem);
+    font-size: 25px;
     letter-spacing: 1.8px;
     line-height: 1.25;
-
-    background: linear-gradient(
-        to right,
-        #ffffff,
-        #ffe0e9,
-        #ffffff
-    );
+    background: linear-gradient(to right, #ffffff, #ffe0e9, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-
-    text-shadow:
-        0 4px 12px rgba(0,0,0,0.25),
-        0 0 25px rgba(255, 160, 180, 0.45);
+    text-shadow: 0 4px 12px rgba(0,0,0,0.25), 0 0 25px rgba(255, 160, 180, 0.45);
 }
-
 
 /* ================= HEARTS ================= */
 .floating-heart {
@@ -317,64 +319,20 @@ button:hover {
 }
 
 /* ================= ANIMATIONS ================= */
-@keyframes flicker {
-    from { opacity: 0.85; }
-    to { opacity: 1; }
-}
+@keyframes flicker { from { opacity: 0.85; } to { opacity: 1; } }
+@keyframes elegantFade { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
+@keyframes floatUp { 0% { transform: translateY(0) rotate(0deg); opacity:1;} 100% { transform: translateY(-110vh) rotate(360deg); opacity:0;}}
 
-@keyframes elegantFade {
-    from { opacity: 0; transform: scale(0.94); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes floatUp {
-    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-}
-
-/* ================= MOBILE FONT OPTIMIZATION ================= */
-@media (max-width: 480px) {
-
-    .title {
-        font-size: 1.9rem;
-        letter-spacing: 1.4px;
-        margin-bottom: 0.8rem;
-    }
-
-    .subtitle {
-        font-size: 1.35rem;
-        letter-spacing: 1px;
-        line-height: 1.5;
-        padding: 0 10px;
-    }
-
-    .cakeMain {
-        font-size: 1.85rem;
-        letter-spacing: 1.6px;
-    }
-
-    p {
-        font-size: 0.95rem;
-        line-height: 1.6;
-    }
-
-    button {
-        font-size: 0.9rem;
-        padding: 14px 38px;
-        letter-spacing: 0.8px;
-    }
-
-    .memory-card img,
-    .memory-card video {
-        height: 175px;
-    }
-
-    .memory-frame-grid {
-        grid-template-columns: 1fr;
-        max-height: 55vh;
-    }
-
-    .floating-heart {
-        font-size: 12px !important;
-    }
+/* ================= MOBILE OPTIMIZATION ================= */
+@media (max-width:480px){
+    .title { font-size:1.9rem; letter-spacing:1.4px; margin-bottom:0.8rem; }
+    .subtitle { font-size:1.35rem; letter-spacing:1px; line-height:1.5; padding:0 10px; }
+    .cakeMain { font-size:1.85rem; letter-spacing:1.6px; }
+    p { font-size:0.95rem; line-height:1.6; }
+    button { font-size:0.9rem; padding:14px 38px; letter-spacing:0.8px; }
+    .memory-card img { height:auto; }
+    .memory-frame-grid { grid-template-columns:1fr; max-height:55vh; }
+    .memory-card { transform: rotate(0deg) !important; }
+    .memory-card:hover { transform: scale(1.04) rotate(0deg) translateY(-3px); z-index:10; }
+    .floating-heart { font-size:12px !important; }
 }
