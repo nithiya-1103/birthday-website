@@ -120,7 +120,7 @@ function revealLove(){
     container.innerHTML = "";
     container.style.display = "block";
 
-    const text = "I LOVE YOU FOREVER 💖";
+    const text = "I LOVE YOU THANGOO";
     let i = 0;
 
     const interval = setInterval(()=>{

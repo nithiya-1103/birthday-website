@@ -153,8 +153,7 @@ body::before {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-top: 5px solid #000;
-    border-bottom: 5px solid #000;
+   
 }
 
 .memory-card:hover {
@@ -168,20 +167,20 @@ body::before {
 /* ================= BUTTONS ================= */
 /* ================= BUTTONS (Romantic Playfair) ================= */
 button {
-    margin-top: 22px;
-    padding: 16px 50px;
-    border-radius: 35px;
+    margin-top: 18px;               /* slightly less top margin */
+    padding: 12px 32px;             /* smaller padding */
+    border-radius: 28px;            /* slightly smaller rounded corners */
     background: linear-gradient(135deg, #ff758f, #ffb3c6);
     color: white;
     font-family: 'Playfair Display', serif;
     font-weight: 600;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
+    font-size: 1rem;                /* slightly smaller font */
+    letter-spacing: 0.8px;
     text-transform: capitalize;
     border: 2px solid rgba(255,255,255,0.3);
     cursor: pointer;
     transition: all 0.4s ease;
-    box-shadow: 0 6px 25px rgba(255, 133, 161, 0.4);
+    box-shadow: 0 5px 20px rgba(255, 133, 161, 0.35);
     position: relative;
     overflow: hidden;
 }
@@ -190,11 +189,11 @@ button {
 button:hover {
     background: linear-gradient(135deg, #ffb3c6, #ff758f);
     color: #fff;
-    transform: scale(1.08);
-    box-shadow: 0 10px 30px rgba(255, 133, 161, 0.65), 0 0 12px rgba(255, 180, 200, 0.45);
+    transform: scale(1.05);          /* slightly smaller scale effect */
+    box-shadow: 0 8px 25px rgba(255, 133, 161, 0.6), 0 0 10px rgba(255, 180, 200, 0.35);
 }
 
-/* Optional: glowing overlay effect on hover */
+/* Glowing overlay */
 button::before {
     content: "";
     position: absolute;
@@ -215,10 +214,12 @@ button:hover::before {
 /* Mobile Adjustments */
 @media (max-width:480px){
     button {
-        font-size: 1rem;
-        padding: 12px 35px;
+        font-size: 0.95rem;
+        padding: 10px 28px;          /* smaller padding for mobile */
+        border-radius: 24px;
     }
 }
+
 /* ================= CAKE ================= */
 .cake-container {
     margin: 55px 0 35px;
@@ -301,7 +302,7 @@ button:hover::before {
 
 .cakeMain {
     font-family: 'Playfair Display', serif;
-    font-size: 25px;
+    font-size: 20px;
     letter-spacing: 1.8px;
     line-height: 1.25;
     background: linear-gradient(to right, #ffffff, #ffe0e9, #ffffff);
