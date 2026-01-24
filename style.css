@@ -69,12 +69,10 @@ body::before {
     width: 100vw;
     padding: 25px;
     text-align: center;
-
     backdrop-filter: blur(14px);
     background: var(--glass);
     border: 1px solid var(--glass-border);
     box-shadow: var(--shadow-soft);
-
     position: absolute;
     top: 0;
     left: 0;
@@ -89,6 +87,7 @@ body::before {
 .title {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.2rem, 8vw, 3.6rem);
+    letter-spacing: 2px;
     background: linear-gradient(to right, #ffffff, #ffd6e0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -96,7 +95,6 @@ body::before {
         0 4px 14px rgba(0,0,0,0.3),
         0 0 30px rgba(255,133,161,0.45);
     margin-bottom: 1.2rem;
-    letter-spacing: 2px;
 }
 
 .subtitle {
@@ -281,15 +279,49 @@ button:hover {
     100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
 }
 
-/* ================= MOBILE ================= */
+/* ================= MOBILE FONT OPTIMIZATION ================= */
 @media (max-width: 480px) {
+
+    .title {
+        font-size: 1.9rem;
+        letter-spacing: 1.4px;
+        margin-bottom: 0.8rem;
+    }
+
+    .subtitle {
+        font-size: 1.35rem;
+        letter-spacing: 1px;
+        line-height: 1.5;
+        padding: 0 10px;
+    }
+
+    .cakeMain {
+        font-size: 1.85rem;
+        letter-spacing: 1.6px;
+    }
+
+    p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 14px 38px;
+        letter-spacing: 0.8px;
+    }
+
+    .memory-card img,
+    .memory-card video {
+        height: 175px;
+    }
+
     .memory-frame-grid {
         grid-template-columns: 1fr;
         max-height: 55vh;
     }
-    button {
-        padding: 15px 42px;
-        font-size: 0.95rem;
+
+    .floating-heart {
+        font-size: 12px !important;
     }
 }
-
