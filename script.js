@@ -88,27 +88,35 @@ document.querySelectorAll(".memory-card img").forEach((img,i)=>{
     `;
     img.parentElement.appendChild(caption);
 });
-
 /* ================= COUNTDOWN ================= */
-const birthday = new Date("2025-03-20T00:00:00").getTime();
 
-setInterval(()=>{
+const birthday = new Date("2026-01-01T00:00:00").getTime(); 
+// 🔺 Change date & time if needed
+
+setInterval(() => {
     const t = document.getElementById("timer");
-    if(!t) return;
+    if (!t) return;
 
-    const d = birthday - Date.now();
-    if(d <= 0){
-        t.textContent = "Happy Birthday Rowdyyy💋";
+    const now = new Date().getTime();
+    const d = birthday - now;
+
+    if (d <= 0) {
+        t.innerHTML = "Happy Birthday Rowdyyy 💋🎂";
         return;
     }
 
-    const days = Math.floor(d/86400000);
-    const hours = Math.floor((d%86400000)/3600000);
-    const mins = Math.floor((d%3600000)/60000);
-    const secs = Math.floor((d%60000)/1000);
+    const days = Math.floor(d / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((d / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((d / (1000 * 60)) % 60);
+    const secs = Math.floor((d / 1000) % 60);
 
-    t.textContent = `${days}d ${hours}h ${mins}m ${secs}s`;
-},1000);
+    t.innerHTML = `
+        <b>${days}</b> Days 
+        <b>${hours}</b> Hours 
+        <b>${mins}</b> Mins 
+        <b>${secs}</b> Secs ❤️
+    `;
+}, 1000);
 
 /* ================= FINAL LOVE LETTER ================= */
 function revealLove(){

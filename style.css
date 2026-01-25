@@ -86,8 +86,6 @@ body::before {
 /* ================= TYPOGRAPHY ================= */
 .title {
     font-family: 'Playfair Display', serif;
-    font-size: 30px;
-    letter-spacing: 2px;
     background: linear-gradient(to right, #ffffff, #ffd6e0);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -95,11 +93,13 @@ body::before {
         0 4px 14px rgba(0,0,0,0.3),
         0 0 30px rgba(255,133,161,0.45);
     margin-bottom: 1.2rem;
+    font-size: 1.4rem;      /* reduced size */
+    letter-spacing: 1.2px;
 }
 
 .subtitle {
     font-family: 'Dancing Script', cursive;
-    font-size: 32px;
+    font-size: 30px;
     color: var(--blush);
     max-width: 820px;
     letter-spacing: 1.2px;
@@ -302,7 +302,7 @@ button:hover::before {
 
 .cakeMain {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 28px;
     letter-spacing: 1.8px;
     line-height: 1.25;
     background: linear-gradient(to right, #ffffff, #ffe0e9, #ffffff);
@@ -337,175 +337,14 @@ button:hover::before {
     .memory-card:hover { transform: scale(1.04) rotate(0deg) translateY(-3px); z-index:10; }
     .floating-heart { font-size:12px !important; }
 }
-/* ================= ENVELOPE ================= */
-/* ================= ENVELOPE CONTAINER ================= */
-.envelope-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    perspective: 800px; /* for flap 3D effect */
-}
+/* ================= GOOGLE FONT ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
-/* ================= ENVELOPE ================= */
-.envelope {
-    position: relative;
-    width: 250px;
-    height: 300px;
-    cursor: pointer;
-}
-
-/* ================= ENVELOPE BODY ================= */
-.envelope-body {
-    width: 100%;
-    height: 100%;
-    background: #fff8f5;
-    border: 2px solid #b5172f;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    color: #7b1e3a;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.1rem;
-    text-align: left;
-    padding: 20px;
-    box-shadow: inset 0 -3px 6px rgba(0,0,0,0.1);
-    overflow: hidden; /* hide letter until open */
-    position: relative;
-    z-index: 1;
-}
-
-/* ================= HIDDEN LETTER ================= */
-.hidden-letter {
-    opacity: 0;
-    max-height: 0;
-    overflow-y: hidden;
-    transition: all 1s ease;
-}
-
-/* Reveal letter when envelope opens */
-.envelope.open .hidden-letter {
-    opacity: 1;
-    max-height: 100%;
-    overflow-y: auto;
-    padding-right: 5px;
-}
-
-/* Scrollbar for letter */
-.envelope.open .hidden-letter::-webkit-scrollbar {
-    width: 6px;
-}
-.envelope.open .hidden-letter::-webkit-scrollbar-thumb {
-    background: rgba(183, 23, 47, 0.5);
-    border-radius: 3px;
-}
-
-/* ================= ENVELOPE CONTAINER ================= */
-.envelope-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    perspective: 800px; /* gives 3D depth for flap rotation */
-}
-
-/* ================= ENVELOPE CONTAINER ================= */
-.envelope-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-    perspective: 800px; /* 3D depth for flap rotation */
-}
-
-/* ================= ENVELOPE ================= */
-.envelope {
-    position: relative;
-    width: 250px;
-    height: 300px;
-    cursor: pointer;
-}
-
-/* ================= ENVELOPE BODY ================= */
-.envelope-body {
-    width: 100%;
-    height: 100%;
-    background: #fff8f5;
-    border: 2px solid #b5172f;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    color: #7b1e3a;
-    font-family: 'Dancing Script', cursive;
-    font-size: 1.1rem;
-    text-align: left;
-    padding: 20px;
-    box-shadow: inset 0 -3px 6px rgba(0,0,0,0.1);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-}
-
-/* ================= HIDDEN LETTER ================= */
-.hidden-letter {
-    opacity: 0;
-    max-height: 0;
-    overflow-y: hidden;
-    transition: all 1s ease;
-}
-
-/* Reveal letter when envelope opens */
-.envelope.open .hidden-letter {
-    opacity: 1;
-    max-height: 100%;
-    overflow-y: auto;
-    padding-right: 5px;
-}
-
-/* Scrollbar for letter */
-.envelope.open .hidden-letter::-webkit-scrollbar {
-    width: 6px;
-}
-.envelope.open .hidden-letter::-webkit-scrollbar-thumb {
-    background: rgba(183, 23, 47, 0.5);
-    border-radius: 3px;
-}
-
-/* ================= ENVELOPE FLAP ================= */
-.envelope-flap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border-left: 125px solid #fff8f5; /* side triangle matches letter/envelope body */
-    border-right: 125px solid #fff8f5; /* side triangle matches letter/envelope body */
-    border-bottom: 80px solid #ff758f; /* main flap triangle pink */
-    transform-origin: top center; 
-    transition: transform 0.8s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.15);
-    z-index: 2;
-}
-
-/* Flap shine for realism */
-.envelope-flap::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -125px;
-    width: 250px;
-    height: 80px;
-    background: linear-gradient(to top, rgba(255,255,255,0.25), transparent);
-    pointer-events: none;
-}
-
-
+/* ================= BODY ================= */
 body {
     margin: 0;
-    padding: 20px; /* Space for mobile edges */
-    font-family: 'Playfair Display', serif;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -514,119 +353,110 @@ body {
     background: linear-gradient(to bottom, #f5a6b3, #d86a8d);
     color: #fff;
     box-sizing: border-box;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
 }
 
-
-.container h1 {
-    margin-bottom: 30px;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
-    text-align: center;
-}
-
-/* Container and Title */
+/* ================= SECTION ================= */
 .section {
-    font-family: 'Arial', sans-serif;
     text-align: center;
+    width: 100%;
 }
-
 
 .title {
     color: #c9184a;
     margin-bottom: 20px;
-    font-size: clamp(1.8rem, 8vw, 2.5rem); /* Scales perfectly on mobile */
-    text-align: center;
+    font-size: clamp(1.8rem, 6vw, 2.4rem);
 }
+
+/* ================= ENVELOPE CONTAINER ================= */
 .envelope-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    perspective: 1000px;
-    height: auto;
-    min-height: 320px; /* Extra height for when letter pops up */
     width: 100%;
     margin: 20px 0;
+    perspective: 1000px;
 }
-/* Envelope Structure */
+
+/* ================= ENVELOPE WRAPPER ================= */
 .envelope-wrapper {
     position: relative;
-    width: 90vw;      /* Responsive width */
-    max-width: 300px; /* Maximum size on desktop */
-    aspect-ratio: 3 / 2; /* Maintains shape across devices */
-    background-color: #ffb3c1;
-    border-radius: 0 0 10px 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    width: 90vw;
+    max-width: 300px;
+    aspect-ratio: 3 / 2;
+    background: #ffb3c1;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
+/* ================= ENVELOPE BACK ================= */
 .envelope-back {
     position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #ffb3c1;
+    inset: 0;
+    background: #ffb3c1;
+    border-radius: 0 0 12px 12px;
     z-index: 1;
-    border-radius: 0 0 10px 10px;
 }
 
+/* ================= ENVELOPE FLAP ================= */
 .envelope-flap {
     position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: #ff8fa3;
-    clip-path: polygon(0 0, 100% 0, 50% 60%); /* Triangle shape */
+    clip-path: polygon(0 0, 100% 0, 50% 60%);
     transform-origin: top;
-    transition: transform 0.6s ease-in-out;
+    transition: transform 0.6s ease;
     z-index: 4;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
+/* ================= ENVELOPE FRONT ================= */
 .envelope-front {
     position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    /* Use percentages or calculations for mobile responsiveness */
-    clip-path: polygon(0 40%, 50% 100%, 100% 40%, 100% 100%, 0 100%);
+    inset: 0;
     background: #ffccd5;
+    clip-path: polygon(0 40%, 50% 100%, 100% 40%, 100% 100%, 0 100%);
     z-index: 3;
 }
 
-/* The Letter */
+/* ================= LETTER ================= */
 .letter {
     position: absolute;
-    bottom: 5%;
+    bottom: 6%;
     left: 5%;
     width: 90%;
     height: 85%;
+
     background: #ffffff;
-    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+
+    padding: 24px 22px 110px; /* bottom space for buttons */
     box-sizing: border-box;
-    z-index: 2;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: #4a1c2c;
+
+    overflow-y: auto;         /* ✅ text fits + scrolls */
+    -webkit-overflow-scrolling: touch;
 
     opacity: 0;
     visibility: hidden;
-    transform: translateY(0);
-
-    transition:
-        transform 0.6s ease,
-        opacity 0.4s ease,
-        width 0.5s ease,
-        height 0.5s ease,
-        left 0.5s ease,
-        bottom 0.5s ease;
-
-    box-shadow: 0 6px 18px rgba(0,0,0,0.18);
-
-    color: #4a1c2c;
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(1rem, 4vw, 1.2rem);
-
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    transition: opacity 0.4s ease, transform 0.6s ease;
+}
+.letter-content {
+    max-width: 520px;
+    margin: 0 auto;
 }
 
+
+/* ================= OPEN STATE ================= */
+.envelope-wrapper.open .envelope-flap {
+    transform: rotateX(180deg);
+    z-index: 1;
+}
 
 .envelope-wrapper.open .letter {
     opacity: 1;
@@ -635,108 +465,58 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);  /* ✅ perfect center */
+    transform: translate(-50%, -50%);
 
     width: 90vw;
-    height: 72vh;       /* stays inside website */
+    max-width: 420px;
+    height: 72vh;
     max-height: 75vh;
 
     background: #ffffff;
     z-index: 999;
-    overflow-y: auto;
 }
 
-
-.envelope-back {
-    z-index: 1;
+/* ================= SCROLLBAR ================= */
+.letter::-webkit-scrollbar {
+    width: 6px;
+}
+.letter::-webkit-scrollbar-thumb {
+    background: rgba(201, 24, 74, 0.5);
+    border-radius: 4px;
 }
 
-.envelope-front {
-    z-index: 3; /* This creates the "pocket" that hides the letter */
-}
-
-.envelope-flap {
-    z-index: 4; /* Covers the top of the letter when closed */
-}
-
-.envelope-wrapper.open .envelope-flap {
-    transform: rotateX(180deg);
-    z-index: 1; /* Move behind so the letter can slide over it */
-}
-/* Button Styling */
+/* ================= BUTTON ================= */
 button {
     background: #ff758f;
-    color: white;
+    color: #fff;
     border: none;
     padding: 12px 30px;
     border-radius: 50px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 10px rgba(255, 117, 143, 0.3);
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(255, 117, 143, 0.35);
+    margin-top: 20px;
 }
 
 button:hover {
     background: #c9184a;
     transform: scale(1.05);
 }
-/* ================= MOBILE RESPONSIVE ================= */
+
+/* ================= MOBILE ================= */
 @media (max-width: 480px) {
 
-    /* Section spacing */
-    .section {
-        padding: 20px 10px;
+    .letter {
+       font-size: 1.2rem;  /* neat on small screens */
+        letter-spacing: 1px;
     }
 
-    .title {
-        font-size: 1.6rem;
-        margin-bottom: 20px;
-    }
-
-    /* Envelope container */
-    .envelope-container {
-        height: auto;
-        margin: 10px 0 30px;
-        perspective: 800px;
-    }
-
-    /* Envelope wrapper */
-       .envelope-wrapper.open .letter {
-        position: fixed;        /* fix to viewport */
-        top: 50%;               /* vertical center */
-        left: 50%;              /* horizontal center */
-        transform: translate(-50%, -50%);  /* center properly */
-        
-        width: 90vw;            /* almost full width */
-        max-width: 320px;       /* optional max width */
-        height: 70vh;           /* bigger height */
-        max-height: 70vh;       /* ensure it fits in viewport */
-        
-        background: #ffffff;    /* full white background */
-        padding: 20px;          /* spacing inside letter */
-        font-size: 1.1rem;      /* bigger readable text */
-        overflow-y: auto;       /* scrollable for long text */
-        border-radius: 12px;    /* rounded corners */
-        box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-        z-index: 999;           /* above everything else */
-    }
-
-    /* Optional: reduce envelope wrapper interference */
-    .envelope-wrapper {
-        height: auto;
-    }
-
-    /* Optional: adjust flap for mobile */
-    .envelope-flap {
-        transform-origin: top center;
+    .envelope-wrapper.open .letter {
+        width: 92vw;
+        height: 70vh;
+        padding: 20px;
+        border-radius: 12px;
     }
 }
-
-
-    /* Buttons */
-    button {
-        font-size: 1rem;
-        padding: 10px 24px;
-        margin-top: 10px;
-    }
 
