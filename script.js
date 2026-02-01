@@ -71,9 +71,10 @@ setInterval(()=>{
 
 /* ================= POLAROID CAPTIONS ================= */
 const captions = [
-    "Us 💕","My favorite smile","Always you","Pure happiness",
-    "My safe place","Forever moment","Love captured","Just us",
-    "Heartbeats","Endless love","You & Me","Always mine"
+    "My First Love😌❤️","Our First Dating🤭","I searched for love, and I found you✨",
+    "Not in arms, but in safe hands and pure love 💘",
+    "இவன் இல்லா வாழ்க்கையே ஒரு பிழை என்று நான் உணா்கிறேன்😭💌","Forever Minee👩‍❤️‍💋‍👨","Just us😘","His love towards me is priceless🫶💞",
+    "Personal Doctor aee😌😁","Small Bd gift,big happiness🤌","You + Me + Bikeride=🥹💕","Your last touch before Long distance🥺❤️‍🩹"
 ];
 
 document.querySelectorAll(".memory-card img").forEach((img,i)=>{
@@ -124,7 +125,7 @@ function revealLove(){
     box.innerHTML = "";
     box.style.display = "block";
 
-    const text = "I LOVE YOU THANGOO";
+    const text = "I LOVE YOU THANGOO...";
     let i = 0;
 
     const interval = setInterval(()=>{
@@ -133,7 +134,7 @@ function revealLove(){
         span.style.cssText = `
             font-size: 2.4rem;
             color: #ff4d6d;
-            font-family: 'Playfair Display', serif;
+            font-family:Cursive;
             margin: 0 4px;
             opacity: 0;
         `;
