@@ -132,7 +132,7 @@ function revealLove(){
         const span = document.createElement("span");
         span.textContent = text[i];
         span.style.cssText = `
-            font-size: 2.4rem;
+            font-size: 1.8rem;
             color: #ff4d6d;
             font-family:Cursive;
             margin: 0 4px;
