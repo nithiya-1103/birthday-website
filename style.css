@@ -562,4 +562,71 @@ button:hover {
         transform: scale(1);
     }
 }
+/* ================= CARE SCATTER PAGE ================= */
+
+.care-scatter {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    margin: 40px auto;
+}
+
+.scatter {
+    position: absolute;
+    width: 140px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transform: rotate(-5deg);
+    transition: 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.4);
+}
+
+.scatter:hover {
+    transform: scale(1.15) rotate(0deg);
+    z-index: 10;
+}
+
+/* Random positions */
+.img1  { top: 10px; left: 5%; transform: rotate(-8deg); }
+.img2  { top: 80px; left: 25%; transform: rotate(6deg); }
+.img3  { top: 30px; left: 50%; transform: rotate(-4deg); }
+.img4  { top: 120px; left: 70%; transform: rotate(7deg); }
+
+.img5  { top: 250px; left: 8%; transform: rotate(5deg); }
+.img6  { top: 220px; left: 30%; transform: rotate(-7deg); }
+.img7  { top: 260px; left: 55%; transform: rotate(4deg); }
+.img8  { top: 200px; left: 75%; transform: rotate(-6deg); }
+
+.img9  { top: 420px; left: 12%; transform: rotate(-5deg); }
+.img10 { top: 380px; left: 35%; transform: rotate(6deg); }
+.img11 { top: 430px; left: 60%; transform: rotate(-4deg); }
+.img12 { top: 360px; left: 80%; transform: rotate(5deg); }
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .care-scatter {
+        height: 750px;
+    }
+
+    .scatter {
+        width: 110px;
+    }
+
+    .img1  { top: 20px; left: 5%; }
+    .img2  { top: 70px; left: 45%; }
+    .img3  { top: 140px; left: 10%; }
+    .img4  { top: 200px; left: 50%; }
+
+    .img5  { top: 280px; left: 15%; }
+    .img6  { top: 340px; left: 55%; }
+    .img7  { top: 420px; left: 20%; }
+    .img8  { top: 480px; left: 50%; }
+
+    .img9  { top: 560px; left: 10%; }
+    .img10 { top: 620px; left: 45%; }
+    .img11 { top: 680px; left: 20%; }
+    .img12 { top: 720px; left: 55%; }
+}
+
 

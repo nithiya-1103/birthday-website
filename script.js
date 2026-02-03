@@ -71,17 +71,17 @@ setInterval(()=>{
 
 /* ================= POLAROID CAPTIONS ================= */
 const captions = [
-    "My First Love😌❤️","Our First Dating🤭","I searched for love, and I found you✨",
-    "Not in arms, but in safe hands and pure love 💘",
-    "இவன் இல்லா வாழ்க்கையே ஒரு பிழை என்று நான் உணா்கிறேன்😭💌","Forever Minee👩‍❤️‍💋‍👨","Just us😘","His love towards me is priceless🫶💞",
-    "Personal Doctor aee😌😁","Small Bd gift,big happiness🤌","You + Me + Bikeride=🥹💕","Your last touch before Long distance🥺❤️‍🩹"
+    "My First Love [22/03/2024]😌❤️","Our First Dating[11/05/2024]🤭","I searched for love, and I found you✨[28/03/2025]",
+    "Not in arms, but in safe hands and pure love 💘[23/08/2025]",
+    "இவன் இல்லா வாழ்க்கையே ஒரு பிழை என்று நான் உணா்கிறேன்😭💌[18/06/2025]","Forever Minee👩‍❤️‍💋‍👨[10/07/2024]","Just us😘[06/09/2025]","His love towards me is priceless🫶💞[20/12/2024]",
+    "Personal Doctor aee😌😁[19/11/2024]","Small Bd gift,big happiness🤌[13/03/2025]","You + Me + Bikeride=🥹💕[16/09/2025]","Your last touch before Long distance🥺❤️‍🩹[24/09/2025]"
 ];
 
 document.querySelectorAll(".memory-card img").forEach((img,i)=>{
     const caption = document.createElement("div");
     caption.textContent = captions[i] || "Love";
     caption.style.cssText = `
-        font-family: 'Dancing Script', cursive;
+        font-family:font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         color: #b5172f;
         margin-top: 10px;
         font-size: 1.05rem;
