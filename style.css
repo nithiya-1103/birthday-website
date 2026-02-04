@@ -562,66 +562,38 @@ button:hover {
         transform: scale(1);
     }
 }
-/* ================= CARE PAGE (FINAL FIXED CSS) ================= */
+/* ================= CARE PAGE CSS (MATCHING YOUR HTML) ================= */
+/* ================= CARE PAGE FIX (NO BREAK OTHER PAGES) ================= */
 
-/* ================= CARE PAGE FIX (SCROLL WORKING) ================= */
-
-/* Main care section */
-.care-section {
-    height: 100dvh; /* better than 100vh for mobile */
-    display: flex;
-    flex-direction: column;
-    padding: 6px 0;
-    overflow: hidden; /* page won't scroll, only images will */
+/* IMPORTANT: do NOT break section system */
+.section {
+    min-height: 100vh;   /* instead of height:100vh */
 }
 
-/* Header always visible */
-.care-header {
-    text-align: center;
-    padding: 6px 14px;
-    flex-shrink: 0;
+/* Care page scroll enabled */
+#care {
+    overflow-y: auto;   /* allow scroll only in care page */
 }
 
-/* Screenshot scroll area */
-.care-scroll-box {
-    flex: 1;
-    overflow-y: auto;   /* ✅ ENABLE SCROLL */
-    -webkit-overflow-scrolling: touch; /* smooth mobile scroll */
-    padding: 10px 0;
-}
-
-/* Desktop grid layout */
+/* Grid layout */
 .care-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
     max-width: 1100px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 0 14px;
 }
 
-/* Images */
+/* Images - no crop */
 .care-grid img {
     width: 100%;
     height: auto;
-    display: block;
     object-fit: contain;
+    display: block;
     border-radius: 14px;
     background: rgba(255,255,255,0.18);
     box-shadow: 0 10px 22px rgba(0,0,0,0.22);
-}
-
-/* Next button always visible */
-.next-btn {
-    margin: 8px auto 12px;
-    padding: 10px 28px;
-    border-radius: 30px;
-    border: none;
-    background: linear-gradient(135deg, #ff5f9e, #ff8acb);
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    flex-shrink: 0;
 }
 
 /* Responsive grid */
@@ -637,13 +609,13 @@ button:hover {
     }
 }
 
-/* Mobile view - one by one scroll */
+/* Mobile - one by one */
 @media (max-width: 600px) {
     .care-grid {
         display: flex;
         flex-direction: column;
         gap: 18px;
-        padding: 0 10px;
+        padding: 0 12px;
     }
 
     .care-grid img {
@@ -652,4 +624,10 @@ button:hover {
         margin: 0 auto;
         border-radius: 16px;
     }
+}
+
+/* Care page button */
+#care button {
+    display: block;
+    margin: 10px auto 20px;
 }
