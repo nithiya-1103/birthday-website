@@ -36,7 +36,7 @@ html, body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;   /* allow vertical scroll */
-    overflow-y: auto;
+   
     position: relative;   /* remove fixed */
     background: #000;
     font-family: 'Poppins', sans-serif;
@@ -78,7 +78,7 @@ body::before {
     position: absolute;
     top: 0;
     left: 0;
-     overflow-y: auto;
+   
 }
 
 .section.active {
@@ -628,3 +628,5 @@ section {
         border-radius: 12px;
     }
 }
+/* ===== CARE PAGE INTERNAL SCROLL ONLY (NO WEBSITE MOVE) ===== */
+
