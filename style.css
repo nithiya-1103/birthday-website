@@ -562,69 +562,82 @@ button:hover {
         transform: scale(1);
     }
 }
-/* ================= CARE SCATTER PAGE ================= */
+/* ================= CARE SECTION LAYOUT ================= */
+/* ================= CARE PAGE FIX ================= */
 
-/* Desktop & Tablet - Grid layout */
+.care-section {
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px 0;
+}
+
+/* Header always visible */
+.care-header {
+    text-align: center;
+    padding: 8px 16px;
+    flex-shrink: 0;
+}
+
+/* ONLY screenshots scroll */
+.care-scroll-box {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 0;
+}
+
+/* Grid layout (desktop) */
 .care-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 14px;
     max-width: 1100px;
-    margin: 30px auto;
+    margin: 0 auto;
     padding: 0 14px;
-    align-items: start;
 }
 
-/* Image - original size, no crop */
+/* Images - original ratio, no crop */
 .care-grid img {
     width: 100%;
-    height: auto; /* keep original ratio */
+    height: auto;
     display: block;
-    object-fit: contain; /* no crop */
+    object-fit: contain;
     border-radius: 14px;
     background: rgba(255,255,255,0.18);
     box-shadow: 0 10px 22px rgba(0,0,0,0.22);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect */
-.care-grid img:hover {
-    transform: scale(1.03);
-    box-shadow: 0 16px 30px rgba(0,0,0,0.3);
+/* Next button always visible */
+.next-btn {
+    margin: 6px auto 12px;
+    padding: 10px 28px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(135deg, #ff5f9e, #ff8acb);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
-/* ================= SCROLL FIX ================= */
-
-body {
-    overflow-y: auto !important;
-    min-height: 100%;
-}
-
-section {
-    min-height: auto;
-}
-
-/* ================= RESPONSIVE BREAKPOINTS ================= */
-
-/* Large tablets */
+/* Responsive grid */
 @media (max-width: 1024px) {
     .care-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Tablets */
 @media (max-width: 768px) {
     .care-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
     }
 }
 
-/* Mobile - ONE BY ONE SCROLL */
+/* Mobile view - one by one */
 @media (max-width: 600px) {
     .care-grid {
-        display: flex;          /* vertical layout */
+        display: flex;
         flex-direction: column;
         gap: 18px;
         padding: 0 10px;
@@ -637,3 +650,4 @@ section {
         border-radius: 16px;
     }
 }
+
