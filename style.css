@@ -563,6 +563,7 @@ button:hover {
     }
 }
 /* ================= CARE SCATTER PAGE ================= */
+
 /* Desktop & Tablet - Grid layout */
 .care-grid {
     display: grid;
@@ -592,7 +593,7 @@ button:hover {
     box-shadow: 0 16px 30px rgba(0,0,0,0.3);
 }
 
-/* Scroll fix */
+/* ================= SCROLL FIX ================= */
 
 body {
     overflow-y: auto !important;
@@ -603,43 +604,36 @@ section {
     min-height: auto;
 }
 
-/* Responsive layout */
+/* ================= RESPONSIVE BREAKPOINTS ================= */
+
+/* Large tablets */
 @media (max-width: 1024px) {
     .care-grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
+/* Tablets */
 @media (max-width: 768px) {
     .care-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 12px;
     }
 }
 
-@media (max-width: 480px) {
-    .care-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-
-    .care-grid img {
-        border-radius: 12px;
-    }
-}
+/* Mobile - ONE BY ONE SCROLL */
 @media (max-width: 600px) {
     .care-grid {
-        display: flex;              /* change grid to vertical list */
-        flex-direction: column;     /* one by one */
+        display: flex;          /* vertical layout */
+        flex-direction: column;
         gap: 18px;
         padding: 0 10px;
     }
 
     .care-grid img {
         width: 100%;
-        max-width: 420px;           /* perfect mobile reading size */
-        margin: 0 auto;             /* center image */
+        max-width: 420px;
+        margin: 0 auto;
         border-radius: 16px;
     }
 }
-
