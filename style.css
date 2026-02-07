@@ -337,7 +337,7 @@ button:hover {
     position: absolute;
     bottom: 6%;
     left: 5%;
-    width: 90%;
+    width: 100%;
     height: 85%;
     background: linear-gradient(#fff0f3, #ffe5ec);
     border-radius: 10px;
@@ -371,7 +371,7 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 95vw;             /* increase letter width on screen */
-    max-width: 480px;        /* slightly larger than before */
+    max-width: 530px;        /* slightly larger than before */
     height: 72vh;
     max-height: 70vh;
     overflow-y: auto;
