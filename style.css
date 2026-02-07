@@ -389,21 +389,46 @@ button:hover {
     grid-template-columns: repeat(4, 1fr);
     gap: 12px;
     max-width: 1100px;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 0 12px;
+
+    /* ✅ only gallery scroll */
+    max-height: 65vh;  
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
+.care-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* Images */
 .care-grid img {
     width: 100%;
     height: auto;
     object-fit: contain;
     border-radius: 14px;
-    box-shadow: 0 10px 22px rgba(0,0,0,0.22);
+    background: rgba(255,255,255,0.2);
+    box-shadow: 0 10px 22px rgba(255, 80, 120, 0.35);
     transition: 0.3s ease;
 }
 
 .care-grid img:hover {
     transform: scale(1.04);
+}
+
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+    .care-grid {
+        grid-template-columns: 1fr;   /* ✅ one by one */
+        max-height: 70vh;             /* scroll only gallery */
+        gap: 14px;
+        padding: 5px 10px;
+    }
+
+    .care-grid img {
+        border-radius: 12px;
+    }
 }
 
 /* ================= RESPONSIVE ================= */
