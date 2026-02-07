@@ -395,17 +395,12 @@ button:hover {
     pointer-events: none;
 }
 /* ================= MOBILE VIEW ================= */
-@media (max-width: 768px) {
+/* Mobile view adjustments */
+@media (max-width: 480px) {
     .envelope-wrapper.open .letter {
-        width: 95vw;       /* almost full screen width */
-        max-width: 95vw;   /* remove max-width limit for mobile */
-        height: 75vh;      /* slightly taller for readability */
-    }
-
-    /* Ensure content inside letter fills the available width */
-    .envelope-wrapper.open .letter > * {
-        width: 100%;
-        max-width: none;
+        width: 90vw;      /* almost full width on mobile */
+        max-width: 90vw;  /* prevent it from shrinking too much */
+        padding: 30px;    /* slightly reduce padding to fit better */
     }
 }
 
