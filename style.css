@@ -342,7 +342,7 @@ button:hover {
     height: 85%;
     background: linear-gradient(#fff0f3, #ffe5ec);
     border-radius: 10px;
-    padding: 20px;
+    padding: 50px;
     overflow-y: auto;
     opacity: 0;
     visibility: hidden;
