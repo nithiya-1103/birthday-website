@@ -74,17 +74,19 @@ body::before {
     display: none;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: center;   /* ✅ remove justify-content:center */
     min-height: 100vh;
+    height: 100vh;
     width: 100%;
     padding: 25px;
     box-sizing: border-box;
     text-align: center;
     backdrop-filter: blur(14px);
-     background: rgba(255, 240, 243, 0.15);
+    background: rgba(255, 240, 243, 0.15);
     border: 1px solid rgba(255, 180, 200, 0.4);
     box-shadow: var(--shadow-soft);
     position: relative;
+    overflow: hidden;   /* keep page fixed */
 }
 
 .section.active {
@@ -386,15 +388,15 @@ button:hover {
 /* ================= CARE GRID ================= */
 .care-grid {
     width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
+    max-width: 1000px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* desktop grid */
-    gap: 18px;
-    padding: 15px;
+    grid-template-columns: repeat(3, 1fr); /* desktop */
+    gap: 14px;
+    margin-top: 15px;
+    padding: 10px;
 
-    max-height: 60vh;      /* ✅ only gallery scroll */
-    overflow-y: auto;
+    flex: 1;              /* ✅ MOST IMPORTANT */
+    overflow-y: auto;     /* ✅ only gallery scroll */
     overflow-x: hidden;
     scrollbar-width: none;
 }
@@ -403,29 +405,22 @@ button:hover {
     display: none;
 }
 
-/* Images - full visible */
+/* images */
 .care-grid img {
     width: 100%;
     height: auto;
     object-fit: contain;  /* no crop */
     display: block;
     border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.care-grid img:hover {
-    transform: scale(1.02);
 }
 
 /* ================= MOBILE VIEW ================= */
 @media (max-width: 768px) {
     .care-grid {
-        grid-template-columns: 1fr;  /* ✅ 1 image per line */
-        max-height: 65vh;            /* scroll works */
-        padding: 10px;
+        grid-template-columns: 1fr;  /* ✅ 1 image per row */
+        gap: 12px;
     }
 }
-
 
 /* ================= BUTTON FIX ================= */
 #care button {
@@ -439,11 +434,14 @@ button:hover {
     cursor: pointer;
     box-shadow: 0 8px 20px rgba(255, 0, 80, 0.4);
     transition: 0.3s ease;
+    margin-top: 10px;
+    flex-shrink: 0;
 }
 
 #care button:hover {
     transform: scale(1.05);
 }
+
 
 
 /* ================= RESPONSIVE ================= */
