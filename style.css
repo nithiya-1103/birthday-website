@@ -334,6 +334,7 @@ button:hover {
 }
 
 .letter {
+    
     position: absolute;
     bottom: 6%;
     left: 5%;
@@ -363,6 +364,7 @@ button:hover {
 
 /* When envelope opens */
 .envelope-wrapper.open .letter {
+    margin-top: 0%;
     opacity: 1;
     visibility: visible;
     z-index: 9999;
@@ -404,7 +406,7 @@ button:hover {
     .envelope-wrapper.open .letter {
         width: 90vw;      /* almost full width on mobile */
         max-width: 90vw;  /* prevent it from shrinking too much */
-        padding: 50px;    /* slightly reduce padding to fit better */
+        padding: 60px;    /* slightly reduce padding to fit better */
     }
 }
 
