@@ -408,19 +408,21 @@ button:hover {
     border-radius: 12px;
 }
 
-/* ================= MOBILE LAYOUT ================= */
+
 /* ================= MOBILE LAYOUT ================= */
 @media (max-width: 768px) {
     .care-grid {
         grid-template-columns: 1fr; /* one image per row */
-        gap: 20px;                  /* a bit more spacing between images */
+        gap: 16px;                  /* space between images */
+        padding: 0 10px;            /* optional: small side padding */
     }
 
     .care-grid img {
-        width: 100%;        /* full width of container */
-        max-height: 500px;  /* allow images to appear bigger */
-        height: auto;       /* maintain aspect ratio */
-        object-fit: cover;  /* fill the space nicely without stretching */
+        width: 100vw;        /* full viewport width */
+        max-width: 100%;     /* never exceed container */
+        height: auto;        /* maintain aspect ratio */
+        object-fit: cover;   /* fill nicely without stretching */
+        border-radius: 12px;
     }
 
     #care button {
@@ -429,6 +431,7 @@ button:hover {
         display: block;
     }
 }
+
 
 
 /* ================= BUTTON FIX (ALWAYS VISIBLE) ================= */
