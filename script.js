@@ -134,7 +134,7 @@ function revealLove(){
         span.style.cssText = `
             font-size: 1.8rem;
             color: #ff4d6d;
-            font-family:Cursive;
+            font-family:;
             margin: 0 4px;
             opacity: 0;
         `;
