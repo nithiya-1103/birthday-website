@@ -394,6 +394,21 @@ button:hover {
     opacity: 0;
     pointer-events: none;
 }
+/* ================= MOBILE VIEW ================= */
+@media (max-width: 768px) {
+    .envelope-wrapper.open .letter {
+        width: 95vw;       /* almost full screen width */
+        max-width: 95vw;   /* remove max-width limit for mobile */
+        height: 75vh;      /* slightly taller for readability */
+    }
+
+    /* Ensure content inside letter fills the available width */
+    .envelope-wrapper.open .letter > * {
+        width: 100%;
+        max-width: none;
+    }
+}
+
 
 
 
