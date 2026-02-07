@@ -383,91 +383,49 @@ button:hover {
     to { opacity: 1; transform: scale(1); }
 }
 
-/* ================= CARE SECTION ================= */
-#care {
-    width: 100%;
-    padding: 30px 10px 20px;
-    text-align: center;
-}
-
-/* Title */
-#care .title {
-    color: #ffb6c1;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
-
-/* Subtitle */
-#care .love-subline {
-    color: #ffd1dc;
-    max-width: 700px;
-    margin: 0 auto 20px;
-    line-height: 1.4;
-}
-
+/* ================= CARE GRID (FRAME STYLE) ================= */
 /* ================= CARE GRID ================= */
-/* ================= CARE SECTION ================= */
-#care {
-    width: 100%;
-    padding: 20px 10px;
-    text-align: center;
-}
-
-/* ================= CARE GRID (SCROLL ONLY IMAGES) ================= */
 .care-grid {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr;   /* ✅ one by one screenshots */
-    gap: 15px;
-    max-width: 420px;
-    margin: 15px auto 20px;
-    padding: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
 
-    height: 55vh;        /* ✅ only gallery scroll */
+    max-height: 60vh;      /* ✅ only care section scroll */
     overflow-y: auto;
     overflow-x: hidden;
-
-    border-radius: 14px;
+    scrollbar-width: none;
 }
 
-/* hide scrollbar (optional) */
 .care-grid::-webkit-scrollbar {
-    width: 0;
+    display: none;
 }
 
-/* Images */
+/* Images - NO BORDER, NO CROPPING */
 .care-grid img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-    border-radius: 14px;
-    box-shadow: 0 10px 22px rgba(255, 80, 120, 0.35);
-    transition: 0.3s ease;
+    height: auto;              /* ✅ keep original ratio */
+    object-fit: contain;        /* ✅ show full image */
+    display: block;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
+/* hover effect (soft romantic zoom) */
 .care-grid img:hover {
     transform: scale(1.03);
-}
-
-/* ================= DESKTOP VIEW ================= */
-@media (min-width: 769px) {
-    .care-grid {
-        grid-template-columns: repeat(3, 1fr); /* desktop grid */
-        max-width: 1000px;
-        height: 60vh;
-    }
 }
 
 /* ================= MOBILE VIEW ================= */
 @media (max-width: 768px) {
     .care-grid {
         grid-template-columns: 1fr;   /* ✅ one by one */
-        height: 65vh;                 /* scroll only gallery */
+        max-width: 420px;
+        max-height: 65vh;
         gap: 16px;
-        padding: 10px;
-    }
-
-    .care-grid img {
-        border-radius: 12px;
     }
 }
 
