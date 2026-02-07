@@ -406,24 +406,30 @@ button:hover {
 }
 
 /* ================= CARE GRID ================= */
+/* ================= CARE SECTION ================= */
+#care {
+    width: 100%;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+/* ================= CARE GRID (SCROLL ONLY IMAGES) ================= */
 .care-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-    max-width: 1100px;
-    margin: 0 auto 20px;
-    padding: 6px;
+    grid-template-columns: 1fr;   /* ✅ one by one screenshots */
+    gap: 15px;
+    max-width: 420px;
+    margin: 15px auto 20px;
+    padding: 10px;
 
-    height: 60vh;               /* ✅ only gallery scroll */
+    height: 55vh;        /* ✅ only gallery scroll */
     overflow-y: auto;
     overflow-x: hidden;
 
-    border-radius: 16px;
-    background: linear-gradient(135deg, rgba(255,0,90,0.15), rgba(120,0,40,0.25));
-    backdrop-filter: blur(6px);
+    border-radius: 14px;
 }
 
-/* hide scrollbar */
+/* hide scrollbar (optional) */
 .care-grid::-webkit-scrollbar {
     width: 0;
 }
@@ -434,12 +440,21 @@ button:hover {
     height: auto;
     object-fit: contain;
     border-radius: 14px;
-    box-shadow: 0 12px 25px rgba(255, 0, 80, 0.35);
+    box-shadow: 0 10px 22px rgba(255, 80, 120, 0.35);
     transition: 0.3s ease;
 }
 
 .care-grid img:hover {
-    transform: scale(1.05);
+    transform: scale(1.03);
+}
+
+/* ================= DESKTOP VIEW ================= */
+@media (min-width: 769px) {
+    .care-grid {
+        grid-template-columns: repeat(3, 1fr); /* desktop grid */
+        max-width: 1000px;
+        height: 60vh;
+    }
 }
 
 /* ================= MOBILE VIEW ================= */
