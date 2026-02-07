@@ -385,17 +385,18 @@ button:hover {
 }
 
 /* ================= CARE GRID ================= */
+/* ================= CARE GRID ================= */
 .care-grid {
     width: 100%;
     max-width: 1000px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr); /* desktop: 3 photos per row */
     gap: 16px;
     margin-top: 12px;
     padding: 10px;
 
-    flex: 1;             /* ✅ allow scroll area */
-    overflow-y: auto;    /* ✅ scroll works everywhere */
+    flex: 1;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -411,9 +412,16 @@ button:hover {
 /* ================= MOBILE LAYOUT ================= */
 @media (max-width: 768px) {
     .care-grid {
-        grid-template-columns: 1fr; /* one image per row */
+        grid-template-columns: 1fr; /* mobile: 1 photo per row */
+    }
+
+    #care button {
+        width: 90%;
+        margin: 10px auto 0 auto;
+        display: block;
     }
 }
+
 
 /* ================= BUTTON FIX (ALWAYS VISIBLE) ================= */
 #care button {
