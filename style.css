@@ -400,7 +400,7 @@ button:hover {
     .envelope-wrapper.open .letter {
         width: 90vw;      /* almost full width on mobile */
         max-width: 90vw;  /* prevent it from shrinking too much */
-        padding: 30px;    /* slightly reduce padding to fit better */
+        padding: 50px;    /* slightly reduce padding to fit better */
     }
 }
 
