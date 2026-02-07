@@ -119,6 +119,7 @@ body::before {
 }
 
 /* ================= MEMORY GALLERY ================= */
+/* ================= MEMORY GRID ================= */
 .memory-frame-grid {
     width: 100%;
     max-width: 1100px;
@@ -126,35 +127,59 @@ body::before {
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 32px;
     padding: 40px 20px;
-    max-height: 65vh;
-    overflow-y: auto;
-    scrollbar-width: none;
+    max-height: 65vh;        /* allows vertical scroll */
+    overflow-y: auto;        /* scroll when content overflows */
+    scrollbar-width: none;   /* hide scrollbar on Firefox */
 }
 
-.memory-frame-grid::-webkit-scrollbar { display: none; }
+.memory-frame-grid::-webkit-scrollbar { display: none; } /* hide scrollbar on Chrome/Safari */
 
+/* ================= MEMORY CARD ================= */
 .memory-card {
     background: var(--pure-white);
-    padding: 20px 15px 40px;
+    padding: 10px 10px 40px;    /* extra bottom space like Polaroid */
     border-radius: 8px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.35);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     text-align: center;
     position: relative;
     transform: rotate(calc(-3deg + 6deg * var(--i)));
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+/* ================= MEMORY CARD IMAGE ================= */
 .memory-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+    width: 100%;              /* fill card width */
+    aspect-ratio: 1 / 1;      /* square like Polaroid */
+    object-fit: cover;         /* crop nicely */
+    border-radius: 4px;
+    margin-bottom: 10px;       /* space for caption / bottom frame */
 }
 
+/* ================= MEMORY CARD HOVER ================= */
 .memory-card:hover {
     transform: scale(1.07) rotate(calc(-5deg + 10deg * var(--i)));
     box-shadow: 0 25px 50px rgba(0,0,0,0.6);
     z-index: 10;
 }
+
+/* ================= MOBILE ADJUSTMENTS ================= */
+@media (max-width: 768px) {
+    .memory-frame-grid {
+        grid-template-columns: 1fr; /* 1 card per row on mobile */
+        gap: 20px;
+        max-height: 60vh;           /* slightly smaller on mobile */
+    }
+
+    .memory-card img {
+        max-height: 400px;           /* larger images on mobile */
+        width: 100%;
+    }
+}
+
 
 /* ================= BUTTONS ================= */
 button {
