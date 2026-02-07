@@ -383,23 +383,49 @@ button:hover {
     to { opacity: 1; transform: scale(1); }
 }
 
+/* ================= CARE SECTION ================= */
+#care {
+    width: 100%;
+    padding: 30px 10px 20px;
+    text-align: center;
+}
+
+/* Title */
+#care .title {
+    color: #ffb6c1;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+/* Subtitle */
+#care .love-subline {
+    color: #ffd1dc;
+    max-width: 700px;
+    margin: 0 auto 20px;
+    line-height: 1.4;
+}
+
 /* ================= CARE GRID ================= */
 .care-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 14px;
     max-width: 1100px;
-    margin: 20px auto;
-    padding: 0 12px;
+    margin: 0 auto 20px;
+    padding: 6px;
 
-    /* ✅ only gallery scroll */
-    max-height: 65vh;  
+    height: 60vh;               /* ✅ only gallery scroll */
     overflow-y: auto;
-    scrollbar-width: none;
+    overflow-x: hidden;
+
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255,0,90,0.15), rgba(120,0,40,0.25));
+    backdrop-filter: blur(6px);
 }
 
+/* hide scrollbar */
 .care-grid::-webkit-scrollbar {
-    display: none;
+    width: 0;
 }
 
 /* Images */
@@ -408,28 +434,46 @@ button:hover {
     height: auto;
     object-fit: contain;
     border-radius: 14px;
-    background: rgba(255,255,255,0.2);
-    box-shadow: 0 10px 22px rgba(255, 80, 120, 0.35);
+    box-shadow: 0 12px 25px rgba(255, 0, 80, 0.35);
     transition: 0.3s ease;
 }
 
 .care-grid img:hover {
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
 /* ================= MOBILE VIEW ================= */
 @media (max-width: 768px) {
     .care-grid {
         grid-template-columns: 1fr;   /* ✅ one by one */
-        max-height: 70vh;             /* scroll only gallery */
-        gap: 14px;
-        padding: 5px 10px;
+        height: 65vh;                 /* scroll only gallery */
+        gap: 16px;
+        padding: 10px;
     }
 
     .care-grid img {
         border-radius: 12px;
     }
 }
+
+/* ================= BUTTON FIX ================= */
+#care button {
+    margin-top: 10px;
+    padding: 10px 22px;
+    border-radius: 22px;
+    border: none;
+    background:  rgba(255, 133, 161, 0.6);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255, 0, 80, 0.4);
+    transition: 0.3s ease;
+}
+
+#care button:hover {
+    transform: scale(1.05);
+}
+
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 1024px) {
